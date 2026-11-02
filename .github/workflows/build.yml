@@ -1,0 +1,132 @@
+# On every push to main: test, build the Python package, and compile the
+# Postgres extension for each supported server version. When the version in
+# pyproject.toml has no tag yet, tag the commit with it and publish a release
+# carrying the wheel, the sdist and the compiled extensions.
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --extra dev
+      - run: uv run pytest -q
+
+  package:
+    needs: test
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv build
+      - name: Smoke-test the wheel
+        run: |
+          uv venv /tmp/wheel
+          uv pip install --python /tmp/wheel/bin/python dist/*.whl
+          /tmp/wheel/bin/python -c "from albanian_stemmer import stem; assert stem('mollëve') == 'moll'"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: python-package
+          path: dist/*
+
+  postgres:
+    needs: test
+    strategy:
+      fail-fast: false
+      matrix:
+        pg: [14, 15, 16, 17, 18]
+        runner: [ubuntu-24.04, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    env:
+      PG: ${{ matrix.pg }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install PostgreSQL ${{ matrix.pg }} (PGDG)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-$PG postgresql-server-dev-$PG
+      - name: Build and install
+        working-directory: postgres
+        run: |
+          export PG_CONFIG=/usr/lib/postgresql/$PG/bin/pg_config
+          make -s
+          sudo -E make -s install
+      - name: Regression test and stems against Python
+        run: |
+          B=/usr/lib/postgresql/$PG/bin
+          $B/initdb -D "$RUNNER_TEMP/data" -E UTF8 --locale=C.UTF-8 -A trust >/dev/null
+          $B/pg_ctl -D "$RUNNER_TEMP/data" -o "-p 5499 -k /tmp" -l "$RUNNER_TEMP/log" -w start
+          export PGHOST=/tmp PGPORT=5499 PGUSER=$USER
+          make -C postgres -s installcheck PG_CONFIG=$B/pg_config || { cat postgres/regression.diffs; exit 1; }
+          uv sync --extra dev -q
+          ALBANIAN_STEMMER_TEST_DSN="host=/tmp port=5499 dbname=postgres user=$USER" \
+            uv run pytest -q tests/test_postgres_c.py
+      - name: Package
+        run: |
+          B=/usr/lib/postgresql/$PG/bin
+          ARCH=$(uname -m)
+          D=albanian_stemmer-pg$PG-linux-$ARCH
+          mkdir -p $D/lib $D/extension
+          cp "$($B/pg_config --pkglibdir)/albanian_stemmer.so" $D/lib/
+          cp postgres/albanian_stemmer.control postgres/albanian_stemmer--*.sql $D/extension/
+          cp LICENSE $D/
+          cp postgres/runtime/COPYING $D/COPYING.snowball
+          cat > $D/INSTALL <<TXT
+          Albanian text search for PostgreSQL $PG (linux-$ARCH, built on Ubuntu 24.04 / glibc 2.39).
+
+            sudo cp lib/albanian_stemmer.so "\$(pg_config --pkglibdir)/"
+            sudo cp extension/* "\$(pg_config --sharedir)/extension/"
+
+          Then, in a database: CREATE EXTENSION albanian_stemmer;
+          Other systems: build from source (postgres/ in the repository).
+          TXT
+          sed -i 's/^          //' $D/INSTALL
+          tar czf $D.tar.gz $D
+      - uses: actions/upload-artifact@v4
+        with:
+          name: postgres-pg${{ matrix.pg }}-${{ matrix.runner }}
+          path: albanian_stemmer-pg*.tar.gz
+
+  release:
+    needs: [package, postgres]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Version
+        id: v
+        run: |
+          V=$(python3 -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])")
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          if git ls-remote --exit-code --tags origin "refs/tags/$V" >/dev/null; then
+            echo "new=false" >> "$GITHUB_OUTPUT"; echo "tag $V exists: no release"
+          else
+            echo "new=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/download-artifact@v4
+        if: steps.v.outputs.new == 'true'
+        with:
+          path: assets
+          merge-multiple: true
+      - name: Tag and release
+        if: steps.v.outputs.new == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          V: ${{ steps.v.outputs.version }}
+        run: |
+          gh release create "$V" assets/* --target "$GITHUB_SHA" --title "$V" --generate-notes

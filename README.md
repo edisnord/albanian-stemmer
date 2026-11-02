@@ -1,5 +1,7 @@
 # albanian-stemmer
 
+[![build](https://github.com/edisnord/albanian-stemmer/actions/workflows/build.yml/badge.svg)](https://github.com/edisnord/albanian-stemmer/actions/workflows/build.yml)
+
 A light, inflectional stemmer for Albanian. It ships as a Snowball program, as
 Python, and as a Postgres text search extension. Its rules are fitted
 and scored against a corpus lexicon, and the build is reproducible.
@@ -19,6 +21,31 @@ and scored against a corpus lexicon, and the build is reproducible.
 >>> terms("Sëmundjet e mollës dhe të pemëve")      # stopwords dropped
 ['semund', 'moll', 'pem']
 ```
+
+## Install
+
+Python (3.11+):
+
+```bash
+pip install git+https://github.com/edisnord/albanian-stemmer@1.0.0
+# or the wheel attached to the release:
+pip install https://github.com/edisnord/albanian-stemmer/releases/download/1.0.0/albanian_stemmer-1.0.0-py3-none-any.whl
+```
+
+Postgres (14–18): each [release](https://github.com/edisnord/albanian-stemmer/releases)
+has the extension compiled for Linux x86_64 and arm64
+(`albanian_stemmer-pg<version>-linux-<arch>.tar.gz`, built on Ubuntu 24.04):
+
+```bash
+tar xzf albanian_stemmer-pg18-linux-x86_64.tar.gz && cd albanian_stemmer-pg18-linux-x86_64
+sudo cp lib/albanian_stemmer.so "$(pg_config --pkglibdir)/"
+sudo cp extension/* "$(pg_config --sharedir)/extension/"
+psql -c 'CREATE EXTENSION albanian_stemmer'
+```
+
+Elsewhere, build it from source ([Postgres](#postgres)). CI
+(`.github/workflows/build.yml`) tests, builds both on every push to `main`,
+and publishes a release when the version in `pyproject.toml` has no tag yet.
 
 ## Why it is useful
 
@@ -410,10 +437,10 @@ Use a UTF-8 database. The dictionary also works in other server encodings
 (LATIN1 included), but Postgres's parser only treats ë and ç as letters when
 the database's locale says so: in a LATIN1 database with the C locale it splits
 *Sëmundjet* into *S* and *mundjet*, for every configuration, `simple` too.
-Checked on PostgreSQL 18.6: `make installcheck` passes, and in a UTF-8
-database `ts_lexize` gives Python's stem (or none, for a stopword) for all
-44,046 test words, also next to the built-in Snowball dictionaries in the
-same session.
+CI builds it for PostgreSQL 14 to 18 and checks each: `make installcheck`
+passes, and in a UTF-8 database `ts_lexize` gives Python's stem (or none, for
+a stopword) for every test word, also next to the built-in Snowball
+dictionaries in the same session.
 
 ## Working with a new corpus (e.g. a web crawl)
 
