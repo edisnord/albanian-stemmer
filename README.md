@@ -27,9 +27,9 @@ and scored against a corpus lexicon, and the build is reproducible.
 Python (3.11+):
 
 ```bash
-pip install git+https://github.com/edisnord/albanian-stemmer@1.0.0
+pip install git+https://github.com/edisnord/albanian-stemmer@1.1.0
 # or the wheel attached to the release:
-pip install https://github.com/edisnord/albanian-stemmer/releases/download/1.0.0/albanian_stemmer-1.0.0-py3-none-any.whl
+pip install https://github.com/edisnord/albanian-stemmer/releases/download/1.1.0/albanian_stemmer-1.1.0-py3-none-any.whl
 ```
 
 Postgres (14–18): each [release](https://github.com/edisnord/albanian-stemmer/releases)
