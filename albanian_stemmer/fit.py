@@ -341,8 +341,8 @@ their verb (përdorimi, përdor). Stems can be shorter than any word (moll, semu
 Some endings also need a certain letter before them (as in the Finnish and
 Turkish stemmers): -t only after a vowel (mollët, but rast keeps its t). An
 exception table, looked up first, joins the forms of irregular verbs (vij,
-erdhi, ardhur) and the forms the rules split off a frequent noun (problemi,
-duar). The auxiliaries jam and kam are stopwords and are left out of it.
+erdhi, ardhur; jam, është, qenë) and the forms the rules split off a frequent
+noun (problemi, duar).
 
 Input must be lowercase; ë and ç are folded first, so text typed without them
 stems the same."""
