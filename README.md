@@ -33,7 +33,7 @@ pip install https://github.com/edisnord/albanian-stemmer/releases/download/1.0.0
 ```
 
 Postgres (14–18): each [release](https://github.com/edisnord/albanian-stemmer/releases)
-has the extension compiled for Linux x86_64 and arm64
+has the extension compiled for Linux x86_64 and aarch64
 (`albanian_stemmer-pg<version>-linux-<arch>.tar.gz`, built on Ubuntu 24.04):
 
 ```bash
