@@ -1,0 +1,6 @@
+# albanian_stemmer extension
+comment = 'Albanian text search: a Snowball stemmer dictionary and an albanian configuration'
+default_version = '1.0'
+module_pathname = '$libdir/albanian_stemmer'
+relocatable = true
+trusted = true

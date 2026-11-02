@@ -1,0 +1,31 @@
+[project]
+name = "albanian-stemmer"
+version = "0.1.0"
+description = "A light, inflectional Albanian stemmer: Snowball program, Python, and a Postgres text search extension, fitted against a corpus lexicon"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+authors = [{ name = "edisnord", email = "edisnord@gmail.com" }]
+# Runtime: the compiled Snowball program runs on the snowballstemmer package.
+dependencies = ["snowballstemmer>=3.0.1"]
+
+[project.optional-dependencies]
+# Fitting and scoring rules against a lexicon.
+fit = ["numpy>=1.26", "uniparser-albanian>=2.3"]
+# Building a lexicon from raw text: Stanza pulls in PyTorch.
+lexicon = ["numpy>=1.26", "uniparser-albanian>=2.3", "stanza>=1.10"]
+dev = ["pytest>=8", "numpy>=1.26", "psycopg[binary]>=3.1"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["albanian_stemmer"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

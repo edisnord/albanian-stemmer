@@ -1,0 +1,2 @@
+The Snowball C runtime, unmodified, from https://github.com/snowballstem/snowball
+(commit 6389c79, which also compiled stem_UTF_8_albanian.c). BSD-3-Clause: see COPYING.

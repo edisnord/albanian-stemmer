@@ -1,0 +1,31 @@
+CREATE EXTENSION albanian_stemmer;
+SELECT ts_lexize('albanian_stem', 'Mollëve');
+ ts_lexize 
+-----------
+ {moll}
+(1 row)
+
+SELECT ts_lexize('albanian_stem', 'dhe');
+ ts_lexize 
+-----------
+ {}
+(1 row)
+
+SELECT ts_lexize('albanian_stem', 'përdorimi') = ts_lexize('albanian_stem', 'përdorur') AS same;
+ same 
+------
+ t
+(1 row)
+
+SELECT to_tsvector('albanian', 'Sëmundjet e mollës dhe të pemëve');
+         to_tsvector         
+-----------------------------
+ 'moll':3 'pem':6 'semund':1
+(1 row)
+
+SELECT to_tsvector('albanian', 'semundjet e molles') @@ to_tsquery('albanian', 'Sëmundje & mollë') AS match;
+ match 
+-------
+ t
+(1 row)
+
