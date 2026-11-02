@@ -196,7 +196,9 @@ kept apart.
 **Retrieval.** BM25 (k1 0.9, b 0.4) on 64,590 Gemma-generated queries over
 general web text (crawl and FineWeb chunks; each query's source chunk is the
 one relevant item; 35k source chunks plus 200k distractors), and on a sealed
-set of 1,457 queries over 1,487 chunks plus the same distractors:
+set of 1,457 queries over 1,487 chunks plus the same distractors. These query
+sets are not published (they belong to a separate project); the public check
+is mMARCO, below:
 
 | analyzer | MRR@10 | R@10 | sealed MRR@10 |
 |---|---|---|---|
