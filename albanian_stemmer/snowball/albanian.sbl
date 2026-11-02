@@ -81,8 +81,6 @@ define exception as (
             (<- 'argument')
         'arkeologji'
             (<- 'arkeologji')
-        'armiqte'
-            (<- 'armiq')
         'arrihej' 'arrihen' 'arrihet' 'arrij' 'arrija' 'arrije' 'arrijme'
         'arrijne' 'arrin' 'arrini' 'arrinim' 'arrinin' 'arrinte' 'arrit'
         'arrita' 'arrite' 'arritem' 'arriten' 'arritet' 'arriti' 'arritur'
@@ -158,8 +156,6 @@ define exception as (
             (<- 'dety')
         'dhune'
             (<- 'dhun')
-        'diabet'
-            (<- 'diabet')
         'diaspora'
             (<- 'diaspor')
         'dime' 'dina' 'dine' 'dinim' 'dinte' 'dish' 'diti' 'ditun' 'ditur'
@@ -281,8 +277,6 @@ define exception as (
             (<- 'hyn')
         'idesh' 'idete'
             (<- 'ide')
-        'incidente'
-            (<- 'incident')
         'industri' 'industrite'
             (<- 'industri')
         'infeksione' 'infeksionesh' 'infeksionet' 'infeksioneve'
@@ -299,11 +293,11 @@ define exception as (
             (<- 'interes')
         'internet'
             (<- 'internet')
-        'ashte' 'ishe' 'ishit' 'jem' 'jesh' 'ji' 'jini' 'qene' 'qenka' 'qenkan'
-        'qenke'
-            (<- 'ishim')
         'japoni'
             (<- 'japoni')
+        'ashte' 'eshte' 'isha' 'ishe' 'ishim' 'ishin' 'ishit' 'ishte' 'jam'
+        'jane' 'jem' 'jemi' 'jesh' 'ji' 'jini' 'qene' 'qenka' 'qenkan' 'qenke'
+            (<- 'je')
         'dha' 'dhame' 'dhan' 'dhane' 'dhashe' 'dhate' 'dhene' 'dhente' 'ip'
         'ipet' 'jap' 'jape' 'japesh' 'japim' 'japin' 'jepini' 'jepte'
             (<- 'jep')
@@ -311,8 +305,6 @@ define exception as (
             (<- 'jetes')
         'kampionat'
             (<- 'kampionat')
-        'kamera' 'kamerat' 'kamerave'
-            (<- 'kamr')
         'kanabis'
             (<- 'kanabis')
         'kandidat'
@@ -331,8 +323,9 @@ define exception as (
             (<- 'kercen')
         'kerkese'
             (<- 'kerkes')
-        'kem' 'kemi' 'kene' 'keni' 'kishim' 'pase' 'paska' 'paskam' 'paskan'
-        'paske' 'paskemi' 'paskesh' 'pasur' 'patem' 'patet' 'patur'
+        'kam' 'kem' 'kemi' 'kene' 'keni' 'kishim' 'kishin' 'kishit' 'pase'
+        'paska' 'paskam' 'paskan' 'paske' 'paskemi' 'paskesh' 'pasur' 'patem'
+        'patet' 'patur'
             (<- 'kisht')
         'klase'
             (<- 'klas')
@@ -539,8 +532,6 @@ define exception as (
             (<- 'petrit')
         'pjese'
             (<- 'pjes')
-        'planesh' 'planeve' 'pllana'
-            (<- 'pla')
         'politikan' 'politikane' 'politikani' 'politikanin' 'politikanit'
             (<- 'politikan')
         'poloni'
@@ -699,8 +690,6 @@ define exception as (
             (<- 'teori')
         'tepelene'
             (<- 'tepelen')
-        'terapi' 'terapite'
-            (<- 'terapi')
         'teresi'
             (<- 'teresi')
         'termet'

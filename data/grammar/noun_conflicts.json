@@ -541,9 +541,9 @@
   "kalorish": "kalor",
   "kalorite": "kalor",
   "kalorive": "kalor",
-  "kamera": "kamr",
-  "kamerat": "kamr",
-  "kamerave": "kamr",
+  "kamere": "kam",
+  "kameren": "kam",
+  "kameres": "kam",
   "kamione": "kami",
   "kamionet": "kami",
   "kamioneve": "kami",
@@ -2103,9 +2103,9 @@
   "kalorish": 16,
   "kalorite": 66,
   "kalorive": 168,
-  "kamera": 821,
-  "kamerat": 560,
-  "kamerave": 455,
+  "kamere": 152,
+  "kameren": 126,
+  "kameres": 200,
   "kamione": 155,
   "kamionet": 90,
   "kamioneve": 100,
@@ -4320,9 +4320,9 @@
    "kalorive"
   ],
   "kamere": [
-   "kamera",
-   "kamerat",
-   "kamerave"
+   "kamere",
+   "kameren",
+   "kameres"
   ],
   "kamion": [
    "kamione",
@@ -8753,11 +8753,11 @@
    }
   },
   "kamere": {
-   "stem": "kamr",
+   "stem": "kam",
    "moved": {
-    "kamera": "kam",
-    "kamerat": "kam",
-    "kamerave": "kam"
+    "kameres": "kamr",
+    "kamere": "kamr",
+    "kameren": "kamr"
    }
   },
   "kamion": {

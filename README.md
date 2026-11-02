@@ -160,13 +160,13 @@ Two words are *linked* when they share a lemma:
 | stemmer | lexicon | P types | R types | P tokens | R tokens | stems |
 |---|---|---|---|---|---|---|
 | **albanian (committed, 1,000 exceptions)** | crawl, held-out | 0.847 | 0.789 | 0.948 | 0.846 | 4,361 |
-| | web, held-out | 0.833 | 0.591 | 0.954 | 0.378 | 12,566 |
-| | web, all | 0.699 | 0.552 | 0.889 | 0.454 | 21,991 |
-| with the full tables (2,188) | web, held-out | 0.842 | 0.615 | 0.954 | 0.379 | 12,268 |
-| with 500 exceptions | web, held-out | 0.828 | 0.579 | 0.951 | 0.375 | 12,647 |
+| | web, held-out | 0.834 | 0.591 | 0.955 | 0.388 | 12,566 |
+| | web, all | 0.699 | 0.552 | 0.890 | 0.459 | 21,995 |
+| with the full tables (2,199) | web, held-out | 0.843 | 0.615 | 0.955 | 0.388 | 12,266 |
+| with 500 exceptions | web, held-out | 0.828 | 0.579 | 0.952 | 0.384 | 12,644 |
 | without exceptions | web, held-out | 0.820 | 0.563 | 0.925 | 0.329 | 12,721 |
-| without the -im step | web, held-out | 0.878 | 0.590 | 0.971 | 0.378 | 12,722 |
-| without the -uara endings | web, held-out | 0.851 | 0.567 | 0.957 | 0.376 | 12,759 |
+| without the -im step | web, held-out | 0.879 | 0.590 | 0.972 | 0.387 | 12,722 |
+| without the -uara endings | web, held-out | 0.851 | 0.567 | 0.958 | 0.386 | 12,759 |
 | no stemming (folding only) | web, all | 1.000 | 0.000 | 1.000 | 0.000 | 54,794 |
 | first 4 letters | web, held-out | 0.232 | 0.663 | 0.482 | 0.347 | 7,109 |
 | first 5 letters | web, held-out | 0.414 | 0.529 | 0.552 | 0.198 | 10,997 |
@@ -183,8 +183,8 @@ Against the grammar book's paradigms and derivations (`data/grammar/book_checks.
 
 | stemmer | paradigm families merged | derivations kept apart |
 |---|---|---|
-| albanian (committed) | 0.516 | 0.887 |
-| with the full tables | 0.521 | 0.890 |
+| albanian (committed) | 0.536 | 0.887 |
+| with the full tables | 0.541 | 0.890 |
 | without exceptions | 0.478 | 0.882 |
 | first 4 letters | 0.465 | 0.261 |
 | first 6 letters | 0.140 | 0.729 |
@@ -245,16 +245,16 @@ Suffix rules cannot merge *vij*, *erdhi* and *ardhur*, or *them*, *thotë*
 and *thënë*: the forms share no stem. These verbs are frequent, so on general web
 text they carry most of the frequency-weighted pairs a stemmer misses. The
 rules therefore look a word up in an exception table first, as the English
-Porter2 stemmer does. The full verb table has 628 forms of 62 irregular
+Porter2 stemmer does. The full verb table has 639 forms of 62 irregular
 verbs (`data/grammar/irregular_verbs.json`, built by
 `tools/build_irregular_verbs.py`). On the web lexicon, all words:
 
 | | P types | R types | P tokens | R tokens |
 |---|---|---|---|---|
 | without exceptions | 0.679 | 0.524 | 0.841 | 0.359 |
-| full verb table | 0.695 | 0.544 | 0.873 | 0.421 |
-| full verb and noun tables (below) | 0.712 | 0.575 | 0.890 | 0.455 |
-| **committed: 1,000 entries of both** | 0.699 | 0.552 | 0.889 | 0.454 |
+| full verb table | 0.695 | 0.544 | 0.874 | 0.426 |
+| full verb and noun tables (below) | 0.712 | 0.575 | 0.891 | 0.459 |
+| **committed: 1,000 entries of both** | 0.699 | 0.552 | 0.890 | 0.459 |
 
 Precision rises too: each verb gets a stem of its own, where its forms used
 to share stems with unrelated words. A form that is also another word stays
@@ -263,10 +263,18 @@ with the rules (*parë* "seen"/"first", *tha* "said"/"dried", *jetë*
 an upper estimate; retrieval and the human-labelled sample below do not share
 that bias.
 
-The auxiliaries *jam* "be" and *kam* "have" are stopwords (`terms()` and
-the Postgres dictionary drop them before stemming), so their forms that are
-stopwords (*jam*, *është*, *ka*) are left out of the table, and `stem()` on
-them alone gives unrelated stems.
+The auxiliaries *jam* "be" and *kam* "have" are mostly stopwords, which
+`terms()` and the Postgres dictionary drop before stemming. Their stopword
+forms are in the table all the same (*jam*, *është*, *ishte*, *qenë* →
+`je`; *kam*, *kishte*, *pasur* → `kisht`), so a search engine that stems
+every word still gets one stem per verb; *ka*, *kanë* and *kisha* stay with
+the rules, being also "ox", "oxen" and "church". Keeping the stopwords
+instead of dropping them changes BM25 retrieval by no more than its noise
+(−0.0003 ± 0.0005 MRR@10 on the Gemma queries, +0.004 ± 0.003 on the
+sealed set): their low IDF already discounts them, so the list mainly makes
+the index smaller. `albanian_stemmer/snowball/stop.txt` is the list in
+Snowball's format, each word in its standard spelling and, if that has ë
+or ç, also without them.
 
 ### Frequent nouns
 
@@ -281,18 +289,18 @@ uniparser reads as that noun and nothing else. With the full verb table in
 place, adding the full noun table raises MRR@10 on the generated queries from
 0.647 to 0.657.
 
-### 1,000 exceptions, not 2,188
+### 1,000 exceptions, not 2,199
 
-The tables are long-tailed: the 1,000 entries kept carry 90% of the corpus
-tokens of all 2,188, and nearly all of their gain in token precision and
+The tables are long-tailed: the 1,000 entries kept carry 93% of the corpus
+tokens of all 2,199, and nearly all of their gain in token precision and
 recall on web text. The committed rules keep 1,000 (`fit --max-exceptions
 1000`), two to three times the word lists of the Greek and Ukrainian Snowball
 stemmers (Estonian has 344 irregular verb forms, Porter2 23); the generated C
-is 170 KB. They are kept whole words at a time, by tokens per entry: a verb
+is 169 KB. They are kept whole words at a time, by tokens per entry: a verb
 with only some forms listed would map them to a stem the rest no longer reach
 (*shitur* to `shes`, but *shes* to `she`). That keeps 34 verbs (*jam, kam,
-bëj, them, jap, marr, sjell, nxjerr, ...*) and 316 nouns. An earlier cut at
-500 entries (18 verbs, 142 nouns) scored 0.0025 MRR@10 lower on the Gemma
+bëj, them, jap, marr, sjell, nxjerr, ...*) and 310 nouns. An earlier cut at
+500 entries (18 verbs, 136 nouns) scored 0.0025 MRR@10 lower on the Gemma
 queries (± 0.0003) and 0.024 lower in type recall on the human-labelled
 sample: most of the forms that sample found split were irregular verbs left
 out of the cut (*sjella*/*solli*, *nxirret*/*nxori*). For an index
@@ -346,12 +354,12 @@ weighted by the two forms' frequencies):
 
 | analyzer | R types | P types | related words merged | R tokens | P tokens |
 |---|---|---|---|---|---|
-| **albanian (committed)** | 0.749 | 0.907 | 0.462 | 0.630 | 0.913 |
-| with the full tables | 0.754 | 0.909 | 0.427 | 0.630 | 0.913 |
-| with 500 exceptions | 0.725 | 0.904 | 0.462 | 0.619 | 0.911 |
+| **albanian (committed)** | 0.749 | 0.907 | 0.462 | 0.656 | 0.916 |
+| with the full tables | 0.754 | 0.909 | 0.427 | 0.656 | 0.916 |
+| with 500 exceptions | 0.725 | 0.904 | 0.462 | 0.645 | 0.914 |
 | without exceptions | 0.668 | 0.897 | 0.495 | 0.389 | 0.865 |
-| without the -im step | 0.742 | 0.907 | 0.462 | 0.630 | 0.913 |
-| without the -uara endings | 0.717 | 0.906 | 0.459 | 0.629 | 0.912 |
+| without the -im step | 0.742 | 0.907 | 0.462 | 0.656 | 0.916 |
+| without the -uara endings | 0.717 | 0.906 | 0.459 | 0.655 | 0.916 |
 | first 5 letters | 0.521 | 0.975 | 0.129 | 0.161 | 0.980 |
 | uniparser lemma | 0.567 | 0.974 | 0.110 | 0.506 | 0.977 |
 | uniparser lemma, ë removed | 0.359 | 0.969 | 0.129 | 0.315 | 0.969 |
@@ -385,7 +393,8 @@ lexicons + verb table ──tools/build_noun_conflicts.py───▶ noun_confl
 - **`albanian_stemmer/rules.py`**: `AlbanianStemmer` holds the rules as data and
   stems with them. `to_snowball()` writes the Snowball program.
 - **`albanian_stemmer/snowball/`**: the committed rules (`albanian.json`), their
-  Snowball program, and its compiled Python (what `stem()`/`terms()` run).
+  Snowball program, its stop list (`stop.txt`), and its compiled Python (what
+  `stem()`/`terms()` run).
 - **`postgres/`**: the Postgres extension (below). The fit, given the Snowball
   compiler, also writes its `stem_UTF_8_albanian.c`/`.h` and `albanian_stopwords.h`.
 - **`albanian_stemmer/fit.py`**: prunes the grammar's ending tables (`--rules

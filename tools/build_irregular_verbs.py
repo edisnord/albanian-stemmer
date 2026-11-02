@@ -59,6 +59,10 @@ LEMMAS = list(dict.fromkeys(TABLE + BOOK + PAPER + EXTRA))
 ALIAS = {"beh": "bej", "behem": "bej"}
 # Folded forms uniparser reads only as one of the verbs but that are mostly
 # other words: nouns, names, other verbs, English (checked by hand).
+# The auxiliaries' stopword forms (jam, është, ka) are listed too: a search
+# engine may stem every word, and then the verb should still get one stem.
+AUXILIARIES = frozenset({"jam", "kam"})
+
 HOMOGRAPHS = frozenset(
     "pare jete pa ra ve vu ik ha hash di dit die pit pish lee lea leave ler pam paj "
     "bejlereve bejleret fjeti fle fleme flinte flini flinim flinin flisja dis des deke pac "
@@ -84,8 +88,7 @@ def build(lexicons: list[str], rules: AlbanianStemmer) -> dict:
     verbs = {fold(v) for v in LEMMAS}
     # The standard (most frequent) spelling of each folded form: undiacritized
     # spellings get poor analyses.
-    standard = {f: max(sorted(ws), key=lambda w: spell_freq[w]) for f, ws in spellings.items()
-                if f not in st.stopwords}
+    standard = {f: max(sorted(ws), key=lambda w: spell_freq[w]) for f, ws in spellings.items()}
     words = sorted(standard.values())
     an = AlbanianAnalyzer()
     readings: dict[str, list[tuple[str, list[str]]]] = {}
@@ -112,6 +115,8 @@ def build(lexicons: list[str], rules: AlbanianStemmer) -> dict:
         if not {lem for lem, _ in readings.get(w, [])} & verbs:
             continue
         lem = verb_of(w)
+        if f in st.stopwords and lem not in AUXILIARIES:
+            continue  # other stopwords never reach the stemmer
         if lem is None or f in HOMOGRAPHS:
             dropped.append(f"{f} ({'/'.join(sorted({x for x, _ in readings.get(w, [])}))})")
         else:

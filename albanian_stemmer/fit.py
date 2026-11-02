@@ -517,6 +517,10 @@ def main(argv: list[str] | None = None) -> int:
                     len(book_test.apart), len(new), new)
         endings += new
     stop = stopwords_of(lexicon, readings)
+    spelling_freq: collections.Counter = collections.Counter()
+    for e in lexicon:
+        if fold(e.word) in stop:
+            spelling_freq[e.word.lower()] += e.occurrences
     logger.info("%d candidate endings, %d candidate rewrites, %d stopwords",
                 len(endings), len(rewrite_pool), len(stop))
 
@@ -579,6 +583,8 @@ def main(argv: list[str] | None = None) -> int:
     Path(args.json).write_text(json.dumps(st.to_json(), ensure_ascii=False, indent=1) + "\n")
     logger.info("wrote %s", args.json)
     if args.sbl:
+        Path(args.sbl).with_name("stop.txt").write_text(stop_list(st, spelling_freq),
+                                                         encoding="utf-8")
         write_snowball(st, Path(args.sbl), args.snowball,
                        Path(args.postgres) if args.postgres else None)
     if args.report:
@@ -614,6 +620,33 @@ def snowball_notes(st: AlbanianStemmer) -> dict[str, str]:
         for e, _ in DERIVATIONAL_STEP:
             notes[f"step{len(st.steps)}:{e}"] = DERIVATIONAL_NOTE
     return notes
+
+
+STOP_LIST_HEADER = """\
+ | An Albanian stop word list. Comments begin with vertical bar. Each stop
+ | word is at the start of a line.
+
+ | Function words (articles and particles, pronouns, prepositions,
+ | conjunctions, and the auxiliaries jam "be" and kam "have" in their
+ | commonest forms) chosen from lemma-tagged lexicons of Albanian text: words
+ | Stanza tagged mostly as function words that uniparser-albanian also reads
+ | as closed-class words.
+
+ | Much Albanian text is written without ë and ç, so a word that has them is
+ | listed in both spellings (është, eshte). The stemmer folds them, so both
+ | spellings get the same stem.
+"""
+
+
+def stop_list(st: AlbanianStemmer, spelling_freq: collections.Counter) -> str:
+    """*st*'s stopwords as a Snowball ``stop.txt``: each in its commonest
+    spelling in the lexicon and, if that has ë or ç, also without them."""
+    best: dict[str, str] = {}
+    for w, n in sorted(spelling_freq.items(), key=lambda x: (-x[1], x[0])):
+        best.setdefault(fold(w), w)
+    words = {best.get(f, f) for f in st.stopwords} | set(st.stopwords)
+    return STOP_LIST_HEADER + "\n" + "".join(
+        w + "\n" for w in sorted(words, key=lambda w: (fold(w), w)))
 
 
 def stopwords_header(st: AlbanianStemmer) -> str:
