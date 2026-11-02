@@ -82,7 +82,7 @@ class AlbanianStemmer:
     conditions: tuple[tuple[tuple[str, str], ...], ...] = ()
     # Whole words (folded) → their stem, looked up before any rule: the
     # irregular verbs, whose forms share no stem a suffix rule could reach
-    # (jam, është, qenë; them, tha, thotë). Like Porter2's exception list.
+    # (vij, erdhi, ardhur; them, thotë, thënë). Like Porter2's exception list.
     exceptions: tuple[tuple[str, str], ...] = ()
 
     def __post_init__(self) -> None:
@@ -218,7 +218,7 @@ class AlbanianStemmer:
                f"{' stem_end' if self.rewrites else ''} )", "",
                "externals ( stem )", "",
                f"integers ( {' '.join(['p1', *(f's{k}' for k in need)])}"
-               f"{' pr1 pr2' if regioned else ''} )", "",
+               f"{''.join(f' p{r.lower()}' for r in REGIONS if r in used)} )", "",
                *([f"groupings ( {' '.join(['v'] * vowels + ['kgh'] * ('KGH' in used))} )", ""]
                  if vowels or "KGH" in used else []),
                "stringescapes {}", "",
@@ -249,9 +249,11 @@ class AlbanianStemmer:
                "    $p1 = limit",
                f"    do ( hop {m} setmark p1 )",
                *(f"    $s{k} = limit  do ( hop {k} setmark s{k} )" for k in need),
-               *(["    $pr1 = limit  $pr2 = limit",
-                  "    do ( gopast v gopast non-v setmark pr1",
-                  "         gopast v gopast non-v setmark pr2 )"] if regioned else []),
+               *([f"    {'  '.join(f'$p{r.lower()} = limit' for r in REGIONS if r in used)}",
+                  "    do ( gopast v gopast non-v" + (" setmark pr1" if "R1" in used else "")
+                  + ("" if "R2" in used else " )"),
+                  *(["         gopast v gopast non-v setmark pr2 )"] if "R2" in used else []),
+                  ] if regioned else []),
                ")", "",
                "backwardmode (", "",
                "    define R1 as $p1 <= cursor",
@@ -310,7 +312,7 @@ class AlbanianStemmer:
         for form, st in self.exceptions:
             by_stem.setdefault(st, []).append(form)
         out = ["// Irregular words: their forms share no stem a suffix rule reaches",
-               "// (jam, është, qenë; them, tha, thotë), and the forms of frequent",
+               "// (vij, erdhi, ardhur; them, thotë, thënë), and the forms of frequent",
                "// nouns the rules split off (problemi, duar), each mapped to one stem.",
                "define exception as (", "    [substring] atlimit among ("]
         for st, forms in sorted(by_stem.items()):

@@ -340,9 +340,9 @@ from (kontrolloj, kontroll), and a third step joins nouns of action in -im to
 their verb (përdorimi, përdor). Stems can be shorter than any word (moll, semund).
 Some endings also need a certain letter before them (as in the Finnish and
 Turkish stemmers): -t only after a vowel (mollët, but rast keeps its t). An
-exception table, looked up first, joins the forms of irregular verbs (jam,
-është, qenë) and the forms the rules split off a frequent noun (problemi,
-duar).
+exception table, looked up first, joins the forms of irregular verbs (vij,
+erdhi, ardhur) and the forms the rules split off a frequent noun (problemi,
+duar). The auxiliaries jam and kam are stopwords and are left out of it.
 
 Input must be lowercase; ë and ç are folded first, so text typed without them
 stems the same."""

@@ -1,7 +1,7 @@
 """Build the irregular-verb exception table (``exceptions`` in the rules file).
 
-Suffix rules cannot merge an irregular verb's forms: *jam*, *është*, *qenë*;
-*them*, *tha*, *thotë*; *mbaj*, *mbajti*, *mbajtur*. This script lists the
+Suffix rules cannot merge an irregular verb's forms: *vij*, *erdhi*, *ardhur*;
+*them*, *thotë*, *thënë*; *mbaj*, *mbajti*, *mbajtur*. This script lists the
 verbs, finds their forms in corpus lexicons, and maps each form to one stem::
 
     uv run --extra fit python tools/build_irregular_verbs.py \\

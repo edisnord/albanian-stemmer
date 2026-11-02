@@ -110,8 +110,8 @@ from a grammar, then pruned and checked against data. In order:
    and keep ≥ 90% of the book's derivation pairs apart. The fit sees half of
    the lemmas (split by a hash of the lemma); the scores below are on the
    other half. Stems keep at least three letters.
-4. **Word lists where endings cannot reach.** Irregular verbs (*jam*, *është*,
-   *qenë*) come from published lists of irregular verbs. The frequent nouns
+4. **Word lists where endings cannot reach.** Irregular verbs (*vij*, *erdhi*,
+   *ardhur*) come from published lists of irregular verbs. The frequent nouns
    whose forms the endings split (*problemi*, *duar*) come from a
    Lithuanian-style conflict search over the lexicons. Only forms uniparser
    reads as that word alone are kept. Both tables are cut to the 1,000 entries
@@ -241,8 +241,8 @@ only the -im step does.
 
 ### Irregular verbs
 
-Suffix rules cannot merge *jam*, *është* and *qenë*, or *them*, *thotë* and
-*thënë*: the forms share no stem. These verbs are frequent, so on general web
+Suffix rules cannot merge *vij*, *erdhi* and *ardhur*, or *them*, *thotë*
+and *thënë*: the forms share no stem. These verbs are frequent, so on general web
 text they carry most of the frequency-weighted pairs a stemmer misses. The
 rules therefore look a word up in an exception table first, as the English
 Porter2 stemmer does. The full verb table has 628 forms of 62 irregular
@@ -262,6 +262,11 @@ with the rules (*parë* "seen"/"first", *tha* "said"/"dried", *jetë*
 "be"/"life"). The forms come from the lexicon these scores use, so the gain is
 an upper estimate; retrieval and the human-labelled sample below do not share
 that bias.
+
+The auxiliaries *jam* "be" and *kam* "have" are stopwords (`terms()` and
+the Postgres dictionary drop them before stemming), so their forms that are
+stopwords (*jam*, *është*, *ka*) are left out of the table, and `stem()` on
+them alone gives unrelated stems.
 
 ### Frequent nouns
 

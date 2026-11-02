@@ -14,9 +14,9 @@
 // their verb (përdorimi, përdor). Stems can be shorter than any word (moll, semund).
 // Some endings also need a certain letter before them (as in the Finnish and
 // Turkish stemmers): -t only after a vowel (mollët, but rast keeps its t). An
-// exception table, looked up first, joins the forms of irregular verbs (jam,
-// është, qenë) and the forms the rules split off a frequent noun (problemi,
-// duar).
+// exception table, looked up first, joins the forms of irregular verbs (vij,
+// erdhi, ardhur) and the forms the rules split off a frequent noun (problemi,
+// duar). The auxiliaries jam and kam are stopwords and are left out of it.
 //
 // Input must be lowercase; ë and ç are folded first, so text typed without them
 // stems the same.
@@ -25,7 +25,7 @@ routines ( prelude exception mark_regions R1 S2 InR2 AfterV AfterC AfterKGH step
 
 externals ( stem )
 
-integers ( p1 s2 pr1 pr2 )
+integers ( p1 s2 pr2 )
 
 groupings ( v kgh )
 
@@ -43,7 +43,7 @@ define prelude as (
 )
 
 // Irregular words: their forms share no stem a suffix rule reaches
-// (jam, është, qenë; them, tha, thotë), and the forms of frequent
+// (vij, erdhi, ardhur; them, thotë, thënë), and the forms of frequent
 // nouns the rules split off (problemi, duar), each mapped to one stem.
 define exception as (
     [substring] atlimit among (
@@ -804,8 +804,8 @@ define mark_regions as (
     $p1 = limit
     do ( hop 3 setmark p1 )
     $s2 = limit  do ( hop 2 setmark s2 )
-    $pr1 = limit  $pr2 = limit
-    do ( gopast v gopast non-v setmark pr1
+    $pr2 = limit
+    do ( gopast v gopast non-v
          gopast v gopast non-v setmark pr2 )
 )
 
