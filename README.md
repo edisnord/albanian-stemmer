@@ -28,9 +28,9 @@ reproducible.
 Python (3.11+):
 
 ```bash
-pip install git+https://github.com/edisnord/albanian-stemmer@1.2.0
+pip install git+https://github.com/edisnord/albanian-stemmer@1.2.1
 # or the wheel attached to the release:
-pip install https://github.com/edisnord/albanian-stemmer/releases/download/1.2.0/albanian_stemmer-1.2.0-py3-none-any.whl
+pip install https://github.com/edisnord/albanian-stemmer/releases/download/1.2.1/albanian_stemmer-1.2.1-py3-none-any.whl
 ```
 
 Postgres (14–18): each [release](https://github.com/edisnord/albanian-stemmer/releases)
@@ -152,7 +152,8 @@ Steps 1–5 produced release 1.2.0. The search converged to the same endings on
 every run, and most of the rules came from the hand-set additions anyway, so
 from 1.2.0 on the rules are frozen: `albanian.json` is edited by hand, a change
 is checked with `evaluate` and the step 6 benchmarks, and `fit` is kept as an
-analysis tool ([How it is built](#how-it-is-built)).
+analysis tool ([How it is built](#how-it-is-built)). Release 1.2.1 is the first
+such edit ([below](#release-121-the--ka-ending)); the tables below are of 1.2.0.
 
 ## Results
 
@@ -369,6 +370,30 @@ With the step, a bare noun could lose -nim in step 1 (*bashkëpunim* →
 `bashkepu`) while its inflected forms lose only -im (*bashkëpunimi* →
 `bashkepun`). The imperfect -nim follows only o or a (*punonim*, *mbanim*), so
 step 1 now takes it only there, and the noun meets its verb.
+
+### Release 1.2.1: the -ka ending
+
+Most feminine nouns join their definite form (*rrugë*, *rruga*; *punë*, *puna*),
+but 1.2.0 took -ka (the admirative, *hapka* "he opens, it turns out") off the
+nouns whose root ends in k: *banka* → `ban`, while *bankë*, *bankën*, *bankës*
+→ `banq`; likewise *maska*, *marka*, *darka*, *varka*, *Danimarka*. In the web
+lexicon such nouns carry 40 times the tokens of any verb form, and the frequent
+irregular admiratives (*qenka*, *paska*, *ardhka*, *dashka*) are in the exception
+table, so 1.2.1 drops -ka; only the 3rd singular admirative of regular
+consonant-stem verbs (*hapka*) loses its verb (-kam, -kan, -kemi, -keni stay).
+
+| | 1.2.0 | 1.2.1 |
+|---|---|---|
+| web lexicon, held-out: P / R types | 0.818 / 0.606 | 0.819 / 0.606 |
+| human-labelled sample: R / P types | 0.760 / 0.908 | 0.761 / 0.909 |
+| grammar book families merged | 0.562 | 0.560 (*hapka*) |
+| Gemma queries MRR@10 / sealed | 0.6518 / 0.7796 | 0.6522 / 0.7802 |
+| mMARCO MRR@10 | 0.3603 | 0.3605 |
+
+Restricting -së to fewer letters was tried too and rejected: with ë folded,
+the -esë nouns (*kërkesë*, *kërkesa*) look like the feminine of the -ës and
+-as words (*bartëse*, *vendase*) and the genitive of the stressed -a nouns
+(*kalasë*), which need it; it cost 1.5 points of type recall on the sample.
 
 ### A human-labelled sample
 

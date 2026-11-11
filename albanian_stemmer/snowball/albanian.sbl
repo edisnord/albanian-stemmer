@@ -23,10 +23,9 @@
 // Input must be lowercase; ë and ç are folded first, so text typed without them
 // stems the same.
 
-routines ( prelude exception mark_regions R1 S1 S2 InR2 AfterV AfterC AfterKGH
-    AfterE NotAfterI NotAfterIO NotAfterE NotAfterOTI NotAfterS AfterU
-    NotAfterIZBLST AfterVNotJE AfterOANotIO NotAfterAEOUY step1 step2 step3
-    stem_end )
+routines ( prelude exception mark_regions R1 S1 S2 InR2 AfterV AfterKGH AfterE
+    NotAfterI NotAfterIO NotAfterE NotAfterOTI NotAfterS AfterU NotAfterIZBLST
+    AfterVNotJE AfterOANotIO NotAfterAEOUY step1 step2 step3 stem_end )
 
 externals ( stem )
 
@@ -70,11 +69,10 @@ define exception as (
         'bluakeshit' 'bluam' 'bluan' 'bluani' 'bluanim' 'bluanin' 'bluanit'
         'bluante' 'bluar' 'bluash' 'bluat'
             (<- 'blo')
-        'bredhe' 'bredhesh' 'bredhka' 'bredhkam' 'bredhkan' 'bredhkemi'
-        'bredhkeni' 'bredhsh' 'bredhsha' 'bredhshi' 'bredhshim' 'bredhshin'
-        'bredhur' 'bridh' 'bridhja' 'bridhje' 'bridhni' 'bridhnim' 'bridhnin'
-        'bridhnit' 'bridhte' 'brodha' 'brodhe' 'brodhem' 'brodhen' 'brodhet'
-        'brodhi'
+        'bredhe' 'bredhesh' 'bredhkam' 'bredhkan' 'bredhkemi' 'bredhkeni'
+        'bredhsh' 'bredhsha' 'bredhshi' 'bredhshim' 'bredhshin' 'bredhur'
+        'bridh' 'bridhja' 'bridhje' 'bridhni' 'bridhnim' 'bridhnin' 'bridhnit'
+        'bridhte' 'brodha' 'brodhe' 'brodhem' 'brodhen' 'brodhet' 'brodhi'
             (<- 'bredhq')
         'brigje' 'brigjet' 'brigjeve'
             (<- 'breg')
@@ -115,9 +113,9 @@ define exception as (
         'ardhkeshit' 'ardhsh' 'ardhsha' 'ardhshi' 'ardhshim' 'ardhshin' 'ardhte'
         'ardhur' 'eja' 'ejani' 'erdhem' 'vij' 'vijme' 'vijne' 'vjen'
             (<- 'erdh')
-        'fjetem' 'fjetet' 'fjetka' 'fjetkam' 'fjetkan' 'fjetkemi' 'fjetkeni'
-        'fjetsh' 'fjetsha' 'fjetshi' 'fjetshim' 'fjetshin' 'fjette' 'fjetur'
-        'fleje' 'flene' 'flinit'
+        'fjetem' 'fjetet' 'fjetkam' 'fjetkan' 'fjetkemi' 'fjetkeni' 'fjetsh'
+        'fjetsha' 'fjetshi' 'fjetshim' 'fjetshin' 'fjette' 'fjetur' 'fleje'
+        'flene' 'flinit'
             (<- 'fjetq')
         'flasesh' 'flasim' 'flasin' 'flet' 'flisje' 'flisni' 'flisnim' 'flisnin'
         'flisnit' 'fliste' 'flitej' 'fliten' 'flitet' 'flitni' 'fol' 'fola'
@@ -204,9 +202,10 @@ define exception as (
         'marrshi' 'marrshim' 'marrshin' 'meren' 'meret' 'merni' 'merrnim'
         'merrte' 'merruni' 'merte' 'mirren' 'mirret' 'morem' 'moret' 'muar'
             (<- 'merr')
-        'milni' 'milnim' 'milnin' 'milnit' 'milte' 'mjelim' 'mjelke' 'mjelkej'
-        'mjelkesha' 'mjelkeshe' 'mjelkeshim' 'mjelkeshin' 'mjelkeshit' 'mjelsh'
-        'mjelsha' 'mjelshi' 'mjelshim' 'mjelshin' 'mjelte' 'molem' 'molet'
+        'milni' 'milnim' 'milnin' 'milnit' 'milte' 'mjelim' 'mjelka' 'mjelke'
+        'mjelkej' 'mjelkesha' 'mjelkeshe' 'mjelkeshim' 'mjelkeshin' 'mjelkeshit'
+        'mjelsh' 'mjelsha' 'mjelshi' 'mjelshim' 'mjelshin' 'mjelte' 'molem'
+        'molet'
             (<- 'mjel')
         'net' 'netet'
             (<- 'nat')
@@ -242,16 +241,16 @@ define exception as (
             (<- 'nxor')
         'piqem' 'piqemi' 'piqen' 'piqeni' 'piqesh' 'piqesha' 'piqeshe'
         'piqeshim' 'piqeshin' 'piqeshit' 'piqet' 'piqja' 'piqje' 'piqni'
-        'piqnim' 'piqnin' 'piqnit' 'piqte' 'pjekke' 'pjekkej' 'pjekkesha'
-        'pjekkeshe' 'pjekkeshim' 'pjekkeshin' 'pjekkeshit' 'pjeksh' 'pjeksha'
-        'pjekshi' 'pjekshim' 'pjekshin' 'pjekte' 'poq' 'poqa' 'poqe' 'poqem'
-        'poqen' 'poqet' 'poqi'
+        'piqnim' 'piqnin' 'piqnit' 'piqte' 'pjekka' 'pjekke' 'pjekkej'
+        'pjekkesha' 'pjekkeshe' 'pjekkeshim' 'pjekkeshin' 'pjekkeshit' 'pjeksh'
+        'pjeksha' 'pjekshi' 'pjekshim' 'pjekshin' 'pjekte' 'poq' 'poqa' 'poqe'
+        'poqem' 'poqen' 'poqet' 'poqi'
             (<- 'pjeq')
         'pirdh' 'pirdhja' 'pirdhje' 'pirdhni' 'pirdhnim' 'pirdhnin' 'pirdhnit'
-        'pirdhte' 'pjerdhim' 'pjerdhke' 'pjerdhkej' 'pjerdhkesha' 'pjerdhkeshe'
-        'pjerdhkeshim' 'pjerdhkeshin' 'pjerdhkeshit' 'pjerdhsh' 'pjerdhsha'
-        'pjerdhshi' 'pjerdhshim' 'pjerdhshin' 'pjerdhte' 'pordhem' 'pordhet'
-        'pordhi'
+        'pirdhte' 'pjerdhim' 'pjerdhka' 'pjerdhke' 'pjerdhkej' 'pjerdhkesha'
+        'pjerdhkeshe' 'pjerdhkeshim' 'pjerdhkeshin' 'pjerdhkeshit' 'pjerdhsh'
+        'pjerdhsha' 'pjerdhshi' 'pjerdhshim' 'pjerdhshin' 'pjerdhte' 'pordhem'
+        'pordhet' 'pordhi'
             (<- 'pjerdh')
         'ndenjc' 'ndenjca' 'ndenjci' 'ndenjcim' 'ndenjcin' 'ndenjem' 'ndenjen'
         'ndenjet' 'ndenji' 'ndenjka' 'ndenjkam' 'ndenjkan' 'ndenjke' 'ndenjkej'
@@ -333,16 +332,17 @@ define exception as (
         'thonj' 'thonjve'
             (<- 'thu')
         'tirr' 'tirrja' 'tirrje' 'tirrni' 'tirrnim' 'tirrnin' 'tirrnit' 'tirrte'
-        'tjerrim' 'tjerrke' 'tjerrkej' 'tjerrkesha' 'tjerrkeshe' 'tjerrkeshim'
-        'tjerrkeshin' 'tjerrkeshit' 'tjerrsh' 'tjerrsha' 'tjerrshi' 'tjerrshim'
-        'tjerrshin' 'tjerrte' 'tora' 'tore' 'torem' 'toren'
+        'tjerrim' 'tjerrka' 'tjerrke' 'tjerrkej' 'tjerrkesha' 'tjerrkeshe'
+        'tjerrkeshim' 'tjerrkeshin' 'tjerrkeshit' 'tjerrsh' 'tjerrsha'
+        'tjerrshi' 'tjerrshim' 'tjerrshin' 'tjerrte' 'tora' 'tore' 'torem'
+        'toren'
             (<- 'tjerr')
-        'tredhim' 'tredhke' 'tredhkej' 'tredhkesha' 'tredhkeshe' 'tredhkeshim'
-        'tredhkeshin' 'tredhkeshit' 'tredhsh' 'tredhsha' 'tredhshi' 'tredhshim'
-        'tredhshin' 'tredhte' 'tridh' 'tridhem' 'tridhemi' 'tridhen' 'tridheni'
-        'tridhesh' 'tridhesha' 'tridheshe' 'tridheshim' 'tridheshin'
-        'tridheshit' 'tridhet' 'tridhja' 'tridhje' 'tridhni' 'tridhnim'
-        'tridhnin' 'tridhnit' 'tridhte' 'trodhem'
+        'tredhim' 'tredhka' 'tredhke' 'tredhkej' 'tredhkesha' 'tredhkeshe'
+        'tredhkeshim' 'tredhkeshin' 'tredhkeshit' 'tredhsh' 'tredhsha'
+        'tredhshi' 'tredhshim' 'tredhshin' 'tredhte' 'tridh' 'tridhem'
+        'tridhemi' 'tridhen' 'tridheni' 'tridhesh' 'tridhesha' 'tridheshe'
+        'tridheshim' 'tridheshin' 'tridheshit' 'tridhet' 'tridhja' 'tridhje'
+        'tridhni' 'tridhnim' 'tridhnin' 'tridhnit' 'tridhte' 'trodhem'
             (<- 'tredh')
         'troje' 'trojet' 'trojeve'
             (<- 'truall')
@@ -426,7 +426,6 @@ backwardmode (
     define S2 as $s2 <= cursor  // 2 letters precede
     define InR2 as ( R1 $pr2 <= cursor )
     define AfterV as ( R1 test v )
-    define AfterC as ( R1 test non-v )
     define AfterKGH as ( R1 test kgh )
     // -ra: gjëra, not mënyra
     define AfterE as ( R1 test 'e' )
@@ -489,8 +488,8 @@ backwardmode (
             'fsh' R1 'ofsh' R1 'ofte' R1 'fshim' R1 'fshin' R1 'fshit' R1 'ofsha' R1
             'ofshim' R1 'ofshin' R1 'ofshit' R1
             // admirative (punuakam, punuaka)
-            'ka' AfterC 'kam' R1 'kan' R1 'kane' R1 'kemi' R1 'keni' R1 'uaka' R1
-            'uake' R1 'uakam' R1 'uakan' R1 'uakane' R1 'uakemi' R1 'uakeni' R1
+            'kam' R1 'kan' R1 'kane' R1 'kemi' R1 'keni' R1 'uaka' R1 'uake' R1
+            'uakam' R1 'uakan' R1 'uakane' R1 'uakemi' R1 'uakeni' R1
             // declined participle (punuara, punuarit), non-active aorist (u punua)
             'ua' R1 'ue' R1 'uem' R1 'uara' R1 'uare' R1 'uari' R1 'uarat' R1 'uarin' R1
             'uarit' R1 'uarve' R1 'uarave' R1 'uaresh' R1
