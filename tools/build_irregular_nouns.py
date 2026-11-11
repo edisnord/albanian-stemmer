@@ -8,6 +8,8 @@ A noun whose plural the dictionary writes in full (*dorë* … sh. *dúar(t)*,
     uv run --extra fit python tools/build_irregular_nouns.py \\
         --rules runs/verbs/albanian.json --out data/grammar/irregular_nouns.json
 
+``python -m albanian_stemmer.build --tables`` runs it on the committed rules.
+
 * **Nouns**: a plural of 3 letters or more that starts like the singular (so a
   supplied stem, not a stray cross-reference like *komunë* … sh. *a(t)*).
 * **Forms**: the plural's indefinite and definite forms (the entry's suffix),

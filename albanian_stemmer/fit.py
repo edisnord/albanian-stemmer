@@ -1,5 +1,10 @@
 """Fit the Albanian light stemmer and stopword list; write their JSON and Snowball.
 
+The committed rules came from this search, but since release 1.2.0 they are
+edited by hand (``albanian_stemmer/snowball/albanian.json``) and built with
+:mod:`albanian_stemmer.build`. ``fit`` stays as an analysis tool: it writes to
+a run directory (``--out``) or ``--json``, never over the committed files.
+
 Rule sources, scored the same way (:mod:`albanian_stemmer.metrics`) against a
 corpus lexicon (:mod:`albanian_stemmer.lexicon`; default: the public-crawl
 lexicon in ``data/lexicons``) and, given ``--book``, the grammar book:
@@ -7,7 +12,7 @@ lexicon in ``data/lexicons``) and, given ``--book``, the grammar book:
 * ``--rules surface`` (the default): the grammar's ending tables
   (``SURFACE_STEP1``/``SURFACE_STEP2``) for stemming running text with no
   lemmatizer before it, pruned against the objective under **Search** and
-  also written as a Snowball program. These are the committed rules.
+  also written as a Snowball program. The committed rules started here.
 * ``--rules hand``: smaller tables for stemming *lemmas* (``HAND_STEP1``/
   ``HAND_STEP2``), pruned the same way. It strips the -oj conjugation whole,
   so denominal verbs reach their noun's stem (*kontrolloj*/*kontroll*).
@@ -46,15 +51,16 @@ lexicon in ``data/lexicons``) and, given ``--book``, the grammar book:
   They are attached to the fitted rules (not used in the search) and are part
   of the scores reported.
 
-The committed rules are reproduced byte for byte by::
+Release 1.2.0's rules were the output of::
 
-    uv run --extra fit python -m albanian_stemmer.fit \\
+    uv run --extra fit python -m albanian_stemmer.fit --out runs/rules \\
         --min-precision-types 0.80 --book data/grammar/book_checks.json \\
         --precede --fix-min-stem --participles --derivational \\
         --i-nouns --guards --past-jt --alternations \\
-        --exceptions data/grammar/irregular_verbs.json data/grammar/irregular_nouns.json
+        --exceptions data/grammar/irregular_verbs.json data/grammar/irregular_nouns.json \\
+        data/grammar/ambiguous_nouns.json
 
-On a new corpus, write to a run directory instead of over the committed rules::
+On a new corpus::
 
     uv run --extra fit python -m albanian_stemmer.fit --lexicon runs/web/lexicon.tsv.gz \\
         --min-precision-types 0.80 --book data/grammar/book_checks.json \\
@@ -596,10 +602,10 @@ def main(argv: list[str] | None = None) -> int:
                     help="surface/hand: keep the minimum stem at 3 instead of fitting it")
     ap.add_argument("--out", help="run directory: writes albanian.json, albanian.sbl "
                     "(surface), the Postgres extension's C (with --snowball) and report.json there")
-    ap.add_argument("--json", help=f"rules to write (surface default: {SURFACE_RULES_PATH})")
+    ap.add_argument("--json", help="rules to write")
     ap.add_argument("--postgres", help="with --snowball: also write the Postgres extension's "
-                    f"generated C here (surface default: {POSTGRES_DIR})")
-    ap.add_argument("--sbl", help=f"Snowball source to write (surface default: {SNOWBALL_PATH})")
+                    "generated C here")
+    ap.add_argument("--sbl", help="Snowball source to write")
     ap.add_argument("--report", help="write the scores (train, held-out, all, book) as JSON")
     ap.add_argument("--snowball", help="the Snowball compiler: also compile --sbl to Python "
                     "next to it (https://github.com/snowballstem/snowball)")
@@ -612,16 +618,13 @@ def main(argv: list[str] | None = None) -> int:
         args.sbl = args.sbl or (str(out / "albanian.sbl") if surface else None)
         args.postgres = args.postgres or (str(out / "postgres") if surface else None)
         args.report = args.report or str(out / "report.json")
-    if not surface and not args.json:
-        ap.error(f"--rules {args.rules} needs --json or --out "
-                 "(the default path holds the surface rules)")
-    # The committed Snowball program goes with the committed rules only: an
-    # explicit --json elsewhere does not overwrite it.
     if not args.json:
-        args.json = str(SURFACE_RULES_PATH)
-        args.sbl = args.sbl or (str(SNOWBALL_PATH) if surface else None)
-    if args.sbl == str(SNOWBALL_PATH) and POSTGRES_DIR.is_dir():
-        args.postgres = args.postgres or str(POSTGRES_DIR)  # the committed rules: the repo's
+        ap.error("needs --out or --json: the committed rules are edited by hand and built "
+                 "with python -m albanian_stemmer.build")
+    committed = {SURFACE_RULES_PATH.resolve(), SNOWBALL_PATH.resolve()}
+    if {Path(p).resolve() for p in (args.json, args.sbl) if p} & committed or (
+            args.postgres and Path(args.postgres).resolve() == POSTGRES_DIR.resolve()):
+        ap.error("fit does not write over the committed rules; use --out")
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
     lexicon = load_lexicon(args.lexicon)

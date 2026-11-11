@@ -20,6 +20,12 @@ def test_committed_snowball_matches_committed_rules():
                                                           fit.snowball_notes(RULES))
 
 
+def test_committed_exceptions_are_the_tables():
+    # albanian.json's exceptions are the data/grammar tables, merged by build.
+    from albanian_stemmer.build import TABLES, read_tables
+    assert dict(RULES.exceptions) == read_tables(TABLES)
+
+
 def _probe_words() -> list[str]:
     """Every ending and rewrite on stems of 1–5 letters, so each among entry
     and each length condition is hit on both sides."""

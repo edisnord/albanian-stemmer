@@ -142,11 +142,17 @@ from a grammar, then pruned and checked against data. In order:
    against the lemma metrics, and how the fitting lexicon was chosen: rules fitted on
    FineWeb-2 alone, or on FineWeb-2 and the crawl together, scored 0.01–0.02
    MRR@10 lower than rules fitted on the crawl.
-7. **One source, several runtimes.** The fitted rules (`albanian.json`) are
+7. **One source, several runtimes.** The rules (`albanian.json`) are
    written out as a Snowball program, which compiles to the Python package and
    to the C of the Postgres extension. Tests check that all of them stem the
    same words identically, and the whole build reproduces byte for byte from
    one command.
+
+Steps 1–5 produced release 1.2.0. The search converged to the same endings on
+every run, and most of the rules came from the hand-set additions anyway, so
+from 1.2.0 on the rules are frozen: `albanian.json` is edited by hand, a change
+is checked with `evaluate` and the step 6 benchmarks, and `fit` is kept as an
+analysis tool ([How it is built](#how-it-is-built)).
 
 ## Results
 
@@ -399,28 +405,33 @@ its recall when ë is missing.
 ## How it is built
 
 ```
-raw text ──build_lexicon──▶ lexicon.tsv.gz ──fit──▶ albanian.json ─┬─▶ albanian.sbl ──snowball─┬─▶ albanian_stemmer.py (Python package)
- (Stanza in context +        (word, lemmas,         (endings,       │                         └─▶ postgres/stem_UTF_8_albanian.c (extension)
-  uniparser per word)         counts, POS)           rewrites,       └─▶ AlbanianStemmer (Python)
-                                                     stopwords,
-                                                     exceptions)
+raw text ──build_lexicon──▶ lexicon.tsv.gz ──fit (to 1.2.0)──▶ albanian.json ──build─┬─▶ albanian.sbl ──snowball─┬─▶ albanian_stemmer.py (Python package)
+ (Stanza in context +        (word, lemmas,                       (hand-edited:       │                         └─▶ postgres/stem_UTF_8_albanian.c (extension)
+  uniparser per word)         counts, POS)                         endings,           ├─▶ stop.txt
+                                                                   conditions,        └─▶ AlbanianStemmer (Python)
+                                                                   rewrites,
+                                                                   stopwords)
 grammar book ──tools/extract_grammar_inflection.py──▶ inflection.json ──tools/book_checks.py──▶ book_checks.json (word families, endings) ──▶ fit / evaluate
 fjalorthi.com ──tools/fjalorthi.py──▶ fjalorthi.json (verb forms, noun plurals)
 verb lists + lexicons ──tools/build_irregular_verbs.py──▶ corpus_verbs.json (corpus forms)
-fjalorthi.json + corpus_verbs.json + rules ──tools/build_paradigm_verbs.py──▶ irregular_verbs.json ──▶ fit --exceptions
-fjalorthi.json + rules with verb table ──tools/build_irregular_nouns.py──▶ irregular_nouns.json ──▶ fit --exceptions
+fjalorthi.json + corpus_verbs.json + rules ──tools/build_paradigm_verbs.py──▶ irregular_verbs.json ──▶ build
+fjalorthi.json + rules with verb table ──tools/build_irregular_nouns.py──▶ irregular_nouns.json ──▶ build
+ambiguous_nouns.json (by hand) ──▶ build
 ```
 
 - **`albanian_stemmer/rules.py`**: `AlbanianStemmer` holds the rules as data and
   stems with them. `to_snowball()` writes the Snowball program.
-- **`albanian_stemmer/snowball/`**: the committed rules (`albanian.json`), their
+- **`albanian_stemmer/snowball/`**: the rules (`albanian.json`, the source), their
   Snowball program, its stop list (`stop.txt`), and its compiled Python (what
   `stem()`/`terms()` run).
-- **`postgres/`**: the Postgres extension (below). The fit, given the Snowball
+- **`postgres/`**: the Postgres extension (below). `build`, given the Snowball
   compiler, also writes its `stem_UTF_8_albanian.c`/`.h` and `albanian_stopwords.h`.
-- **`albanian_stemmer/fit.py`**: prunes the grammar's ending tables (`--rules
-  surface`, the committed rules). It can also prune lemma-oriented tables
-  (`hand`) or learn endings from uniparser's segmentations (`learned`).
+- **`albanian_stemmer/build.py`**: merges the exception tables into the rules
+  and writes the Snowball program, its stop list, the Python and the C.
+- **`albanian_stemmer/fit.py`**: the search the rules came from: prunes the
+  grammar's ending tables (`--rules surface`), or lemma-oriented tables
+  (`hand`), or learns endings from uniparser's segmentations (`learned`).
+  It writes to a run directory, never over the committed rules.
 - **`albanian_stemmer/metrics.py`**: precision and recall against lemmas and
   against the grammar book's families, the held-out split, and the truncation
   baseline.
@@ -428,23 +439,39 @@ fjalorthi.json + rules with verb table ──tools/build_irregular_nouns.py─�
 - **`albanian_stemmer/evaluate.py`**: scores rule sets and the baselines on any
   lexicon.
 
+`albanian.json` holds the endings of each step, their letter conditions, the
+stem rewrites, the minimum stem and the stopwords; edit it by hand. Its
+`exceptions` come from the tables in `data/grammar`, so they are not edited
+there. To rebuild everything from it:
+
+```bash
+python -m albanian_stemmer.build --tables --snowball /path/to/snowball
+pytest
+```
+
+`--tables` first rebuilds the verb table from the rules alone, then the noun
+table from the rules with the verb table, since a table's stems are the rules'
+stems; it needs the `fit` extra and a few minutes. Without it the tables are
+merged as they are. Without `--snowball` only `albanian.json`, `albanian.sbl`
+and `stop.txt` are written. On the committed rules the build reproduces every
+generated file, the tables included, byte for byte.
+
+To try a change before adopting it, score a copy:
+
+```bash
+python -m albanian_stemmer.evaluate --lexicon data/lexicons/web-sq-2026-11.tsv.gz \
+    --book data/grammar/book_checks.json --rules albanian_stemmer/snowball/albanian.json runs/try.json
+```
+
+Release 1.2.0's rules came from the fit chain, which `fit` still runs into a
+run directory:
+
 ```bash
 FIT="python -m albanian_stemmer.fit --min-precision-types 0.80 --book data/grammar/book_checks.json \
      --precede --fix-min-stem --participles --derivational --i-nouns --guards --past-jt --alternations"
-$FIT --out runs/rules                                     # the rules alone
-python tools/build_paradigm_verbs.py --rules runs/rules/albanian.json --out data/grammar/irregular_verbs.json
-$FIT --exceptions data/grammar/irregular_verbs.json --out runs/verbs
-python tools/build_irregular_nouns.py --rules runs/verbs/albanian.json --out data/grammar/irregular_nouns.json
-$FIT --exceptions data/grammar/irregular_verbs.json data/grammar/irregular_nouns.json \
-     data/grammar/ambiguous_nouns.json --snowball /path/to/snowball
+$FIT --out runs/rules --exceptions data/grammar/irregular_verbs.json \
+     data/grammar/irregular_nouns.json data/grammar/ambiguous_nouns.json
 ```
-
-rebuilds the committed `albanian.json`, the Snowball program, its Python and
-the extension's C byte for byte from the crawl lexicon (the default
-`--lexicon`), in a few minutes. The tables' stems are the rules' stems, hence
-the order: rules, verb table, rules with it, noun table, all of them. The
-search converges to the same endings every time; what the flags add after it
-is fixed.
 
 ## Postgres
 
@@ -534,10 +561,10 @@ Notes for large corpora:
   `fit --max-words` limits fitting to the most frequent words. `evaluate`
   scores all of them.
 
-To adopt new rules, fit without `--out`; that overwrites `albanian.json` and
-`albanian.sbl`. Then pass `--snowball /path/to/snowball` (the compiler from
-github.com/snowballstem/snowball) to regenerate `albanian_stemmer.py`, and run
-`pytest`. `test_snowball.py` checks that the program, its compiled Python and
+To adopt what a refit suggests, carry the change over to `albanian.json` by
+hand, check it on the benchmarks, and rebuild with `python -m
+albanian_stemmer.build --tables --snowball /path/to/snowball` (the compiler
+from github.com/snowballstem/snowball), then run `pytest`. `test_snowball.py` checks that the program, its compiled Python and
 the rules agree on more than 5,000 probe words.
 
 ## Lexicon format
@@ -606,8 +633,6 @@ column means every occurrence was tagged. See `albanian_stemmer/lexicon.py`.
 - **Known gaps.** The stressed -i nouns' -ve form (*shtëpive* → `shtepi`, but
   *shtëpi* → `shtep`): -ive cannot be an ending, since the -iv adjectives
   (*pozitive*, *sportive*) end the same way.
-- **Hand-maintained rules.** From the next release on, `albanian.json` is the
-  source, edited by hand, and `fit` a tool for checking a change.
 
 ## Tests
 

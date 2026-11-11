@@ -9,6 +9,8 @@ forms tools/build_irregular_verbs.py found (data/grammar/corpus_verbs.json)::
     uv run --extra fit python tools/build_paradigm_verbs.py \\
         --rules runs/rules/albanian.json --out data/grammar/irregular_verbs.json
 
+``python -m albanian_stemmer.build --tables`` runs it on the committed rules.
+
 * **Forms** stay out of the table when they are another word too: a form of two
   of the verbs, one in build_irregular_verbs.HOMOGRAPHS (*parë*, *tha*), a
   stopword (unless of *jam*/*kam*), or a spelling uniparser also reads as another
