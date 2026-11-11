@@ -1,6 +1,6 @@
 [project]
 name = "albanian-stemmer"
-version = "1.1.0"
+version = "1.2.0"
 description = "A light, inflectional Albanian stemmer: Snowball program, Python, and a Postgres text search extension, fitted against a corpus lexicon"
 readme = "README.md"
 requires-python = ">=3.11"
