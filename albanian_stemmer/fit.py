@@ -41,18 +41,18 @@ lexicon in ``data/lexicons``) and, given ``--book``, the grammar book:
   mistakes (*cilësi* "quality" tagged as a determiner) and foreign words.
 
 * **Exceptions** (``--exceptions``) — whole words looked up before any rule:
-  the irregular verbs, whose forms share no stem (``tools/build_irregular_verbs.py``),
-  and the forms of frequent nouns that the rules split off their paradigm
-  (``tools/build_noun_conflicts.py``). They are attached to the fitted rules
-  (not used in the search) and are part of the scores reported.
+  the irregular verbs, whose forms share no stem (``tools/build_paradigm_verbs.py``),
+  and the nouns with an irregular plural (``tools/build_irregular_nouns.py``).
+  They are attached to the fitted rules (not used in the search) and are part
+  of the scores reported.
 
 The committed rules are reproduced byte for byte by::
 
     uv run --extra fit python -m albanian_stemmer.fit \\
         --min-precision-types 0.80 --book data/grammar/book_checks.json \\
         --precede --fix-min-stem --participles --derivational \\
-        --exceptions data/grammar/irregular_verbs.json data/grammar/noun_conflicts.json \\
-        --max-exceptions 1000
+        --i-nouns --guards --past-jt --alternations \\
+        --exceptions data/grammar/irregular_verbs.json data/grammar/irregular_nouns.json
 
 On a new corpus, write to a run directory instead of over the committed rules::
 
@@ -285,8 +285,124 @@ DERIVATIONAL_NOTE = "derivation: nouns of action from verbs (përdorim, kultivim
 # different path and loses type precision. The human-labelled sample and
 # retrieval both favour them.
 PARTICIPLE_ENDINGS = tuple(_W("uara uarat uarave uare uaresh uari uarin uarit uarve ua ue uem"))
-PARTICIPLE_NOTE = ("participle, declined (punuara, punuarit, punuarve), "
-                   "and non-active aorist (u punua; Gheg punue)")
+PARTICIPLE_NOTE = "declined participle (punuara, punuarit), non-active aorist (u punua)"
+# ``--i-nouns``: the nouns in stressed -i (shtëpi, fuqi, mundësi, agjenci,
+# energji, Shqipëri) keep their i before every ending (shtëpia, shtëpisë,
+# shtëpinë, shtëpitë, shtëpish), which the definite -i of other nouns
+# (problemi) takes off the bare form only. So the i goes in every form:
+# -ia, -ise, -ine, -ite, -ish join step 1 (shtëpi … shtëpitë → shtep). (-ive and
+# -ie are left out: they are also the adjective -iv-e and the noun -ie.) And
+# the -on…/-n… verb endings (punoni, punojnë, punonte) may not cut an -ion
+# noun's stem: not after i for -o…, not after io for -n… (aksioni, aksione,
+# funksionet stay aksion-). Both were found on the forms a frequent-noun
+# exception table had to patch, and checked against the Hunspell dictionary's
+# paradigms and the human-labelled sample as well as the lexicon.
+I_NOUN_ENDINGS = ("ia", "ise", "ine", "ite", "ish")
+I_NOUN_NOTE = "the stressed -i of shtëpi, energji, in every form (shtëpia, shtëpisë)"
+
+
+def i_nouns(st: AlbanianStemmer) -> AlbanianStemmer:
+    """*st* with --i-nouns's endings and the -ion guard in step 1."""
+    conds = [dict(c) for c in st.conditions] + [{} for _ in range(len(st.steps) - len(st.conditions))]
+    step1 = set(st.steps[0]) | set(I_NOUN_ENDINGS)
+    for e in st.steps[0]:
+        if e in conds[0]:
+            continue
+        if e[:1] == "o" and e[1:2] in ("n", "j"):
+            conds[0][e] = "NI"
+        elif e[:1] == "n":
+            conds[0][e] = "NIO"
+    step1_t = tuple(sorted(step1, key=lambda e: (-len(e), e)))
+    return AlbanianStemmer((step1_t, *st.steps[1:]), st.min_stem, st.rewrites, st.stopwords,
+                           tuple(tuple(sorted(c.items())) for c in conds))
+
+
+# ``--guards``: letter conditions that keep fitted endings off stems that end
+# like them: -ra, -rat, -rave, -rash only after ë (gjëra, ujëra; not mënyra,
+# kultura, detyra), -nte not after e (punonte; not dokumente, studente), -ve not
+# after o or ti (shtëpive; not Kosovë, sportive), -hem not after s (lahem; not
+# rëndësishëm), -em/-emi not after iz, bl, st (hapem, falem, folëm; not organizëm,
+# problem, sistem), -së after a vowel but not after je (shtëpisë; not pjesë,
+# ndjesë, punonjëse), -nim after o or a but not io (punonim, mbanim; not
+# bashkëpunim, shënim, funksionim). The letters were read off the web lexicon: before each,
+# the ending is the word's own in nearly every token. With them, two stem rewrites join the
+# adjectives in -shëm to their -shme forms (rëndësishëm, rëndësishme → rendesish):
+# shm → sh after i or a consonant, not after e (dëshmi stays apart from desha).
+GUARDS = (("ra", "E"), ("rat", "E"), ("rave", "E"), ("rash", "E"), ("nte", "NE"), ("ve", "NOTI"),
+          ("hem", "NS"), ("em", "NEM"), ("emi", "NEM"), ("se", "VNJE"), ("nim", "OANIO"))
+GUARD_REWRITES = (("shm", "sh", "SHM"),)
+
+
+def guards(st: AlbanianStemmer) -> AlbanianStemmer:
+    """*st* with --guards's conditions on those of its step-1 endings it has."""
+    conds = [dict(c) for c in st.conditions] + [{} for _ in range(len(st.steps) - len(st.conditions))]
+    for e, c in GUARDS:
+        if e in st.steps[0]:
+            conds[0][e] = c
+    rewrites = tuple(dict.fromkeys((*st.rewrites, *GUARD_REWRITES)))
+    return AlbanianStemmer(st.steps, st.min_stem, rewrites, st.stopwords,
+                           tuple(tuple(sorted(c.items())) for c in conds))
+
+
+# ``--past-jt``: the aorist and participle of the vowel + j verbs (mbaj, luaj,
+# huaj, vlej, mbroj, vërej) add -jt- to the stem the present has (mba, lua,
+# mbr): mbajti, luajtur, mbrojti, vërejtur. -jtur, -jtem, -jtet are verbs';
+# -jta, -jti, -jte not after e, where the jt is an adjective's (drejta,
+# shpejti, njëjta). Checked on fjalorthi.com's conjugation tables (verbs split
+# 9.4% → 7.2% of their tokens) and the Hunspell noun paradigms (unchanged).
+PAST_JT_ENDINGS = (
+    *((x + "jt" + y, "V" if not x else "") for x in ("", "o", "e", "ua") for y in ("ur", "em", "et")),
+    *(("jt" + y, "NE") for y in ("a", "i", "e")),
+    *((x + "jt" + y, "") for x in ("o", "ua") for y in ("a", "i", "e")))
+PAST_JT_NOTE = "aorist and participle of vowel + j verbs (mbajti, luajtur, mbrojti, vërejtur)"
+
+
+def past_jt(st: AlbanianStemmer) -> AlbanianStemmer:
+    """*st* with --past-jt's endings in step 1 (an ending already there keeps its condition)."""
+    conds = [dict(c) for c in st.conditions] + [{} for _ in range(len(st.steps) - len(st.conditions))]
+    step1 = set(st.steps[0])
+    for e, c in PAST_JT_ENDINGS:
+        if e not in step1:
+            step1.add(e)
+            if c:
+                conds[0][e] = c
+    step1_t = tuple(sorted(step1, key=lambda e: (-len(e), e)))
+    return AlbanianStemmer((step1_t, *st.steps[1:]), st.min_stem, st.rewrites, st.stopwords,
+                           tuple(tuple(sorted(c.items())) for c in conds))
+
+
+# ``--alternations``: stem changes of nouns, from fjalorthi.com's entries.
+# -ull nouns make the plural in -uj (artikull, artikuj, artikujt → artiku):
+# ull → u, and -jt after u. -izëm nouns drop the ë (organizëm, organizmi →
+# organizm): -em not after iz, izem → izm; the noun stays apart from the -izoj
+# verb (organizoj → organiz). The -itet and -ytet nouns lose -et in the bare
+# form only (aktivitet → aktivit, but aktiviteti → aktivitet): itet → it, ytet
+# → yt join them (qytet, qyteti → qyt; rritet, vitet are untouched, their -et
+# already gone). Checked on the book, the gold set and both lexicons (no score
+# falls).
+ALTERNATION_ENDINGS = (("jt", "U"),)
+ALTERNATION_CONDITIONS = (("em", "NIZ"), ("emi", "NIZ"))
+ALTERNATION_REWRITES = (("ull", "u"), ("izem", "izm"), ("itet", "it"), ("ytet", "yt"))
+ALTERNATION_NOTE = "plurals of -ull nouns (artikujt)"
+
+
+def noun_alternations(st: AlbanianStemmer) -> AlbanianStemmer:
+    """*st* with --alternations's ending, conditions and rewrites."""
+    conds = [dict(c) for c in st.conditions] + [{} for _ in range(len(st.steps) - len(st.conditions))]
+    step1 = set(st.steps[0])
+    for e, c in ALTERNATION_ENDINGS:
+        if e not in step1:
+            step1.add(e)
+            conds[0][e] = c
+    for e, c in ALTERNATION_CONDITIONS:
+        if e in step1 and e not in conds[0]:
+            conds[0][e] = c
+    step1_t = tuple(sorted(step1, key=lambda e: (-len(e), e)))
+    rewrites = tuple(dict.fromkeys((*st.rewrites, *ALTERNATION_REWRITES)))
+    return AlbanianStemmer((step1_t, *st.steps[1:]), st.min_stem, rewrites, st.stopwords,
+                           tuple(tuple(sorted(c.items())) for c in conds))
+
+
 HAND_REWRITE_POOL = (("j", ""), ("ua", "o"), ("k", "q"), ("g", "gj"), ("odh", "edh"),
                      ("ill", "oll"), ("er", "r"), ("shem", "shm"), ("el", "l"))
 
@@ -324,8 +440,8 @@ SURFACE_STEP2: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("plural and stem vowels (male, mollë; ullinj)", tuple(_W("e a enj inj nj"))),
 )
 SNOWBALL_HEADER = """\
-Albanian stemmer, generated by albanian_stemmer.fit --rules surface
-from albanian_stemmer/snowball/albanian.json. Do not edit; rebuild instead.
+Albanian stemmer, generated from the rules in albanian_stemmer/snowball/albanian.json
+(github.com/edisnord/albanian-stemmer). Do not edit; change the rules and rebuild.
 
 A light, inflectional stemmer for keyword search. Like Romanian, Albanian
 suffixes its definite article and fuses it with the case ending (mollë, molla,
@@ -338,11 +454,13 @@ lemma should share a stem, two that do not should not. Derived words mostly keep
 their own stems (punëtor), except that an -oj verb meets the noun it is made
 from (kontrolloj, kontroll), and a third step joins nouns of action in -im to
 their verb (përdorimi, përdor). Stems can be shorter than any word (moll, semund).
-Some endings also need a certain letter before them (as in the Finnish and
-Turkish stemmers): -t only after a vowel (mollët, but rast keeps its t). An
-exception table, looked up first, joins the forms of irregular verbs (vij,
-erdhi, ardhur; jam, është, qenë) and the forms the rules split off a frequent
-noun (problemi, duar).
+Some endings also need certain letters before them (as in the Finnish and
+Turkish stemmers), where a word's own letters look like the ending: -t only
+after a vowel (mollët, but rast keeps its t), -nte not after e (punonte, but
+dokumente), -së not after je (shtëpisë, but pjesë). An exception table,
+looked up first, joins the forms of the irregular verbs (vij, erdhi, ardhur;
+jam, është, qenë) and of the nouns with an irregular plural (dorë, duar; grua,
+gra).
 
 Input must be lowercase; ë and ç are folded first, so text typed without them
 stems the same."""
@@ -442,8 +560,8 @@ def main(argv: list[str] | None = None) -> int:
                          "segmentation endings; surface: prune the larger tables for "
                          "stemming words without a lemmatizer, written as a Snowball program")
     ap.add_argument("--exceptions", nargs="+", default=[],
-                    help="exception tables (tools/build_irregular_verbs.py, "
-                         "tools/build_noun_conflicts.py) to attach to the fitted rules; "
+                    help="exception tables (tools/build_paradigm_verbs.py, "
+                         "tools/build_irregular_nouns.py) to attach to the fitted rules; "
                          "an earlier table wins a word both list")
     ap.add_argument("--regions", action="store_true",
                     help="surface/hand: also fit, per ending, the Snowball region (none, R1, "
@@ -458,6 +576,18 @@ def main(argv: list[str] | None = None) -> int:
                          "before it (a vowel, a non-vowel, or k/g/h): mollë-t but not rast")
     ap.add_argument("--participles", action="store_true",
                     help="add the declined participle endings (-uara, -uarit, -ua) to step 1 "
+                         "after the search, fixed")
+    ap.add_argument("--i-nouns", action="store_true",
+                    help="add -ia/-ise/-ine/-ite/-ish (the -i nouns' forms) to step 1 and keep "
+                         "the -on…/-n… verb endings off -ion nouns, after the search, fixed")
+    ap.add_argument("--guards", action="store_true",
+                    help="letter conditions on -ra…, -nte, -ve, -hem and the -shëm rewrites "
+                         "(see GUARDS), after the search")
+    ap.add_argument("--past-jt", action="store_true",
+                    help="add the -jt- aorist/participle endings of vowel + j verbs (mbajti, "
+                         "luajtur) to step 1 after the search, fixed")
+    ap.add_argument("--alternations", action="store_true",
+                    help="the -ull/-uj and -izëm/-izm stem changes (see ALTERNATION_REWRITES), "
                          "after the search, fixed")
     ap.add_argument("--derivational", action="store_true",
                     help="add a fixed third step stripping the noun suffix -im in R2 "
@@ -543,6 +673,14 @@ def main(argv: list[str] | None = None) -> int:
         step1 = tuple(sorted(set(st.steps[0]) | set(PARTICIPLE_ENDINGS), key=lambda e: (-len(e), e)))
         st = AlbanianStemmer((step1, *st.steps[1:]), st.min_stem, st.rewrites, st.stopwords,
                              st.conditions)
+    if args.i_nouns:
+        st = i_nouns(st)
+    if args.guards:
+        st = guards(st)
+    if args.past_jt:
+        st = past_jt(st)
+    if args.alternations:
+        st = noun_alternations(st)
     if args.derivational:
         conds = list(st.conditions) + [()] * (len(st.steps) - len(st.conditions))
         st = AlbanianStemmer(st.steps + (tuple(e for e, _ in DERIVATIONAL_STEP),), st.min_stem,
@@ -616,6 +754,12 @@ def snowball_notes(st: AlbanianStemmer) -> dict[str, str]:
             notes.setdefault(e, comment)
     for e in PARTICIPLE_ENDINGS:
         notes.setdefault(e, PARTICIPLE_NOTE)
+    for e in I_NOUN_ENDINGS:
+        notes.setdefault(e, I_NOUN_NOTE)
+    for e, _ in PAST_JT_ENDINGS:
+        notes.setdefault(e, PAST_JT_NOTE)
+    for e, _ in ALTERNATION_ENDINGS:
+        notes.setdefault(e, ALTERNATION_NOTE)
     if len(st.steps) > 2:  # --derivational: per step, "step3:im"
         for e, _ in DERIVATIONAL_STEP:
             notes[f"step{len(st.steps)}:{e}"] = DERIVATIONAL_NOTE

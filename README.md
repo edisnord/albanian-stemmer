@@ -3,8 +3,9 @@
 [![build](https://github.com/edisnord/albanian-stemmer/actions/workflows/build.yml/badge.svg)](https://github.com/edisnord/albanian-stemmer/actions/workflows/build.yml)
 
 A light, inflectional stemmer for Albanian. It ships as a Snowball program, as
-Python, and as a Postgres text search extension. Its rules are fitted
-and scored against a corpus lexicon, and the build is reproducible.
+Python, and as a Postgres text search extension. Its rules come from the
+grammar, pruned and checked against corpus lexicons, and the build is
+reproducible.
 
 ```python
 >>> from albanian_stemmer import stem, terms
@@ -27,9 +28,9 @@ and scored against a corpus lexicon, and the build is reproducible.
 Python (3.11+):
 
 ```bash
-pip install git+https://github.com/edisnord/albanian-stemmer@1.1.0
+pip install git+https://github.com/edisnord/albanian-stemmer@1.2.0
 # or the wheel attached to the release:
-pip install https://github.com/edisnord/albanian-stemmer/releases/download/1.1.0/albanian_stemmer-1.1.0-py3-none-any.whl
+pip install https://github.com/edisnord/albanian-stemmer/releases/download/1.2.0/albanian_stemmer-1.2.0-py3-none-any.whl
 ```
 
 Postgres (14–18): each [release](https://github.com/edisnord/albanian-stemmer/releases)
@@ -79,8 +80,9 @@ and publishes a release when the version in `pyproject.toml` has no tag yet.
 - **It is light by design.** It strips inflection and conflates
   derivations only twice, on purpose: an -oj verb with its noun (*kontrolloj*,
   *kontroll*) and a noun of action in -im with its verb (*përdorim*, *përdor*). Besides
-  the stopwords, its word lists are the irregular verbs' forms, which no
-  ending reaches, and the forms of frequent nouns the endings split (below).
+  the stopwords, its only word lists are the forms no ending can reach: those
+  of 48 irregular verbs and 17 nouns with an irregular plural, and *shtet*
+  (below). There is no list of words merely to raise a score.
 
 ## Methodology
 
@@ -110,19 +112,23 @@ from a grammar, then pruned and checked against data. In order:
    and keep ≥ 90% of the book's derivation pairs apart. The fit sees half of
    the lemmas (split by a hash of the lemma); the scores below are on the
    other half. Stems keep at least three letters.
-4. **Word lists where endings cannot reach.** Irregular verbs (*vij*, *erdhi*,
-   *ardhur*) come from published lists of irregular verbs. The frequent nouns
-   whose forms the endings split (*problemi*, *duar*) come from a
-   Lithuanian-style conflict search over the lexicons. Only forms uniparser
-   reads as that word alone are kept. Both tables are cut to the 1,000 entries
-   carrying the most tokens, whole words at a time, and are looked up before
-   any rule, as in Porter2.
-5. **Hand-set additions.** Two sets of endings are added after the fit rather
-   than fitted: a noun of action in -im meets its verb (*përdorimi*,
-   *përdor*), and the declined participle of an -oj verb loses -uara, -uarit
-   and the like whole (*organizuara*, *organizoj*). The lexicon lemmas count
-   both as different words, so the fit would never choose them; the
-   human-labelled sample and retrieval do.
+4. **Word lists only where endings cannot reach.** The irregular verbs of the
+   grammar's groups 2 and 3 (*vij*, *erdhi*, *ardhur*), every form of their
+   full conjugation tables, and the 17 nouns whose plural the dictionary
+   writes in full (*dorë*/*duar*, *grua*/*gra*); both from fjalorthi.com.
+   Only forms uniparser reads as that word alone are kept. They are looked up
+   before any rule, as in Porter2.
+5. **Hand-set additions.** Some rules are added after the fit rather than
+   fitted, each checked by hand and on the benchmarks below: a noun of action
+   in -im meets its verb (*përdorimi*, *përdor*); the declined participle
+   loses -uara and the like whole (*organizuara*, *organizoj*); the
+   -jt- aorist of the vowel + j verbs (*mbajti*); the stressed -i nouns'
+   forms (*shtëpia*, *shtëpisë*); conditions on the letters before an ending
+   where a word's own letters look like it (*pjesë*, *problem*,
+   *bashkëpunim*); and a few stem alternations (*artikull*/*artikuj*,
+   *qytet*/*qyteti*). The lexicon lemmas count some of these as different
+   words, so the fit would not choose them; the human-labelled sample and
+   retrieval do.
 6. **Validation beyond the lemmas.** A change is kept only if it holds up on
    three checks the fit never sees:
    - BM25 retrieval on 64,590 generated queries over general web text, with a
@@ -132,7 +138,7 @@ from a grammar, then pruned and checked against data. In order:
 
    Paired per-query differences with standard errors decide what counts as a
    gain. This is how candidates such as length caps, stripping a bare -u or -o,
-   and keeping ë in stems were rejected, how -im and -uara were accepted
+   the Hunspell dictionary's extra suffixes, and keeping ë in stems were rejected, how -im and -uara were accepted
    against the lemma metrics, and how the fitting lexicon was chosen: rules fitted on
    FineWeb-2 alone, or on FineWeb-2 and the crawl together, scored 0.01–0.02
    MRR@10 lower than rules fitted on the crawl.
@@ -159,14 +165,14 @@ Two words are *linked* when they share a lemma:
 
 | stemmer | lexicon | P types | R types | P tokens | R tokens | stems |
 |---|---|---|---|---|---|---|
-| **albanian (committed, 1,000 exceptions)** | crawl, held-out | 0.847 | 0.789 | 0.948 | 0.846 | 4,361 |
+| **albanian 1.2.0** | crawl, held-out | 0.828 | 0.798 | 0.913 | 0.848 | 4,266 |
+| | web, held-out | 0.818 | 0.606 | 0.931 | 0.393 | 12,182 |
+| | web, all | 0.684 | 0.564 | 0.862 | 0.465 | 21,091 |
+| release 1.1.0 | crawl, held-out | 0.847 | 0.789 | 0.948 | 0.846 | 4,361 |
 | | web, held-out | 0.834 | 0.591 | 0.955 | 0.388 | 12,566 |
-| | web, all | 0.699 | 0.552 | 0.890 | 0.459 | 21,995 |
-| with the full tables (2,199) | web, held-out | 0.843 | 0.615 | 0.955 | 0.388 | 12,266 |
-| with 500 exceptions | web, held-out | 0.828 | 0.579 | 0.952 | 0.384 | 12,644 |
-| without exceptions | web, held-out | 0.820 | 0.563 | 0.925 | 0.329 | 12,721 |
-| without the -im step | web, held-out | 0.879 | 0.590 | 0.972 | 0.387 | 12,722 |
-| without the -uara endings | web, held-out | 0.851 | 0.567 | 0.958 | 0.386 | 12,759 |
+| without exceptions | web, held-out | 0.810 | 0.586 | 0.911 | 0.353 | 12,249 |
+| without the -im step | web, held-out | 0.864 | 0.605 | 0.951 | 0.392 | 12,337 |
+| without the -uara endings | web, held-out | 0.838 | 0.582 | 0.935 | 0.391 | 12,417 |
 | no stemming (folding only) | web, all | 1.000 | 0.000 | 1.000 | 0.000 | 54,794 |
 | first 4 letters | web, held-out | 0.232 | 0.663 | 0.482 | 0.347 | 7,109 |
 | first 5 letters | web, held-out | 0.414 | 0.529 | 0.552 | 0.198 | 10,997 |
@@ -177,20 +183,23 @@ text carries more irregular verbs, spelling variants and Stanza errors. The
 -im step and the -uara endings cost precision here because the lexicon's
 lemmas count *përdorim* and *përdor*, or *organizuara* and *organizoj*, as
 different words; a human-labelled sample and retrieval both want them
-together ([below](#nouns-of-action-in--im)).
+together ([below](#nouns-of-action-in--im)). Against 1.1.0, 1.2.0 trades
+some lexicon precision for recall: the letter conditions join noun paradigms
+1.1.0's table joined word by word, and the new rewrites join stems the
+lexicons' lemmas keep apart (*rëndësishëm*, *rëndësishme*).
 
 Against the grammar book's paradigms and derivations (`data/grammar/book_checks.json`):
 
 | stemmer | paradigm families merged | derivations kept apart |
 |---|---|---|
-| albanian (committed) | 0.536 | 0.887 |
-| with the full tables | 0.541 | 0.890 |
-| without exceptions | 0.478 | 0.882 |
+| **albanian 1.2.0** | 0.562 | 0.880 |
+| release 1.1.0 | 0.536 | 0.887 |
+| without exceptions | 0.484 | 0.877 |
 | first 4 letters | 0.465 | 0.261 |
 | first 6 letters | 0.140 | 0.729 |
 
 Truncating to 4 letters gets similar recall only by merging unrelated words:
-token precision 0.48 against 0.96, and only 26% of the book's derivations
+token precision 0.48 against 0.93, and only 26% of the book's derivations
 kept apart.
 
 **Retrieval.** BM25 (k1 0.9, b 0.4) on 64,590 Gemma-generated queries over
@@ -203,12 +212,15 @@ sets are not published; mMARCO, below, is the check anyone can rerun):
 |---|---|---|---|
 | no stemming (folding only) | 0.546 | 0.699 | 0.661 |
 | first 5 letters | 0.628 | 0.789 | 0.763 |
-| without exceptions | 0.647 | 0.803 | 0.772 |
-| without the -im step | 0.650 | 0.806 | 0.781 |
-| with 500 exceptions | 0.652 | 0.808 | 0.779 |
-| without the -uara endings | 0.653 | 0.809 | 0.782 |
-| **albanian (committed)** | **0.654** | **0.810** | **0.783** |
-| with the full tables | 0.657 | 0.812 | 0.785 |
+| without the -im step | 0.649 | 0.804 | 0.778 |
+| without exceptions | 0.651 | 0.807 | 0.775 |
+| without the -uara endings | 0.651 | 0.807 | 0.779 |
+| **albanian 1.2.0** | **0.652** | **0.808** | **0.780** |
+| release 1.1.0 | 0.654 | 0.810 | 0.783 |
+
+1.1.0's table of 1,000 frequent forms scored 0.002–0.003 higher here; 1.2.0
+gives that up for tables that hold only irregular words
+([below](#irregular-plurals)).
 
 The gain holds in every query style (factual, keyword, summary, yes/no) and
 for queries typed with and without ë/ç. Of the query words that miss their
@@ -217,8 +229,8 @@ stemmer cannot reach them. Stems capped at 6–8 letters add at most 0.002
 MRR@10.
 
 On Albanian mMARCO (translated MS MARCO; ~503k passages, 3,000 dev queries)
-MRR@10 is 0.359 (first 5 letters 0.349, no stemming 0.281, a uniparser
-lemmatizer 0.341). On the same queries and passages in English, Porter2
+MRR@10 is 0.360 and R@100 0.712 (1.1.0: 0.359 and 0.703; first 5 letters
+0.349, no stemming 0.281, a uniparser lemmatizer 0.341). On the same queries and passages in English, Porter2
 scores 0.499 against 0.477 without stemming.
 
 ### The letter before an ending
@@ -239,29 +251,52 @@ The Snowball R1/R2 regions (`--regions`) were tried the same way and did less
 (type recall 0.704, token recall 0.750), so the fitted steps do not use them;
 only the -im step does.
 
+Some endings need more than one letter's class: they test the letters
+themselves (`fit --guards`). Each was read off the web lexicon, by counting,
+for every word with the ending, whether its lemma is the word itself (the
+letters are the word's own) or another word (they are an inflection):
+
+| ending | condition | strips | keeps |
+|---|---|---|---|
+| -em, -emi | not after iz, bl, st | *hapem*, *falem*, *folëm* | *organizëm*, *problem*, *sistem* |
+| -së | after a vowel, not after je | *shtëpisë* | *pjesë*, *ndjesë*, *punonjëse* |
+| -nim | after o or a, not after io | *punonim*, *mbanim* | *bashkëpunim*, *shënim*, *funksionim* |
+| -nte | not after e | *punonte* | *dokumente* |
+| -ve | not after o or ti | *punëve* | *Kosovë*, *sportive* |
+| -ra, -rat, -rave | after ë | *gjëra* | *mënyra*, *kultura* |
+| -hem | not after s | *punohem* | *rëndësishëm* |
+
+Before -em, -së and -nim the counts are clear: after *bl*, *je* or *u*, under
+0.1% of the tokens are inflections. Before -et they are not: the plural and
+the non-active -et follow every consonant, and *shtet* "state" has the same
+letters before it as *kushtet* (*kusht* + *et*). Two stem rewrites cover the
+-itet and -ytet nouns instead, which lose -et only in the bare form
+(*aktivitet*, *aktiviteti* → `aktivit`; *qytet*, *qyteti* → `qyt`). For *shtet*
+the matching rewrite would give `sht`, the stem of *shtoj* "add", so its bare
+form is the one entry of `data/grammar/ambiguous_nouns.json`.
+
 ### Irregular verbs
 
 Suffix rules cannot merge *vij*, *erdhi* and *ardhur*, or *them*, *thotë*
 and *thënë*: the forms share no stem. These verbs are frequent, so on general web
 text they carry most of the frequency-weighted pairs a stemmer misses. The
 rules therefore look a word up in an exception table first, as the English
-Porter2 stemmer does. The full verb table has 639 forms of 62 irregular
-verbs (`data/grammar/irregular_verbs.json`, built by
-`tools/build_irregular_verbs.py`). On the web lexicon, all words:
+Porter2 stemmer does. The verbs are the irregular ones of the Academy
+grammar's groups 2 and 3 (*jam, kam, them, jap, bie, dua, ha, vij, shoh, dal,
+flas, marr, vdes, bëj, hedh, heq, sjell, nxjerr, shes, ngre, shkoj, …*: 48),
+and their forms are every form of their conjugation tables on fjalorthi.com
+(`data/grammar/fjalorthi.json`, fetched by `tools/fjalorthi.py`) plus those
+found in the lexicons: 1,606 forms (`data/grammar/irregular_verbs.json`, built
+by `tools/build_paradigm_verbs.py`). A form that is also another word stays
+with the rules: a form of two of the verbs (*vinte*, of *vij* and *vë*), or
+one uniparser also reads as another word (*parë* "seen"/"first", *tha*
+"said"/"dried", *jetë* "be"/"life"). On the web lexicon, all words:
 
-| | P types | R types | P tokens | R tokens |
-|---|---|---|---|---|
-| without exceptions | 0.679 | 0.524 | 0.841 | 0.359 |
-| full verb table | 0.695 | 0.544 | 0.874 | 0.426 |
-| full verb and noun tables (below) | 0.712 | 0.575 | 0.891 | 0.459 |
-| **committed: 1,000 entries of both** | 0.699 | 0.552 | 0.890 | 0.459 |
-
-Precision rises too: each verb gets a stem of its own, where its forms used
-to share stems with unrelated words. A form that is also another word stays
-with the rules (*parë* "seen"/"first", *tha* "said"/"dried", *jetë*
-"be"/"life"). The forms come from the lexicon these scores use, so the gain is
-an upper estimate; retrieval and the human-labelled sample below do not share
-that bias.
+| rules | P tokens | R tokens | paradigm families merged |
+|---|---|---|---|
+| without exceptions | 0.830 | 0.387 | 0.484 |
+| with the verb table | 0.860 | 0.463 | 0.558 |
+| with the verb and noun tables | 0.862 | 0.465 | 0.562 |
 
 The auxiliaries *jam* "be" and *kam* "have" are mostly stopwords, which
 `terms()` and the Postgres dictionary drop before stemming. Their stopword
@@ -276,36 +311,22 @@ the index smaller. `albanian_stemmer/snowball/stop.txt` is the list in
 Snowball's format, each word in its standard spelling and, if that has ë
 or ç, also without them.
 
-### Frequent nouns
+### Irregular plurals
 
-The endings split some frequent nouns: *problem*, *problemin* get `problem`
-but *problemi* `probl`; *pjesë* `pje` but *pjesa* `pjes`; and no ending joins
-*dorë* to *duar* or *grua* to *gra*. As the Lithuanian Snowball stemmer's
-`fix_conflicts` does for its suffix conflicts, a second table maps such forms
-to the stem most of their paradigm's forms get: 1,560 forms of 942 nouns
-(`data/grammar/noun_conflicts.json`, built by `tools/build_noun_conflicts.py`).
-Only nouns with at least 200 tokens are listed, and only forms that
-uniparser reads as that noun and nothing else. With the full verb table in
-place, adding the full noun table raises MRR@10 on the generated queries from
-0.647 to 0.657.
+No ending joins *dorë* to *duar* or *grua* to *gra*. A noun whose plural the
+dictionary writes in full (*dorë* … sh. *dúar(t)*), not as a suffix (*mal* …
+sh. *-e(t)*), changes its stem in the plural; of the 571 nouns looked up on
+fjalorthi.com, 17 do (*njeri, grua, dorë, natë, mashkull, djalë, vëlla, yll,
+truall, breg, shtrat, shteg, thua, thes, skllav, derë, kalë*). Their plural
+forms (indefinite, definite, -ve, -sh) map to the singular's stem: 50 forms
+(`data/grammar/irregular_nouns.json`, built by `tools/build_irregular_nouns.py`),
+again only forms uniparser reads as that noun alone.
 
-### 1,000 exceptions, not 2,199
-
-The tables are long-tailed: the 1,000 entries kept carry 93% of the corpus
-tokens of all 2,199, and nearly all of their gain in token precision and
-recall on web text. The committed rules keep 1,000 (`fit --max-exceptions
-1000`), two to three times the word lists of the Greek and Ukrainian Snowball
-stemmers (Estonian has 344 irregular verb forms, Porter2 23); the generated C
-is 169 KB. They are kept whole words at a time, by tokens per entry: a verb
-with only some forms listed would map them to a stem the rest no longer reach
-(*shitur* to `shes`, but *shes* to `she`). That keeps 34 verbs (*jam, kam,
-bëj, them, jap, marr, sjell, nxjerr, ...*) and 310 nouns. An earlier cut at
-500 entries (18 verbs, 136 nouns) scored 0.0025 MRR@10 lower on the Gemma
-queries (± 0.0003) and 0.024 lower in type recall on the human-labelled
-sample: most of the forms that sample found split were irregular verbs left
-out of the cut (*sjella*/*solli*, *nxirret*/*nxori*). For an index
-where size does not matter, fit without `--max-exceptions` to keep both full
-tables.
+Release 1.1.0 had instead a table of 1,000 forms of frequent nouns the
+endings split (*problemi*, *pjesë*), mapped to their paradigm's stem. It
+raised the scores, but it was a list of words the rules got wrong. 1.2.0
+drops it: the letter conditions and rewrites above fix those nouns by rule,
+and the tables keep only what no rule can reach.
 
 ### Nouns of action in -im
 
@@ -316,7 +337,7 @@ taken the article (*përdorimi*), and only in R2, so short words keep it
 (*trim*, *klim*, *sjellim*). The fit would never choose it, since the
 lexicons' lemmas count noun and verb apart, which is where the precision
 above drops. But the human-labelled sample (below) counts them as one word, and
-retrieval agrees: +0.004 MRR@10 on the Gemma queries and +0.002 on the sealed
+retrieval agrees: +0.003 MRR@10 on the Gemma queries and +0.001 on the sealed
 set. Stripping a bare -u after a consonant (*ndryshua*, *drejtues*) or -o
 (*punoja*) was tried the same way: the sample favoured them slightly, but
 retrieval did not move and -u merges unrelated words (*tregues* "indicator"
@@ -333,16 +354,15 @@ it: -uara, -uarat, -uarave, -uare, -uaresh, -uari, -uarin, -uarit, -uarve,
 taken off whole. Offered to the fit as candidates they are all kept too, but
 the greedy search then takes a different path elsewhere and loses type
 precision, so they are added rather than fitted. They raise type recall on
-the sample from 0.717 to 0.749 and MRR@10 by 0.0007 ± 0.0002 on the Gemma
-queries (sealed +0.0007 ± 0.0017). The lexicon precision drops (above), as
+the sample from 0.729 to 0.760 and MRR@10 by 0.0004 on the Gemma queries
+(sealed +0.0002, within noise). The lexicon precision drops (above), as
 for -im, mostly because Stanza lemmatizes a participle as an adjective of its
 own.
 
-With the step, a bare noun and its inflected forms can get different stems
-(*bashkëpunim* loses -nim in step 1, *bashkëpunimi* only -im), so the noun
-table now joins a paradigm on the stem most of its forms get, not the one with
-most tokens (`build_noun_conflicts.py --target-by forms`, the default): that
-keeps *bashkëpunimi* with *bashkëpunojmë* and makes the table smaller.
+With the step, a bare noun could lose -nim in step 1 (*bashkëpunim* →
+`bashkepu`) while its inflected forms lose only -im (*bashkëpunimi* →
+`bashkepun`). The imperfect -nim follows only o or a (*punonim*, *mbanim*), so
+step 1 now takes it only there, and the noun meets its verb.
 
 ### A human-labelled sample
 
@@ -354,19 +374,18 @@ weighted by the two forms' frequencies):
 
 | analyzer | R types | P types | related words merged | R tokens | P tokens |
 |---|---|---|---|---|---|
-| **albanian (committed)** | 0.749 | 0.907 | 0.462 | 0.656 | 0.916 |
-| with the full tables | 0.754 | 0.909 | 0.427 | 0.656 | 0.916 |
-| with 500 exceptions | 0.725 | 0.904 | 0.462 | 0.645 | 0.914 |
-| without exceptions | 0.668 | 0.897 | 0.495 | 0.389 | 0.865 |
-| without the -im step | 0.742 | 0.907 | 0.462 | 0.656 | 0.916 |
-| without the -uara endings | 0.717 | 0.906 | 0.459 | 0.655 | 0.916 |
+| **albanian 1.2.0** | 0.760 | 0.908 | 0.403 | 0.681 | 0.918 |
+| release 1.1.0 | 0.749 | 0.907 | 0.462 | 0.656 | 0.916 |
+| without exceptions | 0.682 | 0.897 | 0.454 | 0.418 | 0.873 |
+| without the -im step | 0.754 | 0.907 | 0.403 | 0.681 | 0.917 |
+| without the -uara endings | 0.729 | 0.906 | 0.402 | 0.680 | 0.917 |
 | first 5 letters | 0.521 | 0.975 | 0.129 | 0.161 | 0.980 |
 | uniparser lemma | 0.567 | 0.974 | 0.110 | 0.506 | 0.977 |
 | uniparser lemma, ë removed | 0.359 | 0.969 | 0.129 | 0.315 | 0.969 |
 
 The forms were proposed by the analyzers themselves, so recall is measured
 only over what one of them already linked. Most remaining misses need the
-exception tables, not endings: *tha*/*thotë*, *dua*/*duhet*, *njeri*/*njerëz*,
+exception tables, not endings: *tha*/*thotë* (*tha* is also "dried"), *dua*/*duhet*,
 *madh*/*mëdha*. Most false merges are homographs once ë is folded (*para*
 "money" with *parë* "first", *paqe* "peace" with *pak* "little").
 
@@ -386,8 +405,10 @@ raw text ──build_lexicon──▶ lexicon.tsv.gz ──fit──▶ albanian
                                                      stopwords,
                                                      exceptions)
 grammar book ──tools/extract_grammar_inflection.py──▶ inflection.json ──tools/book_checks.py──▶ book_checks.json (word families, endings) ──▶ fit / evaluate
-verb lists + lexicons ──tools/build_irregular_verbs.py──▶ irregular_verbs.json ──▶ fit --exceptions
-lexicons + verb table ──tools/build_noun_conflicts.py───▶ noun_conflicts.json ──▶ fit --exceptions
+fjalorthi.com ──tools/fjalorthi.py──▶ fjalorthi.json (verb forms, noun plurals)
+verb lists + lexicons ──tools/build_irregular_verbs.py──▶ corpus_verbs.json (corpus forms)
+fjalorthi.json + corpus_verbs.json + rules ──tools/build_paradigm_verbs.py──▶ irregular_verbs.json ──▶ fit --exceptions
+fjalorthi.json + rules with verb table ──tools/build_irregular_nouns.py──▶ irregular_nouns.json ──▶ fit --exceptions
 ```
 
 - **`albanian_stemmer/rules.py`**: `AlbanianStemmer` holds the rules as data and
@@ -407,15 +428,23 @@ lexicons + verb table ──tools/build_noun_conflicts.py───▶ noun_confl
 - **`albanian_stemmer/evaluate.py`**: scores rule sets and the baselines on any
   lexicon.
 
-`python -m albanian_stemmer.fit --min-precision-types 0.80 --book data/grammar/book_checks.json --precede --fix-min-stem --participles --derivational --exceptions data/grammar/irregular_verbs.json data/grammar/noun_conflicts.json --max-exceptions 1000`
-rebuilds the committed `albanian.json` byte for byte from the crawl lexicon (the
-default `--lexicon`), in about a minute
-(add `--snowball /path/to/snowball` to regenerate the Snowball program, its
-Python and the extension's C as well). When
-the endings change, rebuild the exception tables (their stems are the
-rules' stems) in the order fit → verb table → noun table → fit again (the
-tables are attached after the search, so the second fit only attaches them),
-building both tables from `data/lexicons/web-sq-2026-11.tsv.gz`.
+```bash
+FIT="python -m albanian_stemmer.fit --min-precision-types 0.80 --book data/grammar/book_checks.json \
+     --precede --fix-min-stem --participles --derivational --i-nouns --guards --past-jt --alternations"
+$FIT --out runs/rules                                     # the rules alone
+python tools/build_paradigm_verbs.py --rules runs/rules/albanian.json --out data/grammar/irregular_verbs.json
+$FIT --exceptions data/grammar/irregular_verbs.json --out runs/verbs
+python tools/build_irregular_nouns.py --rules runs/verbs/albanian.json --out data/grammar/irregular_nouns.json
+$FIT --exceptions data/grammar/irregular_verbs.json data/grammar/irregular_nouns.json \
+     data/grammar/ambiguous_nouns.json --snowball /path/to/snowball
+```
+
+rebuilds the committed `albanian.json`, the Snowball program, its Python and
+the extension's C byte for byte from the crawl lexicon (the default
+`--lexicon`), in a few minutes. The tables' stems are the rules' stems, hence
+the order: rules, verb table, rules with it, noun table, all of them. The
+search converges to the same endings every time; what the flags add after it
+is fixed.
 
 ## Postgres
 
@@ -543,18 +572,24 @@ column means every occurrence was tagged. See `albanian_stemmer/lexicon.py`.
   are wrong) and reduced to these lists by `tools/book_checks.py`. The book's
   text and tables are not in the repository; the inflected forms of Albanian
   words are not the book's own.
-- **`data/grammar/irregular_verbs.json`.** The exception table: each form of
-  an irregular verb and its stem, plus the forms left to the rules and why.
-  The verbs are those of the englishforlife.edu.mk table of frequent
-  irregular verbs, the Academy grammar's stem-changing verbs, and those named by
-  L. Dauti and M. Karapinjalli, *Përcaktimi i foljeve të parregullta në
-  gjuhën shqipe*, Studime Filologjike 1-2/2018 (who count about 85). The
-  forms come from the web lexicon, judged by uniparser-albanian. Rebuild it
-  when the endings change: its stems are the rules' stems.
-- **`data/grammar/noun_conflicts.json`.** The second exception table: forms of
-  frequent nouns mapped to their paradigm's stem, with each noun's moved
-  forms and the nouns skipped because their stem mostly belongs to other
-  words. Built from the web lexicon, judged by uniparser-albanian.
+- **`data/grammar/fjalorthi.json`.** From fjalorthi.com's public dictionary
+  API: the forms of the 48 irregular verbs' conjugation tables, and the plural
+  each of 571 nouns' entries gives (as the entry writes it, e.g. `dúar(t)`).
+  Only these facts of the language are kept, no definitions or other text.
+  `tools/fjalorthi.py` fetches them slowly (one request every 3 s) and caches
+  the answers.
+- **`data/grammar/corpus_verbs.json`.** The forms of irregular verbs found in
+  the web lexicon (`tools/build_irregular_verbs.py`): the verbs of the
+  englishforlife.edu.mk table, the Academy grammar's stem-changing verbs, and
+  those named by L. Dauti and M. Karapinjalli, *Përcaktimi i foljeve të
+  parregullta në gjuhën shqipe*, Studime Filologjike 1-2/2018, judged by
+  uniparser-albanian. The verb table takes the corpus forms of its verbs from it.
+- **`data/grammar/irregular_verbs.json`**, **`irregular_nouns.json`**. The
+  exception tables: each form and its stem, plus the forms left to the rules
+  and why. Rebuild them when the endings change: their stems are the rules'
+  stems.
+- **`data/grammar/ambiguous_nouns.json`.** *shtet*, the one noun no rule can
+  stem (see [the letter before an ending](#the-letter-before-an-ending)).
 
 ## Roadmap
 
@@ -566,8 +601,13 @@ column means every occurrence was tagged. See `albanian_stemmer/lexicon.py`.
   a lemmatizer upper bound.
 - **A retrieval evaluation on queries written by people**, not generated from
   the passages they should retrieve.
-- **Submit to Snowball upstream.** That needs `albanian.sbl`, a test vocabulary
-  with expected stems (`voc.txt`/`output.txt`), and a description page.
+- **Snowball upstream.** Submitted: snowballstem/snowball#314 (the program),
+  snowball-data#45 (test vocabulary), snowball-website#55 (description page).
+- **Known gaps.** The stressed -i nouns' -ve form (*shtëpive* → `shtepi`, but
+  *shtëpi* → `shtep`): -ive cannot be an ending, since the -iv adjectives
+  (*pozitive*, *sportive*) end the same way.
+- **Hand-maintained rules.** From the next release on, `albanian.json` is the
+  source, edited by hand, and `fit` a tool for checking a change.
 
 ## Tests
 
@@ -587,10 +627,11 @@ ALBANIAN_STEMMER_TEST_DSN=postgresql://… uv run pytest tests/test_postgres_c.p
   *Sintaksa*, 2002, was not used).
 - L. Dauti and M. Karapinjalli. *Përcaktimi i foljeve të parregullta në gjuhën
   shqipe*. Studime Filologjike 1-2/2018. The irregular verbs.
+- fjalorthi.com, an online Albanian dictionary: conjugation tables and the
+  plurals of nouns.
 - M. F. Porter. *Snowball: A language for stemming algorithms*, 2001; and the
   Snowball stemmers for Romanian (the layout), Finnish, Turkish and Russian
-  (letter conditions), Lithuanian (`fix_conflicts`, the noun table) and
-  English Porter2 (the exception table).
+  (letter conditions) and English Porter2 (the exception table).
 - FineWeb-2 (Hugging Face, ODC-By 1.0); Stanza (Apache-2.0);
   uniparser-albanian (MIT).
 

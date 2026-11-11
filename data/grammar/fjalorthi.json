@@ -1,0 +1,5925 @@
+{
+ "source": "fjalorthi.com (conjugation tables and dictionary entries; only forms and plurals kept)",
+ "verbs": {
+  "jam": {
+   "participle": "qenë",
+   "forms": [
+    "isha",
+    "ishe",
+    "ishim",
+    "ishin",
+    "ishit",
+    "ishte",
+    "jam",
+    "janë",
+    "je",
+    "jem",
+    "jemi",
+    "jeni",
+    "jenë",
+    "jesh",
+    "jetë",
+    "ji",
+    "jini",
+    "qe",
+    "qemë",
+    "qenka",
+    "qenkam",
+    "qenkan",
+    "qenke",
+    "qenkej",
+    "qenkemi",
+    "qenkeni",
+    "qenkësha",
+    "qenkëshe",
+    "qenkëshim",
+    "qenkëshin",
+    "qenkëshit",
+    "qenë",
+    "qeshë",
+    "qetë",
+    "qofsh",
+    "qofshi",
+    "qofshim",
+    "qofshin",
+    "qoftë",
+    "është"
+   ]
+  },
+  "kam": {
+   "participle": "pasur",
+   "forms": [
+    "ki",
+    "kini",
+    "paskej",
+    "paskësha",
+    "paskëshe",
+    "paskëshim",
+    "paskëshin",
+    "paskëshit",
+    "pastë",
+    "pasur",
+    "paç",
+    "paça",
+    "paçi",
+    "paçim",
+    "paçin"
+   ]
+  },
+  "them": {
+   "participle": "thënë",
+   "forms": [
+    "tha",
+    "thamë",
+    "thanë",
+    "thashë",
+    "thatë",
+    "the",
+    "them",
+    "themi",
+    "thoni",
+    "thonte",
+    "thonë",
+    "thosha",
+    "thoshe",
+    "thoshim",
+    "thoshin",
+    "thoshit",
+    "thotë",
+    "thua",
+    "thuaj",
+    "thuash",
+    "thënka",
+    "thënkam",
+    "thënkan",
+    "thënke",
+    "thënkemi",
+    "thënkeni",
+    "thënkësh",
+    "thënkësha",
+    "thënkëshe",
+    "thënkëshim",
+    "thënkëshin",
+    "thënkëshit",
+    "thëntë",
+    "thënç",
+    "thënça",
+    "thënçi",
+    "thënçim",
+    "thënçin",
+    "thënë"
+   ]
+  },
+  "jap": {
+   "participle": "dhënë",
+   "forms": [
+    "dha",
+    "dhamë",
+    "dhanë",
+    "dhashë",
+    "dhatë",
+    "dhe",
+    "dhënka",
+    "dhënkam",
+    "dhënkan",
+    "dhënke",
+    "dhënkej",
+    "dhënkemi",
+    "dhënkeni",
+    "dhënkësha",
+    "dhënkëshe",
+    "dhënkëshim",
+    "dhënkëshin",
+    "dhënkëshit",
+    "dhëntë",
+    "dhënç",
+    "dhënça",
+    "dhënçi",
+    "dhënçim",
+    "dhënçin",
+    "dhënë",
+    "jap",
+    "japim",
+    "japin",
+    "japë",
+    "japësh",
+    "jep",
+    "jepem",
+    "jepemi",
+    "jepen",
+    "jepeni",
+    "jepesh",
+    "jepesha",
+    "jepeshe",
+    "jepeshim",
+    "jepeshin",
+    "jepeshit",
+    "jepet",
+    "jepja",
+    "jepje",
+    "jepni",
+    "jepnim",
+    "jepnin",
+    "jepnit",
+    "jepte",
+    "jepu"
+   ]
+  },
+  "bie": {
+   "participle": "rënë",
+   "forms": [
+    "bie",
+    "biem",
+    "bien",
+    "biesh",
+    "bija",
+    "bije",
+    "bini",
+    "binim",
+    "binin",
+    "binit",
+    "binte",
+    "bjer",
+    "bjerë",
+    "prufsh",
+    "prufsha",
+    "prufshi",
+    "prufshim",
+    "prufshin",
+    "pruftë",
+    "pruka",
+    "prukam",
+    "prukan",
+    "pruke",
+    "prukej",
+    "prukemi",
+    "prukeni",
+    "prukësha",
+    "prukëshe",
+    "prukëshim",
+    "prukëshin",
+    "prukëshit",
+    "prumë",
+    "prunë",
+    "prura",
+    "prure",
+    "pruri",
+    "prurë",
+    "prutë",
+    "ra",
+    "ramë",
+    "ranë",
+    "rashë",
+    "ratë",
+    "re",
+    "rënka",
+    "rënkam",
+    "rënkan",
+    "rënke",
+    "rënkej",
+    "rënkemi",
+    "rënkeni",
+    "rënkësha",
+    "rënkëshe",
+    "rënkëshim",
+    "rënkëshin",
+    "rënkëshit",
+    "rëntë",
+    "rënç",
+    "rënça",
+    "rënçi",
+    "rënçim",
+    "rënçin",
+    "rënë"
+   ]
+  },
+  "dua": {
+   "participle": "dashur",
+   "forms": [
+    "dashka",
+    "dashkam",
+    "dashkan",
+    "dashke",
+    "dashkej",
+    "dashkemi",
+    "dashkeni",
+    "dashkësha",
+    "dashkëshe",
+    "dashkëshim",
+    "dashkëshin",
+    "dashkëshit",
+    "dashur",
+    "daç",
+    "daça",
+    "daçi",
+    "daçim",
+    "daçin",
+    "daçtë",
+    "desh",
+    "desha",
+    "deshe",
+    "deshi",
+    "deshëm",
+    "deshën",
+    "deshët",
+    "doja",
+    "doje",
+    "dojë",
+    "doni",
+    "donim",
+    "donin",
+    "donit",
+    "donte",
+    "dua",
+    "duaj",
+    "duam",
+    "duan",
+    "duash",
+    "duhem",
+    "duhemi",
+    "duhen",
+    "duheni",
+    "duhesh",
+    "duhesha",
+    "duheshe",
+    "duheshim",
+    "duheshin",
+    "duheshit",
+    "duhet",
+    "duhu",
+    "duhuni"
+   ]
+  },
+  "ha": {
+   "participle": "ngrënë",
+   "forms": [
+    "ha",
+    "hahem",
+    "hahemi",
+    "hahen",
+    "haheni",
+    "hahesh",
+    "hahesha",
+    "haheshe",
+    "haheshim",
+    "haheshin",
+    "haheshit",
+    "hahet",
+    "hahu",
+    "haja",
+    "haje",
+    "hajë",
+    "hamë",
+    "hani",
+    "hanim",
+    "hanin",
+    "hanit",
+    "hante",
+    "hanë",
+    "hash",
+    "hëngra",
+    "hëngre",
+    "hëngri",
+    "hëngrëm",
+    "hëngrën",
+    "hëngrët",
+    "hëngër",
+    "ngrënka",
+    "ngrënkam",
+    "ngrënkan",
+    "ngrënke",
+    "ngrënkej",
+    "ngrënkemi",
+    "ngrënkeni",
+    "ngrënkësha",
+    "ngrënkëshe",
+    "ngrënkëshim",
+    "ngrënkëshin",
+    "ngrënkëshit",
+    "ngrëntë",
+    "ngrënç",
+    "ngrënça",
+    "ngrënçi",
+    "ngrënçim",
+    "ngrënçin",
+    "ngrënë"
+   ]
+  },
+  "vij": {
+   "participle": "ardhur",
+   "forms": [
+    "ardhka",
+    "ardhkam",
+    "ardhkan",
+    "ardhke",
+    "ardhkemi",
+    "ardhkeni",
+    "ardhkësh",
+    "ardhkësha",
+    "ardhkëshe",
+    "ardhkëshim",
+    "ardhkëshin",
+    "ardhkëshit",
+    "ardhsh",
+    "ardhsha",
+    "ardhshi",
+    "ardhshim",
+    "ardhshin",
+    "ardhtë",
+    "ardhur",
+    "eja",
+    "ejani",
+    "erdha",
+    "erdhe",
+    "erdhi",
+    "erdhëm",
+    "erdhën",
+    "erdhët",
+    "vij",
+    "vija",
+    "vije",
+    "vijmë",
+    "vijnë",
+    "vijë",
+    "vini",
+    "vinim",
+    "vinin",
+    "vinit",
+    "vinte",
+    "vish",
+    "vjen"
+   ]
+  },
+  "shoh": {
+   "participle": "parë",
+   "forms": [
+    "pafsh",
+    "pafsha",
+    "pafshi",
+    "pafshim",
+    "pafshin",
+    "paftë",
+    "paka",
+    "pakam",
+    "pakan",
+    "pake",
+    "pakej",
+    "pakemi",
+    "pakeni",
+    "pakësha",
+    "pakëshe",
+    "pakëshim",
+    "pakëshin",
+    "pakëshit",
+    "pamë",
+    "panë",
+    "parë",
+    "pashë",
+    "patë",
+    "pe",
+    "sheh",
+    "shih",
+    "shihem",
+    "shihemi",
+    "shihen",
+    "shiheni",
+    "shihesh",
+    "shihesha",
+    "shiheshe",
+    "shiheshim",
+    "shiheshin",
+    "shiheshit",
+    "shihet",
+    "shihja",
+    "shihje",
+    "shihni",
+    "shihnim",
+    "shihnin",
+    "shihnit",
+    "shihte",
+    "shihu",
+    "shoh",
+    "shohim",
+    "shohin",
+    "shohë",
+    "shohësh"
+   ]
+  },
+  "rri": {
+   "participle": "ndenjur",
+   "forms": [
+    "ndenja",
+    "ndenje",
+    "ndenji",
+    "ndenjka",
+    "ndenjkam",
+    "ndenjkan",
+    "ndenjke",
+    "ndenjkej",
+    "ndenjkemi",
+    "ndenjkeni",
+    "ndenjkësha",
+    "ndenjkëshe",
+    "ndenjkëshim",
+    "ndenjkëshin",
+    "ndenjkëshit",
+    "ndenjtë",
+    "ndenjur",
+    "ndenjç",
+    "ndenjça",
+    "ndenjçi",
+    "ndenjçim",
+    "ndenjçin",
+    "ndenjëm",
+    "ndenjën",
+    "ndenjët",
+    "rri",
+    "rrija",
+    "rrije",
+    "rrijë",
+    "rrimë",
+    "rrini",
+    "rrinim",
+    "rrinin",
+    "rrinit",
+    "rrinte",
+    "rrinë",
+    "rrish"
+   ]
+  },
+  "lë": {
+   "participle": "lënë",
+   "forms": [
+    "la",
+    "lamë",
+    "lanë",
+    "lashë",
+    "latë",
+    "le",
+    "lihem",
+    "lihemi",
+    "lihen",
+    "liheni",
+    "lihesh",
+    "lihesha",
+    "liheshe",
+    "liheshim",
+    "liheshin",
+    "liheshit",
+    "lihet",
+    "lihu",
+    "lija",
+    "lije",
+    "lini",
+    "linim",
+    "linin",
+    "linit",
+    "linte",
+    "lë",
+    "lëmë",
+    "lënka",
+    "lënkam",
+    "lënkan",
+    "lënke",
+    "lënkej",
+    "lënkemi",
+    "lënkeni",
+    "lënkësha",
+    "lënkëshe",
+    "lënkëshim",
+    "lënkëshin",
+    "lënkëshit",
+    "lëntë",
+    "lënç",
+    "lënça",
+    "lënçi",
+    "lënçim",
+    "lënçin",
+    "lënë",
+    "lër",
+    "lërë",
+    "lësh"
+   ]
+  },
+  "vë": {
+   "participle": "vënë",
+   "forms": [
+    "vihem",
+    "vihemi",
+    "vihen",
+    "viheni",
+    "vihesh",
+    "vihesha",
+    "viheshe",
+    "viheshim",
+    "viheshin",
+    "viheshit",
+    "vihet",
+    "vija",
+    "vije",
+    "vini",
+    "vinim",
+    "vinin",
+    "vinit",
+    "vinte",
+    "vumë",
+    "vunë",
+    "vura",
+    "vure",
+    "vuri",
+    "vutë",
+    "vë",
+    "vëmë",
+    "vënka",
+    "vënkam",
+    "vënkan",
+    "vënke",
+    "vënkej",
+    "vënkemi",
+    "vënkeni",
+    "vënkësha",
+    "vënkëshe",
+    "vënkëshim",
+    "vënkëshin",
+    "vënkëshit",
+    "vëntë",
+    "vënç",
+    "vënça",
+    "vënçi",
+    "vënçim",
+    "vënçin",
+    "vënë",
+    "vër",
+    "vërë",
+    "vësh"
+   ]
+  },
+  "zë": {
+   "participle": "zënë",
+   "forms": [
+    "zihem",
+    "zihemi",
+    "zihen",
+    "ziheni",
+    "zihesh",
+    "zihesha",
+    "ziheshe",
+    "ziheshim",
+    "ziheshin",
+    "ziheshit",
+    "zihet",
+    "zija",
+    "zije",
+    "zini",
+    "zinim",
+    "zinin",
+    "zinit",
+    "zinte",
+    "zumë",
+    "zunë",
+    "zura",
+    "zure",
+    "zuri",
+    "zutë",
+    "zë",
+    "zëmë",
+    "zënka",
+    "zënkam",
+    "zënkan",
+    "zënke",
+    "zënkej",
+    "zënkemi",
+    "zënkeni",
+    "zënkësha",
+    "zënkëshe",
+    "zënkëshim",
+    "zënkëshin",
+    "zënkëshit",
+    "zëntë",
+    "zënç",
+    "zënça",
+    "zënçi",
+    "zënçim",
+    "zënçin",
+    "zënë",
+    "zër",
+    "zërë",
+    "zësh"
+   ]
+  },
+  "nxë": {
+   "participle": "nxënë",
+   "forms": [
+    "nxihesh",
+    "nxija",
+    "nxije",
+    "nxini",
+    "nxinim",
+    "nxinin",
+    "nxinit",
+    "nxinte",
+    "nxumë",
+    "nxunë",
+    "nxura",
+    "nxure",
+    "nxuri",
+    "nxutë",
+    "nxë",
+    "nxëmë",
+    "nxënka",
+    "nxënkam",
+    "nxënkan",
+    "nxënke",
+    "nxënkej",
+    "nxënkemi",
+    "nxënkeni",
+    "nxënkësha",
+    "nxënkëshe",
+    "nxënkëshim",
+    "nxënkëshin",
+    "nxënkëshit",
+    "nxëntë",
+    "nxënç",
+    "nxënça",
+    "nxënçi",
+    "nxënçim",
+    "nxënçin",
+    "nxënë",
+    "nxër",
+    "nxërë",
+    "nxësh"
+   ]
+  },
+  "shpie": {
+   "participle": "shpënë",
+   "forms": [
+    "shpie",
+    "shpiem",
+    "shpien",
+    "shpiesh",
+    "shpihem",
+    "shpihemi",
+    "shpihen",
+    "shpiheni",
+    "shpihesh",
+    "shpihesha",
+    "shpiheshe",
+    "shpiheshim",
+    "shpiheshin",
+    "shpiheshit",
+    "shpihet",
+    "shpihu",
+    "shpija",
+    "shpije",
+    "shpini",
+    "shpinim",
+    "shpinin",
+    "shpinit",
+    "shpinte",
+    "shpjer",
+    "shpumë",
+    "shpunë",
+    "shpur",
+    "shpura",
+    "shpure",
+    "shpuri",
+    "shputë",
+    "shpënka",
+    "shpënkam",
+    "shpënkan",
+    "shpënke",
+    "shpënkemi",
+    "shpënkeni",
+    "shpënkësh",
+    "shpënkësha",
+    "shpënkëshe",
+    "shpënkëshim",
+    "shpënkëshin",
+    "shpënkëshit",
+    "shpëntë",
+    "shpënç",
+    "shpënça",
+    "shpënçi",
+    "shpënçim",
+    "shpënçin",
+    "shpënë"
+   ]
+  },
+  "shtie": {
+   "participle": "shtënë",
+   "forms": [
+    "shti",
+    "shtie",
+    "shtiem",
+    "shtien",
+    "shtiesh",
+    "shtihem",
+    "shtihemi",
+    "shtihen",
+    "shtiheni",
+    "shtihesh",
+    "shtihesha",
+    "shtiheshe",
+    "shtiheshim",
+    "shtiheshin",
+    "shtiheshit",
+    "shtihet",
+    "shtija",
+    "shtije",
+    "shtimë",
+    "shtini",
+    "shtinim",
+    "shtinin",
+    "shtinit",
+    "shtinte",
+    "shtinë",
+    "shtitë",
+    "shtiu",
+    "shtiva",
+    "shtive",
+    "shtjer",
+    "shtjeru",
+    "shtjerë",
+    "shtënka",
+    "shtënkam",
+    "shtënkan",
+    "shtënke",
+    "shtënkemi",
+    "shtënkeni",
+    "shtënkësh",
+    "shtënkësha",
+    "shtënkëshe",
+    "shtënkëshim",
+    "shtënkëshin",
+    "shtënkëshit",
+    "shtëntë",
+    "shtënç",
+    "shtënça",
+    "shtënçi",
+    "shtënçim",
+    "shtënçin",
+    "shtënë"
+   ]
+  },
+  "vete": {
+   "participle": "vajtur",
+   "forms": [
+    "shkoni",
+    "shkosh",
+    "vafsh",
+    "vafsha",
+    "vafshi",
+    "vafshim",
+    "vafshin",
+    "vaftë",
+    "vajta",
+    "vajte",
+    "vajti",
+    "vajtka",
+    "vajtkam",
+    "vajtkan",
+    "vajtke",
+    "vajtkemi",
+    "vajtkeni",
+    "vajtkësh",
+    "vajtkësha",
+    "vajtkëshe",
+    "vajtkëshim",
+    "vajtkëshin",
+    "vajtkëshit",
+    "vajtur",
+    "vajtëm",
+    "vajtën",
+    "vajtët",
+    "veja",
+    "veje",
+    "vejë",
+    "vemi",
+    "veni",
+    "venim",
+    "venin",
+    "venit",
+    "vente",
+    "venë",
+    "vesh",
+    "vete"
+   ]
+  },
+  "dal": {
+   "participle": "dalë",
+   "forms": [
+    "dal",
+    "dalim",
+    "dalin",
+    "dalka",
+    "dalkam",
+    "dalkan",
+    "dalke",
+    "dalkej",
+    "dalkemi",
+    "dalkeni",
+    "dalkësha",
+    "dalkëshe",
+    "dalkëshim",
+    "dalkëshin",
+    "dalkëshit",
+    "dalsh",
+    "dalsha",
+    "dalshi",
+    "dalshim",
+    "dalshin",
+    "daltë",
+    "dalë",
+    "dalësh",
+    "del",
+    "dil",
+    "dilja",
+    "dilje",
+    "dilni",
+    "dilnim",
+    "dilnin",
+    "dilnit",
+    "dilte",
+    "dola",
+    "dole",
+    "doli",
+    "dolëm",
+    "dolën",
+    "dolët"
+   ]
+  },
+  "flas": {
+   "participle": "folur",
+   "forms": [
+    "flas",
+    "flasim",
+    "flasin",
+    "flasë",
+    "flasësh",
+    "flet",
+    "flisja",
+    "flisje",
+    "flisni",
+    "flisnim",
+    "flisnin",
+    "flisnit",
+    "fliste",
+    "flitni",
+    "fol",
+    "fola",
+    "fole",
+    "foli",
+    "folka",
+    "folkam",
+    "folkan",
+    "folke",
+    "folkej",
+    "folkemi",
+    "folkeni",
+    "folkësha",
+    "folkëshe",
+    "folkëshim",
+    "folkëshin",
+    "folkëshit",
+    "folsh",
+    "folsha",
+    "folshi",
+    "folshim",
+    "folshin",
+    "foltë",
+    "folur",
+    "folëm",
+    "folën",
+    "folët"
+   ]
+  },
+  "fle": {
+   "participle": "fjetur",
+   "forms": [
+    "fjeta",
+    "fjete",
+    "fjeti",
+    "fjetka",
+    "fjetkam",
+    "fjetkan",
+    "fjetke",
+    "fjetkemi",
+    "fjetkeni",
+    "fjetkësh",
+    "fjetkësha",
+    "fjetkëshe",
+    "fjetkëshim",
+    "fjetkëshin",
+    "fjetkëshit",
+    "fjetsh",
+    "fjetsha",
+    "fjetshi",
+    "fjetshim",
+    "fjetshin",
+    "fjettë",
+    "fjetur",
+    "fjetëm",
+    "fjetën",
+    "fjetët",
+    "fle",
+    "flejë",
+    "flemë",
+    "flenë",
+    "flesh",
+    "fli",
+    "flija",
+    "flije",
+    "flini",
+    "flinim",
+    "flinin",
+    "flinit",
+    "flinte"
+   ]
+  },
+  "marr": {
+   "participle": "marrë",
+   "forms": [
+    "marr",
+    "marrim",
+    "marrin",
+    "marrka",
+    "marrkam",
+    "marrkan",
+    "marrke",
+    "marrkej",
+    "marrkemi",
+    "marrkeni",
+    "marrkësha",
+    "marrkëshe",
+    "marrkëshim",
+    "marrkëshin",
+    "marrkëshit",
+    "marrsh",
+    "marrsha",
+    "marrshi",
+    "marrshim",
+    "marrshin",
+    "marrtë",
+    "marrë",
+    "marrësh",
+    "merr",
+    "merrem",
+    "merremi",
+    "merren",
+    "merreni",
+    "merresh",
+    "merresha",
+    "merreshe",
+    "merreshim",
+    "merreshin",
+    "merreshit",
+    "merret",
+    "merrja",
+    "merrje",
+    "merrni",
+    "merrnim",
+    "merrnin",
+    "merrnit",
+    "merrte",
+    "mor",
+    "mora",
+    "more",
+    "mori",
+    "morëm",
+    "morën",
+    "morët"
+   ]
+  },
+  "vdes": {
+   "participle": "vdekur",
+   "forms": [
+    "vdekka",
+    "vdekkam",
+    "vdekkan",
+    "vdekke",
+    "vdekkemi",
+    "vdekkeni",
+    "vdekkësh",
+    "vdekkësha",
+    "vdekkëshe",
+    "vdekkëshim",
+    "vdekkëshin",
+    "vdekkëshit",
+    "vdeksh",
+    "vdeksha",
+    "vdekshi",
+    "vdekshim",
+    "vdekshin",
+    "vdektë",
+    "vdekur",
+    "vdes",
+    "vdesim",
+    "vdesin",
+    "vdesësh",
+    "vdiq",
+    "vdiqa",
+    "vdiqe",
+    "vdiqëm",
+    "vdiqën",
+    "vdiqët",
+    "vdis",
+    "vdisja",
+    "vdisje",
+    "vdisni",
+    "vdisnim",
+    "vdisnin",
+    "vdisnit",
+    "vdiste"
+   ]
+  },
+  "hyj": {
+   "participle": "hyrë",
+   "forms": [
+    "hyfsh",
+    "hyfsha",
+    "hyfshi",
+    "hyfshim",
+    "hyfshin",
+    "hyftë",
+    "hyj",
+    "hyja",
+    "hyje",
+    "hyjmë",
+    "hyjnë",
+    "hyjë",
+    "hyka",
+    "hykam",
+    "hykan",
+    "hyke",
+    "hykej",
+    "hykemi",
+    "hykeni",
+    "hykësha",
+    "hykëshe",
+    "hykëshim",
+    "hykëshin",
+    "hykëshit",
+    "hymë",
+    "hyn",
+    "hyni",
+    "hynim",
+    "hynin",
+    "hynit",
+    "hynte",
+    "hynë",
+    "hyr",
+    "hyra",
+    "hyre",
+    "hyri",
+    "hyrë",
+    "hysh",
+    "hytë"
+   ]
+  },
+  "bëj": {
+   "participle": "bërë",
+   "forms": [
+    "bë",
+    "bëfsh",
+    "bëfsha",
+    "bëfshi",
+    "bëfshim",
+    "bëfshin",
+    "bëftë",
+    "bëhem",
+    "bëhemi",
+    "bëhen",
+    "bëheni",
+    "bëhesh",
+    "bëhesha",
+    "bëheshe",
+    "bëheshim",
+    "bëheshin",
+    "bëheshit",
+    "bëhet",
+    "bëj",
+    "bëja",
+    "bëje",
+    "bëjmë",
+    "bëjnë",
+    "bëjë",
+    "bëka",
+    "bëkam",
+    "bëkan",
+    "bëke",
+    "bëkej",
+    "bëkemi",
+    "bëkeni",
+    "bëkësha",
+    "bëkëshe",
+    "bëkëshim",
+    "bëkëshin",
+    "bëkëshit",
+    "bëmë",
+    "bën",
+    "bëni",
+    "bënim",
+    "bënin",
+    "bënit",
+    "bënte",
+    "bënë",
+    "bëra",
+    "bëre",
+    "bëri",
+    "bërë",
+    "bësh",
+    "bëtë"
+   ]
+  },
+  "hedh": {
+   "participle": "hedhur",
+   "forms": [
+    "hedh",
+    "hedhim",
+    "hedhin",
+    "hedhka",
+    "hedhkam",
+    "hedhkan",
+    "hedhke",
+    "hedhkej",
+    "hedhkemi",
+    "hedhkeni",
+    "hedhkësha",
+    "hedhkëshe",
+    "hedhkëshim",
+    "hedhkëshin",
+    "hedhkëshit",
+    "hedhsh",
+    "hedhsha",
+    "hedhshi",
+    "hedhshim",
+    "hedhshin",
+    "hedhtë",
+    "hedhur",
+    "hedhë",
+    "hedhësh",
+    "hidh",
+    "hidhem",
+    "hidhemi",
+    "hidhen",
+    "hidheni",
+    "hidhesh",
+    "hidhesha",
+    "hidheshe",
+    "hidheshim",
+    "hidheshin",
+    "hidheshit",
+    "hidhet",
+    "hidhja",
+    "hidhje",
+    "hidhni",
+    "hidhnim",
+    "hidhnin",
+    "hidhnit",
+    "hidhte",
+    "hodh",
+    "hodha",
+    "hodhe",
+    "hodhi",
+    "hodhëm",
+    "hodhën",
+    "hodhët"
+   ]
+  },
+  "heq": {
+   "participle": "hequr",
+   "forms": [
+    "heq",
+    "heqim",
+    "heqin",
+    "heqka",
+    "heqkam",
+    "heqkan",
+    "heqke",
+    "heqkej",
+    "heqkemi",
+    "heqkeni",
+    "heqkësha",
+    "heqkëshe",
+    "heqkëshim",
+    "heqkëshin",
+    "heqkëshit",
+    "heqsh",
+    "heqsha",
+    "heqshi",
+    "heqshim",
+    "heqshin",
+    "heqtë",
+    "hequr",
+    "heqë",
+    "heqësh",
+    "hiq",
+    "hiqem",
+    "hiqemi",
+    "hiqen",
+    "hiqeni",
+    "hiqesh",
+    "hiqesha",
+    "hiqeshe",
+    "hiqeshim",
+    "hiqeshin",
+    "hiqeshit",
+    "hiqet",
+    "hiqja",
+    "hiqje",
+    "hiqni",
+    "hiqnim",
+    "hiqnin",
+    "hiqnit",
+    "hiqte",
+    "hoq",
+    "hoqa",
+    "hoqe",
+    "hoqi",
+    "hoqëm",
+    "hoqën",
+    "hoqët"
+   ]
+  },
+  "mbledh": {
+   "participle": "mbledhur",
+   "forms": [
+    "mbledh",
+    "mbledhim",
+    "mbledhin",
+    "mbledhka",
+    "mbledhkam",
+    "mbledhkan",
+    "mbledhke",
+    "mbledhkej",
+    "mbledhkemi",
+    "mbledhkeni",
+    "mbledhkësha",
+    "mbledhkëshe",
+    "mbledhkëshim",
+    "mbledhkëshin",
+    "mbledhkëshit",
+    "mbledhsh",
+    "mbledhsha",
+    "mbledhshi",
+    "mbledhshim",
+    "mbledhshin",
+    "mbledhtë",
+    "mbledhur",
+    "mbledhë",
+    "mbledhësh",
+    "mblidh",
+    "mblidhem",
+    "mblidhemi",
+    "mblidhen",
+    "mblidheni",
+    "mblidhesh",
+    "mblidhesha",
+    "mblidheshe",
+    "mblidheshim",
+    "mblidheshin",
+    "mblidheshit",
+    "mblidhet",
+    "mblidhja",
+    "mblidhje",
+    "mblidhni",
+    "mblidhnim",
+    "mblidhnin",
+    "mblidhnit",
+    "mblidhte",
+    "mblodh",
+    "mblodha",
+    "mblodhe",
+    "mblodhi",
+    "mblodhëm",
+    "mblodhën",
+    "mblodhët"
+   ]
+  },
+  "vjedh": {
+   "participle": "vjedhur",
+   "forms": [
+    "vidh",
+    "vidhem",
+    "vidhemi",
+    "vidhen",
+    "vidheni",
+    "vidhesh",
+    "vidhesha",
+    "vidheshe",
+    "vidheshim",
+    "vidheshin",
+    "vidheshit",
+    "vidhet",
+    "vidhja",
+    "vidhje",
+    "vidhni",
+    "vidhnim",
+    "vidhnin",
+    "vidhnit",
+    "vidhte",
+    "vjedh",
+    "vjedhim",
+    "vjedhin",
+    "vjedhka",
+    "vjedhkam",
+    "vjedhkan",
+    "vjedhke",
+    "vjedhkej",
+    "vjedhkemi",
+    "vjedhkeni",
+    "vjedhkësha",
+    "vjedhkëshe",
+    "vjedhkëshim",
+    "vjedhkëshin",
+    "vjedhkëshit",
+    "vjedhsh",
+    "vjedhsha",
+    "vjedhshi",
+    "vjedhshim",
+    "vjedhshin",
+    "vjedhtë",
+    "vjedhur",
+    "vjedhë",
+    "vjedhësh",
+    "vodh",
+    "vodha",
+    "vodhe",
+    "vodhi",
+    "vodhëm",
+    "vodhën",
+    "vodhët"
+   ]
+  },
+  "dredh": {
+   "participle": "dredhur",
+   "forms": [
+    "dredh",
+    "dredhim",
+    "dredhin",
+    "dredhka",
+    "dredhkam",
+    "dredhkan",
+    "dredhke",
+    "dredhkej",
+    "dredhkemi",
+    "dredhkeni",
+    "dredhkësha",
+    "dredhkëshe",
+    "dredhkëshim",
+    "dredhkëshin",
+    "dredhkëshit",
+    "dredhsh",
+    "dredhsha",
+    "dredhshi",
+    "dredhshim",
+    "dredhshin",
+    "dredhtë",
+    "dredhur",
+    "dredhë",
+    "dredhësh",
+    "dridh",
+    "dridhem",
+    "dridhemi",
+    "dridhen",
+    "dridheni",
+    "dridhesh",
+    "dridhesha",
+    "dridheshe",
+    "dridheshim",
+    "dridheshin",
+    "dridheshit",
+    "dridhet",
+    "dridhja",
+    "dridhje",
+    "dridhni",
+    "dridhnim",
+    "dridhnin",
+    "dridhnit",
+    "dridhte",
+    "drodh",
+    "drodha",
+    "drodhe",
+    "drodhi",
+    "drodhëm",
+    "drodhën",
+    "drodhët"
+   ]
+  },
+  "bredh": {
+   "participle": "bredhur",
+   "forms": [
+    "bredh",
+    "bredhim",
+    "bredhin",
+    "bredhka",
+    "bredhkam",
+    "bredhkan",
+    "bredhke",
+    "bredhkej",
+    "bredhkemi",
+    "bredhkeni",
+    "bredhkësha",
+    "bredhkëshe",
+    "bredhkëshim",
+    "bredhkëshin",
+    "bredhkëshit",
+    "bredhsh",
+    "bredhsha",
+    "bredhshi",
+    "bredhshim",
+    "bredhshin",
+    "bredhtë",
+    "bredhur",
+    "bredhë",
+    "bredhësh",
+    "bridh",
+    "bridhja",
+    "bridhje",
+    "bridhni",
+    "bridhnim",
+    "bridhnin",
+    "bridhnit",
+    "bridhte",
+    "brodha",
+    "brodhe",
+    "brodhi",
+    "brodhëm",
+    "brodhën",
+    "brodhët"
+   ]
+  },
+  "sjell": {
+   "participle": "sjellë",
+   "forms": [
+    "sill",
+    "sillem",
+    "sillemi",
+    "sillen",
+    "silleni",
+    "sillesh",
+    "sillesha",
+    "silleshe",
+    "silleshim",
+    "silleshin",
+    "silleshit",
+    "sillet",
+    "sillja",
+    "sillje",
+    "sillni",
+    "sillnim",
+    "sillnin",
+    "sillnit",
+    "sillte",
+    "sjell",
+    "sjellim",
+    "sjellin",
+    "sjellka",
+    "sjellkam",
+    "sjellkan",
+    "sjellke",
+    "sjellkej",
+    "sjellkemi",
+    "sjellkeni",
+    "sjellkësha",
+    "sjellkëshe",
+    "sjellkëshim",
+    "sjellkëshin",
+    "sjellkëshit",
+    "sjellsh",
+    "sjellsha",
+    "sjellshi",
+    "sjellshim",
+    "sjellshin",
+    "sjelltë",
+    "sjellë",
+    "sjellësh",
+    "soll",
+    "solla",
+    "solle",
+    "solli",
+    "sollëm",
+    "sollën",
+    "sollët"
+   ]
+  },
+  "mbjell": {
+   "participle": "mbjellë",
+   "forms": [
+    "mbill",
+    "mbillja",
+    "mbillje",
+    "mbillni",
+    "mbillnim",
+    "mbillnin",
+    "mbillnit",
+    "mbillte",
+    "mbjell",
+    "mbjellim",
+    "mbjellin",
+    "mbjellka",
+    "mbjellkam",
+    "mbjellkan",
+    "mbjellke",
+    "mbjellkej",
+    "mbjellkemi",
+    "mbjellkeni",
+    "mbjellkësha",
+    "mbjellkëshe",
+    "mbjellkëshim",
+    "mbjellkëshin",
+    "mbjellkëshit",
+    "mbjellsh",
+    "mbjellsha",
+    "mbjellshi",
+    "mbjellshim",
+    "mbjellshin",
+    "mbjelltë",
+    "mbjellë",
+    "mbjellësh",
+    "mbolla",
+    "mbolle",
+    "mbolli",
+    "mbollëm",
+    "mbollën",
+    "mbollët"
+   ]
+  },
+  "mjel": {
+   "participle": "mjelë",
+   "forms": [
+    "mil",
+    "milja",
+    "milje",
+    "milni",
+    "milnim",
+    "milnin",
+    "milnit",
+    "milte",
+    "mjel",
+    "mjelim",
+    "mjelin",
+    "mjelka",
+    "mjelkam",
+    "mjelkan",
+    "mjelke",
+    "mjelkej",
+    "mjelkemi",
+    "mjelkeni",
+    "mjelkësha",
+    "mjelkëshe",
+    "mjelkëshim",
+    "mjelkëshin",
+    "mjelkëshit",
+    "mjelsh",
+    "mjelsha",
+    "mjelshi",
+    "mjelshim",
+    "mjelshin",
+    "mjeltë",
+    "mjelë",
+    "mjelësh",
+    "mola",
+    "mole",
+    "moli",
+    "molëm",
+    "molën",
+    "molët"
+   ]
+  },
+  "vjel": {
+   "participle": "vjelë",
+   "forms": [
+    "vil",
+    "vilja",
+    "vilje",
+    "vilni",
+    "vilnim",
+    "vilnin",
+    "vilnit",
+    "vilte",
+    "vjel",
+    "vjelim",
+    "vjelin",
+    "vjelka",
+    "vjelkam",
+    "vjelkan",
+    "vjelke",
+    "vjelkej",
+    "vjelkemi",
+    "vjelkeni",
+    "vjelkësha",
+    "vjelkëshe",
+    "vjelkëshim",
+    "vjelkëshin",
+    "vjelkëshit",
+    "vjelsh",
+    "vjelsha",
+    "vjelshi",
+    "vjelshim",
+    "vjelshin",
+    "vjeltë",
+    "vjelë",
+    "vjelësh",
+    "vola",
+    "vole",
+    "voli",
+    "volëm",
+    "volën",
+    "volët"
+   ]
+  },
+  "tjerr": {
+   "participle": "tjerrë",
+   "forms": [
+    "tirr",
+    "tirrja",
+    "tirrje",
+    "tirrni",
+    "tirrnim",
+    "tirrnin",
+    "tirrnit",
+    "tirrte",
+    "tjerr",
+    "tjerrim",
+    "tjerrin",
+    "tjerrka",
+    "tjerrkam",
+    "tjerrkan",
+    "tjerrke",
+    "tjerrkej",
+    "tjerrkemi",
+    "tjerrkeni",
+    "tjerrkësha",
+    "tjerrkëshe",
+    "tjerrkëshim",
+    "tjerrkëshin",
+    "tjerrkëshit",
+    "tjerrsh",
+    "tjerrsha",
+    "tjerrshi",
+    "tjerrshim",
+    "tjerrshin",
+    "tjerrtë",
+    "tjerrë",
+    "tjerrësh",
+    "tora",
+    "tore",
+    "tori",
+    "torëm",
+    "torën",
+    "torët"
+   ]
+  },
+  "ndjek": {
+   "participle": "ndjekur",
+   "forms": [
+    "ndiq",
+    "ndiqem",
+    "ndiqemi",
+    "ndiqen",
+    "ndiqeni",
+    "ndiqesh",
+    "ndiqesha",
+    "ndiqeshe",
+    "ndiqeshim",
+    "ndiqeshin",
+    "ndiqeshit",
+    "ndiqet",
+    "ndiqja",
+    "ndiqje",
+    "ndiqni",
+    "ndiqnim",
+    "ndiqnin",
+    "ndiqnit",
+    "ndiqte",
+    "ndjek",
+    "ndjekim",
+    "ndjekin",
+    "ndjekka",
+    "ndjekkam",
+    "ndjekkan",
+    "ndjekke",
+    "ndjekkej",
+    "ndjekkemi",
+    "ndjekkeni",
+    "ndjekkësha",
+    "ndjekkëshe",
+    "ndjekkëshim",
+    "ndjekkëshin",
+    "ndjekkëshit",
+    "ndjeksh",
+    "ndjeksha",
+    "ndjekshi",
+    "ndjekshim",
+    "ndjekshin",
+    "ndjektë",
+    "ndjekur",
+    "ndjekë",
+    "ndjekësh",
+    "ndoq",
+    "ndoqa",
+    "ndoqe",
+    "ndoqi",
+    "ndoqëm",
+    "ndoqën",
+    "ndoqët"
+   ]
+  },
+  "pjek": {
+   "participle": "pjekur",
+   "forms": [
+    "piq",
+    "piqem",
+    "piqemi",
+    "piqen",
+    "piqeni",
+    "piqesh",
+    "piqesha",
+    "piqeshe",
+    "piqeshim",
+    "piqeshin",
+    "piqeshit",
+    "piqet",
+    "piqja",
+    "piqje",
+    "piqni",
+    "piqnim",
+    "piqnin",
+    "piqnit",
+    "piqte",
+    "pjek",
+    "pjekim",
+    "pjekin",
+    "pjekka",
+    "pjekkam",
+    "pjekkan",
+    "pjekke",
+    "pjekkej",
+    "pjekkemi",
+    "pjekkeni",
+    "pjekkësha",
+    "pjekkëshe",
+    "pjekkëshim",
+    "pjekkëshin",
+    "pjekkëshit",
+    "pjeksh",
+    "pjeksha",
+    "pjekshi",
+    "pjekshim",
+    "pjekshin",
+    "pjektë",
+    "pjekur",
+    "pjekë",
+    "pjekësh",
+    "poq",
+    "poqa",
+    "poqe",
+    "poqi",
+    "poqëm",
+    "poqën",
+    "poqët"
+   ]
+  },
+  "djeg": {
+   "participle": "djegur",
+   "forms": [
+    "digj",
+    "digjem",
+    "digjemi",
+    "digjen",
+    "digjeni",
+    "digjesh",
+    "digjesha",
+    "digjeshe",
+    "digjeshim",
+    "digjeshin",
+    "digjeshit",
+    "digjet",
+    "digjja",
+    "digjje",
+    "digjni",
+    "digjnim",
+    "digjnin",
+    "digjnit",
+    "digjte",
+    "djeg",
+    "djegim",
+    "djegin",
+    "djegka",
+    "djegkam",
+    "djegkan",
+    "djegke",
+    "djegkej",
+    "djegkemi",
+    "djegkeni",
+    "djegkësha",
+    "djegkëshe",
+    "djegkëshim",
+    "djegkëshin",
+    "djegkëshit",
+    "djegsh",
+    "djegsha",
+    "djegshi",
+    "djegshim",
+    "djegshin",
+    "djegtë",
+    "djegur",
+    "djegë",
+    "djegësh",
+    "dogj",
+    "dogja",
+    "dogje",
+    "dogji",
+    "dogjëm",
+    "dogjën",
+    "dogjët"
+   ]
+  },
+  "nxjerr": {
+   "participle": "nxjerrë",
+   "forms": [
+    "nxirr",
+    "nxirrem",
+    "nxirremi",
+    "nxirren",
+    "nxirreni",
+    "nxirresh",
+    "nxirresha",
+    "nxirreshe",
+    "nxirreshim",
+    "nxirreshin",
+    "nxirreshit",
+    "nxirret",
+    "nxirrja",
+    "nxirrje",
+    "nxirrni",
+    "nxirrnim",
+    "nxirrnin",
+    "nxirrnit",
+    "nxirrte",
+    "nxjerr",
+    "nxjerrim",
+    "nxjerrin",
+    "nxjerrka",
+    "nxjerrkam",
+    "nxjerrkan",
+    "nxjerrke",
+    "nxjerrkej",
+    "nxjerrkemi",
+    "nxjerrkeni",
+    "nxjerrkësha",
+    "nxjerrkëshe",
+    "nxjerrkëshim",
+    "nxjerrkëshin",
+    "nxjerrkëshit",
+    "nxjerrsh",
+    "nxjerrsha",
+    "nxjerrshi",
+    "nxjerrshim",
+    "nxjerrshin",
+    "nxjerrtë",
+    "nxjerrë",
+    "nxjerrësh",
+    "nxor",
+    "nxora",
+    "nxore",
+    "nxori",
+    "nxorëm",
+    "nxorën",
+    "nxorët"
+   ]
+  },
+  "shes": {
+   "participle": "shitur",
+   "forms": [
+    "shes",
+    "shesim",
+    "shesin",
+    "shesë",
+    "shesësh",
+    "shet",
+    "shisja",
+    "shisje",
+    "shisni",
+    "shisnim",
+    "shisnin",
+    "shisnit",
+    "shiste",
+    "shit",
+    "shita",
+    "shite",
+    "shitem",
+    "shitemi",
+    "shiten",
+    "shiteni",
+    "shitesh",
+    "shitesha",
+    "shiteshe",
+    "shiteshim",
+    "shiteshin",
+    "shiteshit",
+    "shitet",
+    "shiti",
+    "shitka",
+    "shitkam",
+    "shitkan",
+    "shitke",
+    "shitkej",
+    "shitkemi",
+    "shitkeni",
+    "shitkësha",
+    "shitkëshe",
+    "shitkëshim",
+    "shitkëshin",
+    "shitkëshit",
+    "shitni",
+    "shitsh",
+    "shitsha",
+    "shitshi",
+    "shitshim",
+    "shitshin",
+    "shittë",
+    "shitur",
+    "shitëm",
+    "shitën",
+    "shitët"
+   ]
+  },
+  "zbres": {
+   "participle": "zbritur",
+   "forms": [
+    "zbres",
+    "zbresim",
+    "zbresin",
+    "zbresë",
+    "zbresësh",
+    "zbret",
+    "zbrisja",
+    "zbrisje",
+    "zbrisni",
+    "zbrisnim",
+    "zbrisnin",
+    "zbrisnit",
+    "zbriste",
+    "zbrit",
+    "zbrita",
+    "zbrite",
+    "zbriti",
+    "zbritka",
+    "zbritkam",
+    "zbritkan",
+    "zbritke",
+    "zbritkej",
+    "zbritkemi",
+    "zbritkeni",
+    "zbritkësha",
+    "zbritkëshe",
+    "zbritkëshim",
+    "zbritkëshin",
+    "zbritkëshit",
+    "zbritni",
+    "zbritsh",
+    "zbritsha",
+    "zbritshi",
+    "zbritshim",
+    "zbritshin",
+    "zbrittë",
+    "zbritur",
+    "zbritëm",
+    "zbritën",
+    "zbritët"
+   ]
+  },
+  "ngre": {
+   "participle": "ngritur",
+   "forms": [
+    "ngre",
+    "ngrejë",
+    "ngremë",
+    "ngrenë",
+    "ngresh",
+    "ngri",
+    "ngrihem",
+    "ngrihemi",
+    "ngrihen",
+    "ngriheni",
+    "ngrihesh",
+    "ngrihesha",
+    "ngriheshe",
+    "ngriheshim",
+    "ngriheshin",
+    "ngriheshit",
+    "ngrihet",
+    "ngrihu",
+    "ngrija",
+    "ngrije",
+    "ngrini",
+    "ngrinim",
+    "ngrinin",
+    "ngrinit",
+    "ngrinte",
+    "ngrit",
+    "ngrita",
+    "ngrite",
+    "ngriti",
+    "ngritka",
+    "ngritkam",
+    "ngritkan",
+    "ngritke",
+    "ngritkemi",
+    "ngritkeni",
+    "ngritkësh",
+    "ngritkësha",
+    "ngritkëshe",
+    "ngritkëshim",
+    "ngritkëshin",
+    "ngritkëshit",
+    "ngritsh",
+    "ngritsha",
+    "ngritshi",
+    "ngritshim",
+    "ngritshin",
+    "ngrittë",
+    "ngritur",
+    "ngritëm",
+    "ngritën",
+    "ngritët"
+   ]
+  },
+  "shkoj": {
+   "participle": "shkuar",
+   "forms": [
+    "shko",
+    "shkofsh",
+    "shkofsha",
+    "shkofshi",
+    "shkofshim",
+    "shkofshin",
+    "shkoftë",
+    "shkoi",
+    "shkoj",
+    "shkoja",
+    "shkoje",
+    "shkojmë",
+    "shkojnë",
+    "shkojë",
+    "shkon",
+    "shkoni",
+    "shkonim",
+    "shkonin",
+    "shkonit",
+    "shkonte",
+    "shkosh",
+    "shkova",
+    "shkove",
+    "shkuaka",
+    "shkuakam",
+    "shkuakan",
+    "shkuake",
+    "shkuakej",
+    "shkuakemi",
+    "shkuakeni",
+    "shkuakësha",
+    "shkuakëshe",
+    "shkuakëshim",
+    "shkuakëshin",
+    "shkuakëshit",
+    "shkuam",
+    "shkuan",
+    "shkuar",
+    "shkuat"
+   ]
+  },
+  "shuaj": {
+   "participle": "shuar",
+   "forms": [
+    "shofsh",
+    "shofsha",
+    "shofshi",
+    "shofshim",
+    "shofshin",
+    "shoftë",
+    "shoi",
+    "shova",
+    "shove",
+    "shua",
+    "shuaj",
+    "shuaja",
+    "shuaje",
+    "shuajmë",
+    "shuajnë",
+    "shuajë",
+    "shuaka",
+    "shuakam",
+    "shuakan",
+    "shuake",
+    "shuakej",
+    "shuakemi",
+    "shuakeni",
+    "shuakësha",
+    "shuakëshe",
+    "shuakëshim",
+    "shuakëshin",
+    "shuakëshit",
+    "shuam",
+    "shuan",
+    "shuani",
+    "shuanim",
+    "shuanin",
+    "shuanit",
+    "shuante",
+    "shuar",
+    "shuash",
+    "shuat",
+    "shuhem",
+    "shuhemi",
+    "shuhen",
+    "shuheni",
+    "shuhesh",
+    "shuhesha",
+    "shuheshe",
+    "shuheshim",
+    "shuheshin",
+    "shuheshit",
+    "shuhet"
+   ]
+  },
+  "bluaj": {
+   "participle": "bluar",
+   "forms": [
+    "blofsh",
+    "blofsha",
+    "blofshi",
+    "blofshim",
+    "blofshin",
+    "bloftë",
+    "bloi",
+    "blova",
+    "blove",
+    "bluaj",
+    "bluaja",
+    "bluaje",
+    "bluajmë",
+    "bluajnë",
+    "bluajë",
+    "bluaka",
+    "bluakam",
+    "bluakan",
+    "bluake",
+    "bluakej",
+    "bluakemi",
+    "bluakeni",
+    "bluakësha",
+    "bluakëshe",
+    "bluakëshim",
+    "bluakëshin",
+    "bluakëshit",
+    "bluam",
+    "bluan",
+    "bluani",
+    "bluanim",
+    "bluanin",
+    "bluanit",
+    "bluante",
+    "bluar",
+    "bluash",
+    "bluat"
+   ]
+  },
+  "tredh": {
+   "participle": "tredhur",
+   "forms": [
+    "tredh",
+    "tredhim",
+    "tredhin",
+    "tredhka",
+    "tredhkam",
+    "tredhkan",
+    "tredhke",
+    "tredhkej",
+    "tredhkemi",
+    "tredhkeni",
+    "tredhkësha",
+    "tredhkëshe",
+    "tredhkëshim",
+    "tredhkëshin",
+    "tredhkëshit",
+    "tredhsh",
+    "tredhsha",
+    "tredhshi",
+    "tredhshim",
+    "tredhshin",
+    "tredhtë",
+    "tredhur",
+    "tredhë",
+    "tredhësh",
+    "tridh",
+    "tridhem",
+    "tridhemi",
+    "tridhen",
+    "tridheni",
+    "tridhesh",
+    "tridhesha",
+    "tridheshe",
+    "tridheshim",
+    "tridheshin",
+    "tridheshit",
+    "tridhet",
+    "tridhja",
+    "tridhje",
+    "tridhni",
+    "tridhnim",
+    "tridhnin",
+    "tridhnit",
+    "tridhte",
+    "trodh",
+    "trodha",
+    "trodhe",
+    "trodhi",
+    "trodhëm",
+    "trodhën",
+    "trodhët"
+   ]
+  },
+  "pjerdh": {
+   "participle": "pjerdhur",
+   "forms": [
+    "pirdh",
+    "pirdhja",
+    "pirdhje",
+    "pirdhni",
+    "pirdhnim",
+    "pirdhnin",
+    "pirdhnit",
+    "pirdhte",
+    "pjerdh",
+    "pjerdhim",
+    "pjerdhin",
+    "pjerdhka",
+    "pjerdhkam",
+    "pjerdhkan",
+    "pjerdhke",
+    "pjerdhkej",
+    "pjerdhkemi",
+    "pjerdhkeni",
+    "pjerdhkësha",
+    "pjerdhkëshe",
+    "pjerdhkëshim",
+    "pjerdhkëshin",
+    "pjerdhkëshit",
+    "pjerdhsh",
+    "pjerdhsha",
+    "pjerdhshi",
+    "pjerdhshim",
+    "pjerdhshin",
+    "pjerdhtë",
+    "pjerdhur",
+    "pjerdhë",
+    "pjerdhësh",
+    "pordha",
+    "pordhe",
+    "pordhi",
+    "pordhëm",
+    "pordhën",
+    "pordhët"
+   ]
+  },
+  "thërras": {
+   "participle": "thërritur",
+   "forms": [
+    "thërras",
+    "thërrasim",
+    "thërrasin",
+    "thërrasë",
+    "thërrasësh",
+    "thërret",
+    "thërrisja",
+    "thërrisje",
+    "thërrisni",
+    "thërrisnim",
+    "thërrisnin",
+    "thërrisnit",
+    "thërriste",
+    "thërrit",
+    "thërrita",
+    "thërrite",
+    "thërritem",
+    "thërritemi",
+    "thërriten",
+    "thërriteni",
+    "thërritesh",
+    "thërritesha",
+    "thërriteshe",
+    "thërriteshim",
+    "thërriteshin",
+    "thërriteshit",
+    "thërritet",
+    "thërriti",
+    "thërritka",
+    "thërritkam",
+    "thërritkan",
+    "thërritke",
+    "thërritkej",
+    "thërritkemi",
+    "thërritkeni",
+    "thërritkësha",
+    "thërritkëshe",
+    "thërritkëshim",
+    "thërritkëshin",
+    "thërritkëshit",
+    "thërritni",
+    "thërritsh",
+    "thërritsha",
+    "thërritshi",
+    "thërritshim",
+    "thërritshin",
+    "thërrittë",
+    "thërritur",
+    "thërritëm",
+    "thërritën",
+    "thërritët"
+   ]
+  }
+ },
+ "nouns": {
+  "abstenim": [
+   {
+    "word": "abstenim",
+    "plural": "-e(t)."
+   }
+  ],
+  "adrese": [
+   {
+    "word": "adresë",
+    "plural": "-a(t)"
+   }
+  ],
+  "aeroplan": [
+   {
+    "word": "aeroplan",
+    "plural": "-ë(t)"
+   }
+  ],
+  "afat": [
+   {
+    "word": "afat",
+    "plural": "-e(t)"
+   }
+  ],
+  "aftesi": [
+   {
+    "word": "aftësi",
+    "plural": "-(të)"
+   }
+  ],
+  "agjenci": [
+   {
+    "word": "agjenci",
+    "plural": "-(të)"
+   }
+  ],
+  "ajet": [
+   {
+    "word": "ajet",
+    "plural": "-e(t)"
+   }
+  ],
+  "akademi": [
+   {
+    "word": "akademi",
+    "plural": "-(të)"
+   }
+  ],
+  "aktivitet": [
+   {
+    "word": "aktivitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "aktualitet": [
+   {
+    "word": "aktualitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "alergji": [
+   {
+    "word": "alergji",
+    "plural": "-(të)"
+   }
+  ],
+  "alfabet": [
+   {
+    "word": "alfabet",
+    "plural": "-e(t)"
+   }
+  ],
+  "amanet": [
+   {
+    "word": "amanet",
+    "plural": "-e(t)"
+   }
+  ],
+  "amnisti": [
+   {
+    "word": "amnisti",
+    "plural": "-(të)"
+   }
+  ],
+  "anetare": [
+   {
+    "word": "anëtare",
+    "plural": "-e(t)."
+   }
+  ],
+  "anetar": [
+   {
+    "word": "anëtar",
+    "plural": "-ë(t)"
+   }
+  ],
+  "ankese": [
+   {
+    "word": "ankesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "anomali": [
+   {
+    "word": "anomali",
+    "plural": "-(të)"
+   }
+  ],
+  "ansambel": [
+   {
+    "word": "ansambël",
+    "plural": "-le(t)"
+   }
+  ],
+  "aparat": [
+   {
+    "word": "aparat",
+    "plural": "-e(t)"
+   }
+  ],
+  "apostull": [
+   {
+    "word": "apostull",
+    "plural": "-j(t)"
+   }
+  ],
+  "are": [
+   {
+    "word": "arë",
+    "plural": "-a(t)"
+   }
+  ],
+  "arene": [
+   {
+    "word": "arenë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ari": [
+   {
+    "word": "ari",
+    "plural": "-nj(të)"
+   }
+  ],
+  "armik": [
+   {
+    "word": "armik",
+    "plural": "-q(të)"
+   }
+  ],
+  "armiqesi": [
+   {
+    "word": "armiqësi",
+    "plural": "-(të)"
+   }
+  ],
+  "artikull": [
+   {
+    "word": "artikull",
+    "plural": "-j(t)"
+   }
+  ],
+  "artileri": [
+   {
+    "word": "artileri",
+    "plural": "-(të)"
+   }
+  ],
+  "astrit": [
+   {
+    "word": "astrit",
+    "plural": "-ë(t)"
+   }
+  ],
+  "astronaut": [
+   {
+    "word": "astronaut",
+    "plural": "-ë(t)"
+   }
+  ],
+  "atentat": [
+   {
+    "word": "atentat",
+    "plural": "-e(t)"
+   }
+  ],
+  "atlet": [
+   {
+    "word": "atlet",
+    "plural": "-ë(t)"
+   }
+  ],
+  "atribut": [
+   {
+    "word": "atribut",
+    "plural": "-e(t)"
+   }
+  ],
+  "autobus": [
+   {
+    "word": "autobus",
+    "plural": "-ë(t)"
+   }
+  ],
+  "automjet": [
+   {
+    "word": "automjet",
+    "plural": "-e(t)"
+   }
+  ],
+  "avokat": [
+   {
+    "word": "avokat",
+    "plural": "-ë(t)"
+   }
+  ],
+  "avull": [
+   {
+    "word": "avull",
+    "plural": "-j(t)"
+   }
+  ],
+  "azhurnim": [
+   {
+    "word": "azhurnim",
+    "plural": "-e(t)"
+   }
+  ],
+  "bageti": [
+   {
+    "word": "bagëti",
+    "plural": "-(të)"
+   }
+  ],
+  "balance": [
+   {
+    "word": "balancë",
+    "plural": "-a(t)"
+   }
+  ],
+  "balet": [
+   {
+    "word": "balet",
+    "plural": "-e(t)"
+   }
+  ],
+  "ballkon": [
+   {
+    "word": "ballkon",
+    "plural": "-e(t)"
+   }
+  ],
+  "banane": [
+   {
+    "word": "banane",
+    "plural": "-e(t)"
+   }
+  ],
+  "bandit": [
+   {
+    "word": "bandit",
+    "plural": "-ë(t)"
+   }
+  ],
+  "banese": [
+   {
+    "word": "banesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "banke": [
+   {
+    "word": "bankë",
+    "plural": "-a(t)"
+   },
+   {
+    "word": "bankë",
+    "plural": "-a(t)"
+   }
+  ],
+  "bari": [
+   {
+    "word": "bari",
+    "plural": "-nj(të)"
+   },
+   {
+    "word": "bari",
+    "plural": "-nj(të)"
+   }
+  ],
+  "bashkebisedues": [
+   {
+    "word": "bashkëbisedues",
+    "plural": "-(it)"
+   }
+  ],
+  "bashkepunetor": [
+   {
+    "word": "bashkëpunëtor",
+    "plural": "-ë(t)"
+   }
+  ],
+  "bashkepunim": [
+   {
+    "word": "bashkëpunim",
+    "plural": "-e(t)"
+   }
+  ],
+  "bashkesi": [
+   {
+    "word": "bashkësi",
+    "plural": "-(të)"
+   }
+  ],
+  "bateri": [
+   {
+    "word": "bateri",
+    "plural": "-(të)"
+   }
+  ],
+  "beteje": [
+   {
+    "word": "betejë",
+    "plural": "-a(t)"
+   }
+  ],
+  "bibel": [
+   {
+    "word": "bibël",
+    "plural": "-la(t)"
+   }
+  ],
+  "bir": [
+   {
+    "word": "bir",
+    "plural": "-j(të)"
+   }
+  ],
+  "bizhuteri": [
+   {
+    "word": "bizhuteri",
+    "plural": "-(të)"
+   }
+  ],
+  "biznes": [
+   {
+    "word": "biznes",
+    "plural": "-e(t)"
+   }
+  ],
+  "biznesmen": [
+   {
+    "word": "biznesmen",
+    "plural": "-ë(t)"
+   }
+  ],
+  "bregdet": [
+   {
+    "word": "bregdet",
+    "plural": "-e(t)"
+   }
+  ],
+  "breg": [
+   {
+    "word": "breg",
+    "plural": "brigje(t)"
+   }
+  ],
+  "bri": [
+   {
+    "word": "bri",
+    "plural": "-rë(t)"
+   }
+  ],
+  "brilant": [
+   {
+    "word": "brilant",
+    "plural": "-e(t)"
+   }
+  ],
+  "bronz": [
+   {
+    "word": "bronz",
+    "plural": "-e(t)"
+   }
+  ],
+  "buletin": [
+   {
+    "word": "buletin",
+    "plural": "-ë(t)"
+   }
+  ],
+  "buxhet": [
+   {
+    "word": "buxhet",
+    "plural": "-e(t)"
+   }
+  ],
+  "ceremoni": [
+   {
+    "word": "ceremoni",
+    "plural": "-(të)"
+   }
+  ],
+  "cikel": [
+   {
+    "word": "cikël",
+    "plural": "-le(t)"
+   },
+   {
+    "word": "çikël",
+    "plural": "-la(t)"
+   },
+   {
+    "word": "çikël",
+    "plural": "-la(t)"
+   },
+   {
+    "word": "çikël",
+    "plural": "-la(t)"
+   }
+  ],
+  "cilesi": [
+   {
+    "word": "cilësi",
+    "plural": "-(të)"
+   }
+  ],
+  "dafine": [
+   {
+    "word": "dafinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "dash": [
+   {
+    "word": "dash",
+    "plural": "desh(të)"
+   }
+  ],
+  "debat": [
+   {
+    "word": "debat",
+    "plural": "-e(t)"
+   }
+  ],
+  "degjues": [
+   {
+    "word": "dëgjues",
+    "plural": "-(it)"
+   }
+  ],
+  "dekan": [
+   {
+    "word": "dekan",
+    "plural": "-ë(t)"
+   }
+  ],
+  "dekret": [
+   {
+    "word": "dekret",
+    "plural": "-e(t)"
+   }
+  ],
+  "delegat": [
+   {
+    "word": "delegat",
+    "plural": "-ë(t)"
+   }
+  ],
+  "demokraci": [
+   {
+    "word": "demokraci",
+    "plural": "-(të)"
+   }
+  ],
+  "densitet": [
+   {
+    "word": "densitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "depo": [
+   {
+    "word": "depo",
+    "plural": "-(t)"
+   }
+  ],
+  "deputet": [
+   {
+    "word": "deputet",
+    "plural": "-ë(t)"
+   }
+  ],
+  "dere": [
+   {
+    "word": "derë",
+    "plural": "dyer(t)"
+   }
+  ],
+  "dergese": [
+   {
+    "word": "dërgesë",
+    "plural": "-e(t)"
+   }
+  ],
+  "dervish": [
+   {
+    "word": "dervish",
+    "plural": "-ë(t)"
+   }
+  ],
+  "dhenie": [
+   {
+    "word": "dhënie",
+    "plural": "-e(t)"
+   }
+  ],
+  "dhunim": [
+   {
+    "word": "dhunim",
+    "plural": "-e(t)"
+   }
+  ],
+  "diamant": [
+   {
+    "word": "diamant",
+    "plural": "-e(t)"
+   }
+  ],
+  "dinamo": [
+   {
+    "word": "dinamo",
+    "plural": "-(t)"
+   }
+  ],
+  "direktive": [
+   {
+    "word": "direktivë",
+    "plural": "-a(t)"
+   }
+  ],
+  "disipline": [
+   {
+    "word": "disiplinë",
+    "plural": "-a(t)"
+   },
+   {
+    "word": "disiplinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "diskriminim": [
+   {
+    "word": "diskriminim",
+    "plural": "-e(t)"
+   }
+  ],
+  "dispozite": [
+   {
+    "word": "dispozitë",
+    "plural": "-a(t)"
+   }
+  ],
+  "djale": [
+   {
+    "word": "djalë",
+    "plural": "djem(të)"
+   }
+  ],
+  "djegie": [
+   {
+    "word": "djegie",
+    "plural": "-e(t)"
+   }
+  ],
+  "dobesi": [
+   {
+    "word": "dobësi",
+    "plural": "-(të)"
+   }
+  ],
+  "dogane": [
+   {
+    "word": "doganë",
+    "plural": "-a(t)"
+   }
+  ],
+  "doktrine": [
+   {
+    "word": "doktrinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "dore": [
+   {
+    "word": "dore",
+    "plural": "-(të)"
+   },
+   {
+    "word": "dorë",
+    "plural": "duar(t)"
+   }
+  ],
+  "drejtoreshe": [
+   {
+    "word": "drejtoreshë",
+    "plural": "-esha(t)"
+   }
+  ],
+  "drejtori": [
+   {
+    "word": "drejtori",
+    "plural": "-(të)"
+   }
+  ],
+  "dru": [
+   {
+    "word": "dru",
+    "plural": "-(të)"
+   },
+   {
+    "word": "dru",
+    "plural": "-rë(t)"
+   }
+  ],
+  "duhanpires": [
+   {
+    "word": "duhanpirës",
+    "plural": "-(it)"
+   }
+  ],
+  "dukuri": [
+   {
+    "word": "dukuri",
+    "plural": "-(të)"
+   }
+  ],
+  "dyqan": [
+   {
+    "word": "dyqan",
+    "plural": "-e(t)"
+   }
+  ],
+  "dysheme": [
+   {
+    "word": "dysheme",
+    "plural": "-(të)"
+   },
+   {
+    "word": "dysheme",
+    "plural": "-(të)"
+   }
+  ],
+  "ekonomi": [
+   {
+    "word": "ekonomi",
+    "plural": "-(të)"
+   }
+  ],
+  "ekran": [
+   {
+    "word": "ekran",
+    "plural": "-e(t)"
+   }
+  ],
+  "ekspedite": [
+   {
+    "word": "ekspeditë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ekzaminim": [
+   {
+    "word": "ekzaminim",
+    "plural": "-e(t)"
+   }
+  ],
+  "eme": [
+   {
+    "word": "ëmë",
+    "plural": "-a(t)"
+   }
+  ],
+  "emigrant": [
+   {
+    "word": "emigrant",
+    "plural": "-ë(t)"
+   }
+  ],
+  "enderr": [
+   {
+    "word": "ëndërr",
+    "plural": "-rra(t)"
+   }
+  ],
+  "ene": [
+   {
+    "word": "enë",
+    "plural": "-ë(t)"
+   }
+  ],
+  "engjell": [
+   {
+    "word": "engjëll",
+    "plural": "-j(t)"
+   }
+  ],
+  "entitet": [
+   {
+    "word": "entitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "epidemi": [
+   {
+    "word": "epidemi",
+    "plural": "-(të)"
+   }
+  ],
+  "epitet": [
+   {
+    "word": "epitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "ere": [
+   {
+    "word": "erë",
+    "plural": "-ëra(t)"
+   },
+   {
+    "word": "erë",
+    "plural": "-ëra(t)"
+   }
+  ],
+  "ese": [
+   {
+    "word": "ese",
+    "plural": "-(të)"
+   }
+  ],
+  "etni": [
+   {
+    "word": "etni",
+    "plural": "-(të)"
+   }
+  ],
+  "euro": [
+   {
+    "word": "euro",
+    "plural": "-(t)"
+   }
+  ],
+  "fakultet": [
+   {
+    "word": "fakultet",
+    "plural": "-e(t)"
+   }
+  ],
+  "farke": [
+   {
+    "word": "farkë",
+    "plural": "-a(t)"
+   }
+  ],
+  "farmaci": [
+   {
+    "word": "farmaci",
+    "plural": "-(të)"
+   }
+  ],
+  "fatalitet": [
+   {
+    "word": "fatalitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "fatkeqesi": [
+   {
+    "word": "fatkeqësi",
+    "plural": "-(të)"
+   }
+  ],
+  "fatos": [
+   {
+    "word": "fatos",
+    "plural": "-a(t)"
+   }
+  ],
+  "fejese": [
+   {
+    "word": "fejesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "fe": [
+   {
+    "word": "fe",
+    "plural": "-(të)"
+   }
+  ],
+  "fenomen": [
+   {
+    "word": "fenomen",
+    "plural": "-e(t)"
+   }
+  ],
+  "fidan": [
+   {
+    "word": "fidan",
+    "plural": "-ë(t)"
+   }
+  ],
+  "flamur": [
+   {
+    "word": "flamur",
+    "plural": "-ë(t)"
+   }
+  ],
+  "flluske": [
+   {
+    "word": "flluskë",
+    "plural": "-a(t)"
+   }
+  ],
+  "front": [
+   {
+    "word": "front",
+    "plural": "-e(t)"
+   }
+  ],
+  "fshat": [
+   {
+    "word": "fshat",
+    "plural": "-ra(t)"
+   }
+  ],
+  "fundjave": [
+   {
+    "word": "fundjavë",
+    "plural": "-ë(t)"
+   }
+  ],
+  "fundvit": [
+   {
+    "word": "fundvit",
+    "plural": "-e(t)"
+   }
+  ],
+  "fuqi": [
+   {
+    "word": "fuqi",
+    "plural": "-(të)"
+   }
+  ],
+  "furgon": [
+   {
+    "word": "furgon",
+    "plural": "-ë(t)"
+   }
+  ],
+  "fustan": [
+   {
+    "word": "fustan",
+    "plural": "-e(t)"
+   }
+  ],
+  "galeri": [
+   {
+    "word": "galeri",
+    "plural": "-(të)"
+   }
+  ],
+  "garanci": [
+   {
+    "word": "garanci",
+    "plural": "-(të)"
+   }
+  ],
+  "gardian": [
+   {
+    "word": "gardian",
+    "plural": "-ë(t)"
+   }
+  ],
+  "gezhoje": [
+   {
+    "word": "gëzhojë",
+    "plural": "-a(t)"
+   }
+  ],
+  "gisht": [
+   {
+    "word": "gisht",
+    "plural": "-a(t)"
+   }
+  ],
+  "gjak": [
+   {
+    "word": "gjak",
+    "plural": "-kra(t)"
+   }
+  ],
+  "gjarper": [
+   {
+    "word": "gjarpër",
+    "plural": "-ërinj(të)"
+   }
+  ],
+  "gji": [
+   {
+    "word": "gji",
+    "plural": "-nj(të)"
+   }
+  ],
+  "gjini": [
+   {
+    "word": "gjini",
+    "plural": "-(të)"
+   }
+  ],
+  "gjuhe": [
+   {
+    "word": "gjuhë",
+    "plural": "-ë(t)"
+   },
+   {
+    "word": "gjuhë",
+    "plural": "-ë(t)"
+   }
+  ],
+  "gju": [
+   {
+    "word": "gju",
+    "plural": "-një(t)"
+   }
+  ],
+  "gjykatese": [
+   {
+    "word": "gjykatëse",
+    "plural": "-e(t)."
+   }
+  ],
+  "gjysh": [
+   {
+    "word": "gjysh",
+    "plural": "-ër(it)"
+   }
+  ],
+  "golashenues": [
+   {
+    "word": "golashënues",
+    "plural": "-(it)"
+   }
+  ],
+  "granit": [
+   {
+    "word": "granit",
+    "plural": "-e(t)"
+   }
+  ],
+  "greve": [
+   {
+    "word": "grevë",
+    "plural": "-a(t)"
+   }
+  ],
+  "grua": [
+   {
+    "word": "grua",
+    "plural": "gra(të)"
+   }
+  ],
+  "hajdut": [
+   {
+    "word": "hajdut",
+    "plural": "-ë(t)"
+   }
+  ],
+  "hallke": [
+   {
+    "word": "hallkë",
+    "plural": "-a(t)"
+   }
+  ],
+  "haxhi": [
+   {
+    "word": "haxhi",
+    "plural": "-lerë(t)"
+   }
+  ],
+  "hebre": [
+   {
+    "word": "hebre",
+    "plural": "-nj(të)"
+   }
+  ],
+  "hekur": [
+   {
+    "word": "hekur",
+    "plural": "-a(t)"
+   }
+  ],
+  "heroine": [
+   {
+    "word": "heroinë",
+    "plural": "-ina(t)."
+   }
+  ],
+  "heroizem": [
+   {
+    "word": "heroizëm",
+    "plural": "-a(t)"
+   }
+  ],
+  "hero": [
+   {
+    "word": "hero",
+    "plural": "-nj(të)"
+   }
+  ],
+  "hipokrizi": [
+   {
+    "word": "hipokrizi",
+    "plural": "-(të)"
+   }
+  ],
+  "historian": [
+   {
+    "word": "historian",
+    "plural": "-ë(t)"
+   }
+  ],
+  "histori": [
+   {
+    "word": "histori",
+    "plural": "-(të)"
+   }
+  ],
+  "horizont": [
+   {
+    "word": "horizont",
+    "plural": "-e(t)"
+   }
+  ],
+  "hormon": [
+   {
+    "word": "hormon",
+    "plural": "-e(t)"
+   }
+  ],
+  "hoxhe": [
+   {
+    "word": "hoxhë",
+    "plural": "-allarë(t)"
+   }
+  ],
+  "humnere": [
+   {
+    "word": "humnerë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ide": [
+   {
+    "word": "ide",
+    "plural": "-(të)"
+   }
+  ],
+  "identitet": [
+   {
+    "word": "identitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "ideologji": [
+   {
+    "word": "ideologji",
+    "plural": "-(të)"
+   }
+  ],
+  "idhull": [
+   {
+    "word": "idhull",
+    "plural": "-j(t)"
+   }
+  ],
+  "ikone": [
+   {
+    "word": "ikonë",
+    "plural": "-a(t)"
+   }
+  ],
+  "imigrant": [
+   {
+    "word": "imigrant",
+    "plural": "-ë(t)"
+   }
+  ],
+  "impiant": [
+   {
+    "word": "impiant",
+    "plural": "-e(t)"
+   }
+  ],
+  "importues": [
+   {
+    "word": "importues",
+    "plural": "-(it)"
+   }
+  ],
+  "inat": [
+   {
+    "word": "inat",
+    "plural": "-e(t)"
+   }
+  ],
+  "industri": [
+   {
+    "word": "industri",
+    "plural": "-(të)"
+   }
+  ],
+  "institut": [
+   {
+    "word": "institut",
+    "plural": "-e(t)"
+   }
+  ],
+  "integritet": [
+   {
+    "word": "integritet",
+    "plural": "-e(t)"
+   }
+  ],
+  "interes": [
+   {
+    "word": "interes",
+    "plural": "-a(t)"
+   }
+  ],
+  "internim": [
+   {
+    "word": "internim",
+    "plural": "-e(t)"
+   }
+  ],
+  "intervenim": [
+   {
+    "word": "intervenim",
+    "plural": "-e(t)"
+   }
+  ],
+  "intimitet": [
+   {
+    "word": "intimitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "ironi": [
+   {
+    "word": "ironi",
+    "plural": "-(të)"
+   }
+  ],
+  "ishull": [
+   {
+    "word": "ishull",
+    "plural": "-j(t)"
+   }
+  ],
+  "jehone": [
+   {
+    "word": "jehonë",
+    "plural": "-a(t)"
+   }
+  ],
+  "juri": [
+   {
+    "word": "juri",
+    "plural": "-(të)"
+   }
+  ],
+  "kabine": [
+   {
+    "word": "kabinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "kabinet": [
+   {
+    "word": "kabinet",
+    "plural": "-e(t)"
+   }
+  ],
+  "kafeine": [
+   {
+    "word": "kafeinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "kafe": [
+   {
+    "word": "kafe",
+    "plural": "-e(t)]"
+   }
+  ],
+  "kafene": [
+   {
+    "word": "kafene",
+    "plural": "-(të)"
+   }
+  ],
+  "kafke": [
+   {
+    "word": "kafkë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ka": [
+   {
+    "word": "ka",
+    "plural": "qe(të)"
+   }
+  ],
+  "kakao": [
+   {
+    "word": "kakao",
+    "plural": "-(t)"
+   }
+  ],
+  "kale": [
+   {
+    "word": "kalë",
+    "plural": "kuaj(t)"
+   }
+  ],
+  "kalori": [
+   {
+    "word": "kalori",
+    "plural": "-(të)"
+   }
+  ],
+  "kamere": [
+   {
+    "word": "kamerë",
+    "plural": "-a(t)"
+   }
+  ],
+  "kampionat": [
+   {
+    "word": "kampionat",
+    "plural": "-e(t)"
+   }
+  ],
+  "kandidat": [
+   {
+    "word": "kandidat",
+    "plural": "-ë(t)"
+   }
+  ],
+  "kanton": [
+   {
+    "word": "kanton",
+    "plural": "-e(t)"
+   }
+  ],
+  "kanun": [
+   {
+    "word": "kanun",
+    "plural": "-e(t)"
+   }
+  ],
+  "kapacitet": [
+   {
+    "word": "kapacitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "kapitull": [
+   {
+    "word": "kapitull",
+    "plural": "-j(t)"
+   }
+  ],
+  "karantine": [
+   {
+    "word": "karantinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "karburant": [
+   {
+    "word": "karburant",
+    "plural": "-e(t)"
+   }
+  ],
+  "karriere": [
+   {
+    "word": "karrierë",
+    "plural": "-a(t)"
+   }
+  ],
+  "karrige": [
+   {
+    "word": "karrige",
+    "plural": "-e(t)"
+   }
+  ],
+  "kartoline": [
+   {
+    "word": "kartolinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "karton": [
+   {
+    "word": "karton",
+    "plural": "-ë(t)"
+   }
+  ],
+  "kategori": [
+   {
+    "word": "kategori",
+    "plural": "-(të)"
+   }
+  ],
+  "kazan": [
+   {
+    "word": "kazan",
+    "plural": "-ë(t)"
+   }
+  ],
+  "kenaqesi": [
+   {
+    "word": "kënaqësi",
+    "plural": "-(të)"
+   }
+  ],
+  "kercenim": [
+   {
+    "word": "kërcënim",
+    "plural": "-e(t)"
+   }
+  ],
+  "kerkese": [
+   {
+    "word": "kërkesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "kinema": [
+   {
+    "word": "kinema",
+    "plural": "-(të)"
+   }
+  ],
+  "klan": [
+   {
+    "word": "klan",
+    "plural": "-e(t)"
+   }
+  ],
+  "klase": [
+   {
+    "word": "klasë",
+    "plural": "-a(t)"
+   }
+  ],
+  "kocke": [
+   {
+    "word": "kockë",
+    "plural": "-a(t)"
+   }
+  ],
+  "kokerr": [
+   {
+    "word": "kokërr",
+    "plural": "-rra(t)"
+   }
+  ],
+  "koloni": [
+   {
+    "word": "koloni",
+    "plural": "-(të)"
+   }
+  ],
+  "komandant": [
+   {
+    "word": "komandant",
+    "plural": "-ë(t)"
+   }
+  ],
+  "kombinat": [
+   {
+    "word": "kombinat",
+    "plural": "-e(t)"
+   }
+  ],
+  "komisariat": [
+   {
+    "word": "komisariat",
+    "plural": "-e(t)"
+   }
+  ],
+  "komitet": [
+   {
+    "word": "komitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "kompani": [
+   {
+    "word": "kompani",
+    "plural": "-(të)"
+   }
+  ],
+  "kompjuter": [
+   {
+    "word": "kompjuter",
+    "plural": "-a(t)"
+   }
+  ],
+  "komplot": [
+   {
+    "word": "komplot",
+    "plural": "-e(t)"
+   }
+  ],
+  "kompromis": [
+   {
+    "word": "kompromis",
+    "plural": "-e(t)"
+   }
+  ],
+  "komune": [
+   {
+    "word": "komunë",
+    "plural": "a(t)"
+   }
+  ],
+  "komunitet": [
+   {
+    "word": "komunitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "kongres": [
+   {
+    "word": "kongres",
+    "plural": "-e(t)"
+   }
+  ],
+  "kontribut": [
+   {
+    "word": "kontribut",
+    "plural": "-e(t)"
+   }
+  ],
+  "koordinim": [
+   {
+    "word": "koordinim",
+    "plural": "-e(t)"
+   }
+  ],
+  "korpus": [
+   {
+    "word": "korpus",
+    "plural": "-e(t)"
+   }
+  ],
+  "korridor": [
+   {
+    "word": "korridor",
+    "plural": "-ë(t)"
+   }
+  ],
+  "kosto": [
+   {
+    "word": "kosto",
+    "plural": "-(t)"
+   }
+  ],
+  "krahine": [
+   {
+    "word": "krahinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "kredi": [
+   {
+    "word": "kredi",
+    "plural": "-(të)"
+   }
+  ],
+  "krem": [
+   {
+    "word": "krem",
+    "plural": "-ra(t)"
+   }
+  ],
+  "krijimtari": [
+   {
+    "word": "krijimtari",
+    "plural": "-(të)"
+   }
+  ],
+  "kriminalitet": [
+   {
+    "word": "kriminalitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "krye": [
+   {
+    "word": "krye",
+    "plural": "krerë-t"
+   }
+  ],
+  "kryeqytet": [
+   {
+    "word": "kryeqytet",
+    "plural": "-e(t)"
+   }
+  ],
+  "kryesi": [
+   {
+    "word": "kryesi",
+    "plural": "-(të)"
+   }
+  ],
+  "kryesuese": [
+   {
+    "word": "kryesuese",
+    "plural": "-e(t)."
+   }
+  ],
+  "kryesues": [
+   {
+    "word": "kryesues",
+    "plural": "-(it)"
+   }
+  ],
+  "kthese": [
+   {
+    "word": "kthesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "kuader": [
+   {
+    "word": "kuadër",
+    "plural": "-ro(t)"
+   },
+   {
+    "word": "kuadër",
+    "plural": "-ro(t)"
+   }
+  ],
+  "kufi": [
+   {
+    "word": "kufi",
+    "plural": "-j(të)"
+   }
+  ],
+  "kumtese": [
+   {
+    "word": "kumtesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "kungull": [
+   {
+    "word": "kungull",
+    "plural": "-j(t)"
+   }
+  ],
+  "kupon": [
+   {
+    "word": "kupon",
+    "plural": "-ë(t)"
+   }
+  ],
+  "kurban": [
+   {
+    "word": "kurban",
+    "plural": "-e(t)"
+   }
+  ],
+  "kusheri": [
+   {
+    "word": "kushëri",
+    "plural": "-nj(të)"
+   }
+  ],
+  "kuti": [
+   {
+    "word": "kuti",
+    "plural": "-(të)"
+   }
+  ],
+  "kuzhine": [
+   {
+    "word": "kuzhinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "lagje": [
+   {
+    "word": "lagje",
+    "plural": "-e(t)"
+   }
+  ],
+  "lartesi": [
+   {
+    "word": "lartësi",
+    "plural": "-(të)"
+   }
+  ],
+  "lavdi": [
+   {
+    "word": "lavdi",
+    "plural": "-(të)"
+   }
+  ],
+  "lenie": [
+   {
+    "word": "lënie",
+    "plural": "-e(t)"
+   }
+  ],
+  "lepur": [
+   {
+    "word": "lepur",
+    "plural": "-j(t)"
+   }
+  ],
+  "letersi": [
+   {
+    "word": "letërsi",
+    "plural": "-(të)"
+   }
+  ],
+  "lexues": [
+   {
+    "word": "lexues",
+    "plural": "-(it)"
+   }
+  ],
+  "liqen": [
+   {
+    "word": "liqen",
+    "plural": "-e(t)"
+   }
+  ],
+  "liri": [
+   {
+    "word": "liri",
+    "plural": "-(të)"
+   },
+   {
+    "word": "liri",
+    "plural": "-(të)"
+   }
+  ],
+  "llogaridhenie": [
+   {
+    "word": "llogaridhënie",
+    "plural": "-e(t)"
+   }
+  ],
+  "llogari": [
+   {
+    "word": "llogari",
+    "plural": "-(të)"
+   }
+  ],
+  "lokalitet": [
+   {
+    "word": "lokalitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "lokomotive": [
+   {
+    "word": "lokomotivë",
+    "plural": "-a(t)"
+   }
+  ],
+  "lotari": [
+   {
+    "word": "lotari",
+    "plural": "-(të)"
+   }
+  ],
+  "lugine": [
+   {
+    "word": "luginë",
+    "plural": "-a(t)"
+   }
+  ],
+  "madhesi": [
+   {
+    "word": "madhësi",
+    "plural": "-(të)"
+   }
+  ],
+  "magazine": [
+   {
+    "word": "magazinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "magjister": [
+   {
+    "word": "magjistër",
+    "plural": "-ra(t)"
+   }
+  ],
+  "majmun": [
+   {
+    "word": "majmun",
+    "plural": "-ë(t)"
+   }
+  ],
+  "makine": [
+   {
+    "word": "makinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "makineri": [
+   {
+    "word": "makineri",
+    "plural": "-(të)"
+   }
+  ],
+  "mall": [
+   {
+    "word": "mall",
+    "plural": "-ra(t)"
+   }
+  ],
+  "mandat": [
+   {
+    "word": "mandat",
+    "plural": "-e(t)"
+   }
+  ],
+  "marredhenie": [
+   {
+    "word": "marrëdhënie",
+    "plural": "-e(t)"
+   }
+  ],
+  "martese": [
+   {
+    "word": "martesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "mashkull": [
+   {
+    "word": "mashkull",
+    "plural": "meshkuj(t)"
+   }
+  ],
+  "maske": [
+   {
+    "word": "maskë",
+    "plural": "-a(t)"
+   }
+  ],
+  "maternitet": [
+   {
+    "word": "maternitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "maturant": [
+   {
+    "word": "maturant",
+    "plural": "-ë(t)"
+   }
+  ],
+  "mbeturine": [
+   {
+    "word": "mbeturinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "mbretereshe": [
+   {
+    "word": "mbretëreshë",
+    "plural": "-a(t)."
+   }
+  ],
+  "mbulese": [
+   {
+    "word": "mbulesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "medrese": [
+   {
+    "word": "medrese",
+    "plural": "-(të)"
+   }
+  ],
+  "mekat": [
+   {
+    "word": "mëkat",
+    "plural": "-e(t)"
+   }
+  ],
+  "membrane": [
+   {
+    "word": "membranë",
+    "plural": "-a(t)"
+   }
+  ],
+  "mendesi": [
+   {
+    "word": "mendësi",
+    "plural": "-(të)"
+   }
+  ],
+  "mentalitet": [
+   {
+    "word": "mentalitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "mesdite": [
+   {
+    "word": "mesditë",
+    "plural": "-a(t)"
+   }
+  ],
+  "metro": [
+   {
+    "word": "metro",
+    "plural": "-(të)"
+   }
+  ],
+  "mi": [
+   {
+    "word": "mi",
+    "plural": "-nj(të)"
+   }
+  ],
+  "mike": [
+   {
+    "word": "mike",
+    "plural": "-e(t)"
+   }
+  ],
+  "mik": [
+   {
+    "word": "mik",
+    "plural": "-q(të)"
+   }
+  ],
+  "mikrofon": [
+   {
+    "word": "mikrofon",
+    "plural": "-a(t)"
+   }
+  ],
+  "milion": [
+   {
+    "word": "milion",
+    "plural": "-ë(t)"
+   }
+  ],
+  "miniere": [
+   {
+    "word": "minierë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ministri": [
+   {
+    "word": "ministri",
+    "plural": "-(të)"
+   }
+  ],
+  "minoritet": [
+   {
+    "word": "minoritet",
+    "plural": "-e(t)"
+   }
+  ],
+  "miqesi": [
+   {
+    "word": "miqësi",
+    "plural": "-(të)"
+   }
+  ],
+  "miresi": [
+   {
+    "word": "mirësi",
+    "plural": "-(të)"
+   }
+  ],
+  "mish": [
+   {
+    "word": "mish",
+    "plural": "-ra(t)"
+   }
+  ],
+  "mjedis": [
+   {
+    "word": "mjedis",
+    "plural": "-e(t)"
+   }
+  ],
+  "mjet": [
+   {
+    "word": "mjet",
+    "plural": "-e(t)"
+   }
+  ],
+  "mobilie": [
+   {
+    "word": "mobilie",
+    "plural": "-e(t)"
+   }
+  ],
+  "motiv": [
+   {
+    "word": "motiv",
+    "plural": "-e(t)"
+   },
+   {
+    "word": "motiv",
+    "plural": "-e(t)"
+   }
+  ],
+  "mrekulli": [
+   {
+    "word": "mrekulli",
+    "plural": "-(të)"
+   }
+  ],
+  "muaj": [
+   {
+    "word": "muaj",
+    "plural": "-(të)"
+   }
+  ],
+  "mundesi": [
+   {
+    "word": "mundësi",
+    "plural": "-(të)"
+   }
+  ],
+  "mungese": [
+   {
+    "word": "mungesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "muskul": [
+   {
+    "word": "muskul",
+    "plural": "-j(t)"
+   }
+  ],
+  "muze": [
+   {
+    "word": "muze",
+    "plural": "-(të)"
+   },
+   {
+    "word": "muzë",
+    "plural": "-a(t)"
+   }
+  ],
+  "muzikant": [
+   {
+    "word": "muzikant",
+    "plural": "-ë(t)"
+   }
+  ],
+  "myfti": [
+   {
+    "word": "myfti",
+    "plural": "-nj(të)"
+   }
+  ],
+  "nate": [
+   {
+    "word": "natë",
+    "plural": "net(ët)"
+   }
+  ],
+  "ndalese": [
+   {
+    "word": "ndalesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ndertese": [
+   {
+    "word": "ndërtesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "nendetese": [
+   {
+    "word": "nëndetëse",
+    "plural": "-e(t)"
+   }
+  ],
+  "nenshkrues": [
+   {
+    "word": "nënshkrues",
+    "plural": "-(it)"
+   }
+  ],
+  "nepunes": [
+   {
+    "word": "nëpunës",
+    "plural": "-(it)"
+   }
+  ],
+  "nevoje": [
+   {
+    "word": "nevojë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ngarkese": [
+   {
+    "word": "ngarkesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ngrenie": [
+   {
+    "word": "ngrënie",
+    "plural": "-e(t)"
+   }
+  ],
+  "nip": [
+   {
+    "word": "nip",
+    "plural": "-a(t)"
+   }
+  ],
+  "nishan": [
+   {
+    "word": "nishan",
+    "plural": "-e(t)"
+   }
+  ],
+  "njeri": [
+   {
+    "word": "njeri",
+    "plural": "njerëz(it)"
+   }
+  ],
+  "njesi": [
+   {
+    "word": "njësi",
+    "plural": "-(të)"
+   }
+  ],
+  "nofke": [
+   {
+    "word": "nofkë",
+    "plural": "-a(t)"
+   }
+  ],
+  "nostalgji": [
+   {
+    "word": "nostalgji",
+    "plural": "-(të)"
+   }
+  ],
+  "numer": [
+   {
+    "word": "numër",
+    "plural": "-ra(t)"
+   }
+  ],
+  "ode": [
+   {
+    "word": "ode",
+    "plural": "-e(t)"
+   },
+   {
+    "word": "odë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ofensive": [
+   {
+    "word": "ofensivë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ofertues": [
+   {
+    "word": "ofertues",
+    "plural": "-(it)"
+   }
+  ],
+  "opozite": [
+   {
+    "word": "opozitë",
+    "plural": "-a(t)"
+   }
+  ],
+  "oqean": [
+   {
+    "word": "oqean",
+    "plural": "-e(t)"
+   }
+  ],
+  "orbite": [
+   {
+    "word": "orbitë",
+    "plural": "-a(t)"
+   }
+  ],
+  "ore": [
+   {
+    "word": "orë",
+    "plural": "-ë(t)"
+   },
+   {
+    "word": "orë",
+    "plural": "-ë(t)"
+   }
+  ],
+  "orendi": [
+   {
+    "word": "orendi",
+    "plural": "-(të)"
+   }
+  ],
+  "organizem": [
+   {
+    "word": "organizëm",
+    "plural": "-ma(t)"
+   }
+  ],
+  "organ": [
+   {
+    "word": "organ",
+    "plural": "-e(t)"
+   }
+  ],
+  "origjine": [
+   {
+    "word": "origjinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "padi": [
+   {
+    "word": "padi",
+    "plural": "-(të)"
+   }
+  ],
+  "padrejtesi": [
+   {
+    "word": "padrejtësi",
+    "plural": "-(të)"
+   }
+  ],
+  "pagese": [
+   {
+    "word": "pagesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "pakenaqesi": [
+   {
+    "word": "pakënaqësi",
+    "plural": "-(të)"
+   }
+  ],
+  "pallto": [
+   {
+    "word": "pallto",
+    "plural": "-(t)"
+   }
+  ],
+  "pankreas": [
+   {
+    "word": "pankreas",
+    "plural": "-ë(t)"
+   }
+  ],
+  "parazit": [
+   {
+    "word": "parazit",
+    "plural": "-ë(t)"
+   }
+  ],
+  "parti": [
+   {
+    "word": "parti",
+    "plural": "-(të)"
+   },
+   {
+    "word": "parti",
+    "plural": "-(të)"
+   }
+  ],
+  "pasdite": [
+   {
+    "word": "pasdite",
+    "plural": "-e(t)"
+   }
+  ],
+  "peizazh": [
+   {
+    "word": "peizazh",
+    "plural": "-e(t)"
+   }
+  ],
+  "penallti": [
+   {
+    "word": "penallti",
+    "plural": "-(të)"
+   }
+  ],
+  "pengese": [
+   {
+    "word": "pengesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "perandori": [
+   {
+    "word": "perandori",
+    "plural": "-(të)"
+   }
+  ],
+  "perdorues": [
+   {
+    "word": "përdorues",
+    "plural": "-(it)"
+   },
+   {
+    "word": "përdorues",
+    "plural": "-(it)"
+   }
+  ],
+  "perendi": [
+   {
+    "word": "perëndi",
+    "plural": "-(të)"
+   }
+  ],
+  "perkatesi": [
+   {
+    "word": "përkatësi",
+    "plural": "-(të)"
+   }
+  ],
+  "perkrahes": [
+   {
+    "word": "përkrahës",
+    "plural": "-(it)"
+   }
+  ],
+  "perkthyes": [
+   {
+    "word": "përkthyes",
+    "plural": "-(it)"
+   }
+  ],
+  "permase": [
+   {
+    "word": "përmasë",
+    "plural": "-a(t)"
+   }
+  ],
+  "perparesi": [
+   {
+    "word": "përparësi",
+    "plural": "-(të)"
+   }
+  ],
+  "perpunim": [
+   {
+    "word": "përpunim",
+    "plural": "-e(t)"
+   }
+  ],
+  "perrua": [
+   {
+    "word": "përrua",
+    "plural": "-enj(të)"
+   }
+  ],
+  "personalitet": [
+   {
+    "word": "personalitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "pervoje": [
+   {
+    "word": "përvojë",
+    "plural": "-a(t)"
+   }
+  ],
+  "petrit": [
+   {
+    "word": "petrit",
+    "plural": "-ë(t)"
+   }
+  ],
+  "pishine": [
+   {
+    "word": "pishinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "pjese": [
+   {
+    "word": "pjesë",
+    "plural": "-ë(t)"
+   }
+  ],
+  "pjesemarrje": [
+   {
+    "word": "pjesëmarrje",
+    "plural": "-e(t)"
+   }
+  ],
+  "pjesetar": [
+   {
+    "word": "pjesëtar",
+    "plural": "-ë(t)"
+   }
+  ],
+  "plan": [
+   {
+    "word": "plan",
+    "plural": "-e(t)"
+   },
+   {
+    "word": "plan",
+    "plural": "-e(t)"
+   }
+  ],
+  "pleh": [
+   {
+    "word": "pleh",
+    "plural": "-ra(t)"
+   }
+  ],
+  "pluhur": [
+   {
+    "word": "pluhur",
+    "plural": "-a(t)"
+   }
+  ],
+  "poet": [
+   {
+    "word": "poet",
+    "plural": "-ë(t)"
+   }
+  ],
+  "poezi": [
+   {
+    "word": "poezi",
+    "plural": "-(të)"
+   }
+  ],
+  "politikan": [
+   {
+    "word": "politikan",
+    "plural": "-ë(t)"
+   }
+  ],
+  "popull": [
+   {
+    "word": "popull",
+    "plural": "-j(t)"
+   }
+  ],
+  "popullsi": [
+   {
+    "word": "popullsi",
+    "plural": "-(të)"
+   }
+  ],
+  "porosi": [
+   {
+    "word": "porosi",
+    "plural": "-(të)"
+   }
+  ],
+  "porosites": [
+   {
+    "word": "porositës",
+    "plural": "-(it)"
+   }
+  ],
+  "portret": [
+   {
+    "word": "portret",
+    "plural": "-e(t)"
+   }
+  ],
+  "pozite": [
+   {
+    "word": "pozitë",
+    "plural": "-a(t)"
+   }
+  ],
+  "pranvere": [
+   {
+    "word": "pranverë",
+    "plural": "-a(t)"
+   }
+  ],
+  "prapaskene": [
+   {
+    "word": "prapaskenë",
+    "plural": "-a(t)"
+   }
+  ],
+  "preparat": [
+   {
+    "word": "preparat",
+    "plural": "-e(t)"
+   }
+  ],
+  "prift": [
+   {
+    "word": "prift",
+    "plural": "-ërinj(të)"
+   }
+  ],
+  "princeshe": [
+   {
+    "word": "princeshë",
+    "plural": "-a(t)"
+   }
+  ],
+  "prind": [
+   {
+    "word": "prind",
+    "plural": "-ër(it)"
+   }
+  ],
+  "printer": [
+   {
+    "word": "printer",
+    "plural": "-a(t)"
+   }
+  ],
+  "prioritet": [
+   {
+    "word": "prioritet",
+    "plural": "-e(t)"
+   }
+  ],
+  "problem": [
+   {
+    "word": "problem",
+    "plural": "-e(t)"
+   }
+  ],
+  "proces": [
+   {
+    "word": "proces",
+    "plural": "-e(t)"
+   }
+  ],
+  "prodhues": [
+   {
+    "word": "prodhues",
+    "plural": "-(it)"
+   }
+  ],
+  "profesionalizem": [
+   {
+    "word": "profesionalizëm",
+    "plural": "-ma(t)"
+   }
+  ],
+  "prokurori": [
+   {
+    "word": "prokurori",
+    "plural": "-(të)"
+   }
+  ],
+  "prone": [
+   {
+    "word": "pronë",
+    "plural": "-a(t)"
+   }
+  ],
+  "proteine": [
+   {
+    "word": "proteinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "pseudonim": [
+   {
+    "word": "pseudonim",
+    "plural": "-e(t)"
+   }
+  ],
+  "publicitet": [
+   {
+    "word": "publicitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "pushtet": [
+   {
+    "word": "pushtet",
+    "plural": "-e(t)"
+   }
+  ],
+  "pyll": [
+   {
+    "word": "pyll",
+    "plural": "-je(t)"
+   }
+  ],
+  "qejf": [
+   {
+    "word": "qejf",
+    "plural": "-e(t)"
+   }
+  ],
+  "qendermbrojtes": [
+   {
+    "word": "qendërmbrojtës",
+    "plural": "-(it)"
+   }
+  ],
+  "qendrese": [
+   {
+    "word": "qëndresë",
+    "plural": "-a(t)"
+   }
+  ],
+  "qenie": [
+   {
+    "word": "qenie",
+    "plural": "-e(t)"
+   },
+   {
+    "word": "qenie",
+    "plural": "-e(t)"
+   }
+  ],
+  "qershi": [
+   {
+    "word": "qershi",
+    "plural": "-(të)"
+   }
+  ],
+  "qeveri": [
+   {
+    "word": "qeveri",
+    "plural": "-(të)"
+   }
+  ],
+  "qiell": [
+   {
+    "word": "qiell",
+    "plural": "-(t)"
+   }
+  ],
+  "qiradhenes": [
+   {
+    "word": "qiradhënës",
+    "plural": "-(it)"
+   }
+  ],
+  "qira": [
+   {
+    "word": "qira",
+    "plural": "-(të)"
+   }
+  ],
+  "qytet": [
+   {
+    "word": "qytet",
+    "plural": "-e(t)"
+   }
+  ],
+  "radhe": [
+   {
+    "word": "radhë",
+    "plural": "-ë(t)"
+   }
+  ],
+  "radio": [
+   {
+    "word": "radio",
+    "plural": "-(t)"
+   }
+  ],
+  "rajon": [
+   {
+    "word": "rajon",
+    "plural": "-e(t)"
+   }
+  ],
+  "redaksi": [
+   {
+    "word": "redaksi",
+    "plural": "-(të)"
+   }
+  ],
+  "refugjat": [
+   {
+    "word": "refugjat",
+    "plural": "-ë(t)"
+   }
+  ],
+  "regjisor": [
+   {
+    "word": "regjisor",
+    "plural": "-ë(t)"
+   }
+  ],
+  "re": [
+   {
+    "word": "re",
+    "plural": "-(të)"
+   },
+   {
+    "word": "re",
+    "plural": "-ja(t)"
+   },
+   {
+    "word": "re",
+    "plural": "-ja(t)"
+   },
+   {
+    "word": "re",
+    "plural": "-ja(t)"
+   }
+  ],
+  "renie": [
+   {
+    "word": "rënie",
+    "plural": "-e(t)"
+   }
+  ],
+  "restorant": [
+   {
+    "word": "restorant",
+    "plural": "-e(t)"
+   }
+  ],
+  "rezultat": [
+   {
+    "word": "rezultat",
+    "plural": "-e(t)"
+   }
+  ],
+  "rimorkio": [
+   {
+    "word": "rimorkio",
+    "plural": "-(t)"
+   }
+  ],
+  "risk": [
+   {
+    "word": "risk",
+    "plural": "-qe(t)"
+   }
+  ],
+  "ritem": [
+   {
+    "word": "ritëm",
+    "plural": "-me(t)"
+   }
+  ],
+  "rivalitet": [
+   {
+    "word": "rivalitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "rob": [
+   {
+    "word": "rob",
+    "plural": "-ër(it)"
+   }
+  ],
+  "robot": [
+   {
+    "word": "robot",
+    "plural": "-ë(t)"
+   }
+  ],
+  "rrafsh": [
+   {
+    "word": "rrafsh",
+    "plural": "-e(t)"
+   }
+  ],
+  "rrebesh": [
+   {
+    "word": "rrebesh",
+    "plural": "-e(t)"
+   }
+  ],
+  "rrenim": [
+   {
+    "word": "rrënim",
+    "plural": "-e(t)"
+   }
+  ],
+  "rrethine": [
+   {
+    "word": "rrethinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "rul": [
+   {
+    "word": "rul",
+    "plural": "-e(t)"
+   }
+  ],
+  "ryshfet": [
+   {
+    "word": "ryshfet",
+    "plural": "-e(t)"
+   }
+  ],
+  "sahat": [
+   {
+    "word": "sahat",
+    "plural": "-e(t)"
+   }
+  ],
+  "salle": [
+   {
+    "word": "sallë",
+    "plural": "-a(t)"
+   }
+  ],
+  "sapun": [
+   {
+    "word": "sapun",
+    "plural": "-ë(t)"
+   }
+  ],
+  "saraj": [
+   {
+    "word": "saraj",
+    "plural": "-e(t)"
+   }
+  ],
+  "sasi": [
+   {
+    "word": "sasi",
+    "plural": "-(të)"
+   }
+  ],
+  "senat": [
+   {
+    "word": "senat",
+    "plural": "-e(t)"
+   }
+  ],
+  "servis": [
+   {
+    "word": "servis",
+    "plural": "-e(t)"
+   }
+  ],
+  "sfere": [
+   {
+    "word": "sferë",
+    "plural": "-a(t)"
+   }
+  ],
+  "shalqi": [
+   {
+    "word": "shalqi",
+    "plural": "-nj(të)"
+   }
+  ],
+  "shekull": [
+   {
+    "word": "shekull",
+    "plural": "-j(t)"
+   }
+  ],
+  "shembull": [
+   {
+    "word": "shembull",
+    "plural": "-j(t)"
+   }
+  ],
+  "shenim": [
+   {
+    "word": "shënim",
+    "plural": "-e(t)"
+   }
+  ],
+  "shikues": [
+   {
+    "word": "shikues",
+    "plural": "-i(t)"
+   }
+  ],
+  "shine": [
+   {
+    "word": "shinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "shkemb": [
+   {
+    "word": "shkëmb",
+    "plural": "-inj(të)"
+   }
+  ],
+  "shkop": [
+   {
+    "word": "shkop",
+    "plural": "-inj(të)"
+   }
+  ],
+  "shkrese": [
+   {
+    "word": "shkresë",
+    "plural": "-a(t)"
+   }
+  ],
+  "shmangie": [
+   {
+    "word": "shmangie",
+    "plural": "-e(t)"
+   }
+  ],
+  "shoqeri": [
+   {
+    "word": "shoqëri",
+    "plural": "-(të)"
+   }
+  ],
+  "shpat": [
+   {
+    "word": "shpat",
+    "plural": "-e(t)"
+   }
+  ],
+  "shpejtesi": [
+   {
+    "word": "shpejtësi",
+    "plural": "-(të)"
+   }
+  ],
+  "shpirt": [
+   {
+    "word": "shpirt",
+    "plural": "-ra(t)"
+   }
+  ],
+  "shprehi": [
+   {
+    "word": "shprehi",
+    "plural": "-(të)"
+   }
+  ],
+  "shteg": [
+   {
+    "word": "shteg",
+    "plural": "shtigje(t)"
+   }
+  ],
+  "shtepi": [
+   {
+    "word": "shtëpi",
+    "plural": "-(të)"
+   }
+  ],
+  "shtese": [
+   {
+    "word": "shtesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "shtetas": [
+   {
+    "word": "shtetas",
+    "plural": "-(it)"
+   }
+  ],
+  "shtet": [
+   {
+    "word": "shtet",
+    "plural": "-e"
+   }
+  ],
+  "shtrat": [
+   {
+    "word": "shtrat",
+    "plural": "shtretër(it)"
+   }
+  ],
+  "shtrese": [
+   {
+    "word": "shtresë",
+    "plural": "-a(t)"
+   }
+  ],
+  "shtyse": [
+   {
+    "word": "shtysë",
+    "plural": "-a(t)"
+   }
+  ],
+  "siguri": [
+   {
+    "word": "siguri",
+    "plural": "-(të)"
+   }
+  ],
+  "siklet": [
+   {
+    "word": "siklet",
+    "plural": "-e(t)"
+   }
+  ],
+  "simpatizant": [
+   {
+    "word": "simpatizant",
+    "plural": "-ë(t)"
+   }
+  ],
+  "sistem": [
+   {
+    "word": "sistem",
+    "plural": "-e(t)"
+   }
+  ],
+  "skanim": [
+   {
+    "word": "skanim",
+    "plural": "-e(t)"
+   }
+  ],
+  "skene": [
+   {
+    "word": "skenë",
+    "plural": "-a(t)"
+   }
+  ],
+  "skllav": [
+   {
+    "word": "skllav",
+    "plural": "skllevër(it)"
+   }
+  ],
+  "specialitet": [
+   {
+    "word": "specialitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "specie": [
+   {
+    "word": "specie",
+    "plural": "-e(t)"
+   }
+  ],
+  "spiun": [
+   {
+    "word": "spiun",
+    "plural": "-ë(t)"
+   }
+  ],
+  "sprove": [
+   {
+    "word": "sprovë",
+    "plural": "-a(t)"
+   }
+  ],
+  "statut": [
+   {
+    "word": "statut",
+    "plural": "-e(t)"
+   }
+  ],
+  "stimul": [
+   {
+    "word": "stimul",
+    "plural": "-j(t)"
+   }
+  ],
+  "stine": [
+   {
+    "word": "stinë",
+    "plural": "-ë(t)"
+   }
+  ],
+  "stres": [
+   {
+    "word": "stres",
+    "plural": "-e(t)"
+   }
+  ],
+  "studiuese": [
+   {
+    "word": "studiuese",
+    "plural": "-e(t)."
+   }
+  ],
+  "studiues": [
+   {
+    "word": "studiues",
+    "plural": "-(it)"
+   }
+  ],
+  "stuhi": [
+   {
+    "word": "stuhi",
+    "plural": "-(të)"
+   }
+  ],
+  "sukses": [
+   {
+    "word": "sukses",
+    "plural": "-e(t)"
+   }
+  ],
+  "sulltan": [
+   {
+    "word": "sulltan",
+    "plural": "-ë(t)"
+   }
+  ],
+  "supermarket": [
+   {
+    "word": "supermarket",
+    "plural": "-e(t)"
+   }
+  ],
+  "sy": [
+   {
+    "word": "sy",
+    "plural": "-(të)"
+   }
+  ],
+  "taksapagues": [
+   {
+    "word": "taksapagues",
+    "plural": "-(it)"
+   }
+  ],
+  "taksi": [
+   {
+    "word": "taksi",
+    "plural": "-(të)"
+   }
+  ],
+  "tapet": [
+   {
+    "word": "tapet",
+    "plural": "-e(t)"
+   }
+  ],
+  "tastiere": [
+   {
+    "word": "tastierë",
+    "plural": "-a(t)"
+   }
+  ],
+  "tatimpagues": [
+   {
+    "word": "tatimpagues",
+    "plural": "-(it)"
+   }
+  ],
+  "tavan": [
+   {
+    "word": "tavan",
+    "plural": "-e(t)"
+   }
+  ],
+  "tavoline": [
+   {
+    "word": "tavolinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "teater": [
+   {
+    "word": "teatër",
+    "plural": "-ra(t)"
+   }
+  ],
+  "telefon": [
+   {
+    "word": "telefon",
+    "plural": "-a(t)"
+   }
+  ],
+  "tempull": [
+   {
+    "word": "tempull",
+    "plural": "-j(t)"
+   }
+  ],
+  "tender": [
+   {
+    "word": "tender",
+    "plural": "-a(t)"
+   }
+  ],
+  "tentative": [
+   {
+    "word": "tentativë",
+    "plural": "-a(t)"
+   }
+  ],
+  "teori": [
+   {
+    "word": "teori",
+    "plural": "-(të)"
+   }
+  ],
+  "termet": [
+   {
+    "word": "tërmet",
+    "plural": "-e(t)"
+   }
+  ],
+  "terrorizem": [
+   {
+    "word": "terrorizëm",
+    "plural": "-ma(t)"
+   }
+  ],
+  "thelb": [
+   {
+    "word": "thelb",
+    "plural": "-pinj(të)"
+   }
+  ],
+  "thes": [
+   {
+    "word": "thes",
+    "plural": "thasë(t)"
+   }
+  ],
+  "thua": [
+   {
+    "word": "thua",
+    "plural": "thonj(të)"
+   }
+  ],
+  "tingull": [
+   {
+    "word": "tingull",
+    "plural": "-j(t)"
+   }
+  ],
+  "titull": [
+   {
+    "word": "titull",
+    "plural": "-j(t)"
+   }
+  ],
+  "togfjalesh": [
+   {
+    "word": "togfjalësh",
+    "plural": "-a(t)"
+   }
+  ],
+  "tradite": [
+   {
+    "word": "traditë",
+    "plural": "-a(t)"
+   }
+  ],
+  "trafikant": [
+   {
+    "word": "trafikant",
+    "plural": "-ë(t)"
+   }
+  ],
+  "traget": [
+   {
+    "word": "traget",
+    "plural": "-e(t)"
+   }
+  ],
+  "tragjedi": [
+   {
+    "word": "tragjedi",
+    "plural": "-(të)"
+   }
+  ],
+  "trajner": [
+   {
+    "word": "trajner",
+    "plural": "-ë(t)"
+   }
+  ],
+  "trajnim": [
+   {
+    "word": "trajnim",
+    "plural": "-e(t)"
+   }
+  ],
+  "trajte": [
+   {
+    "word": "trajtë",
+    "plural": "-a(t)"
+   }
+  ],
+  "traktat": [
+   {
+    "word": "traktat",
+    "plural": "-e(t)"
+   }
+  ],
+  "tren": [
+   {
+    "word": "tren",
+    "plural": "-a(t)"
+   }
+  ],
+  "trofe": [
+   {
+    "word": "trofe",
+    "plural": "-(të)"
+   }
+  ],
+  "trotuar": [
+   {
+    "word": "trotuar",
+    "plural": "-e(t)"
+   }
+  ],
+  "truall": [
+   {
+    "word": "truall",
+    "plural": "troje(t)"
+   }
+  ],
+  "tru": [
+   {
+    "word": "tru",
+    "plural": "-(të)"
+   }
+  ],
+  "tualet": [
+   {
+    "word": "tualet",
+    "plural": "-e(t)"
+   }
+  ],
+  "uje": [
+   {
+    "word": "ujë",
+    "plural": "-ëra(t)"
+   }
+  ],
+  "ujesjelles": [
+   {
+    "word": "ujësjellës",
+    "plural": "-(it)"
+   }
+  ],
+  "ujk": [
+   {
+    "word": "ujk",
+    "plural": "ujq(it)"
+   },
+   {
+    "word": "ujk",
+    "plural": "ujq(it)"
+   }
+  ],
+  "ulli": [
+   {
+    "word": "ulli",
+    "plural": "-nj(të)"
+   }
+  ],
+  "universitet": [
+   {
+    "word": "universitet",
+    "plural": "-e(t)"
+   }
+  ],
+  "urdherese": [
+   {
+    "word": "urdhëresë",
+    "plural": "-a(t)"
+   }
+  ],
+  "urdher": [
+   {
+    "word": "urdhër",
+    "plural": "-ra(t)"
+   },
+   {
+    "word": "urdhër",
+    "plural": "-ra(t)"
+   },
+   {
+    "word": "urdhër",
+    "plural": "-ra(t)"
+   }
+  ],
+  "ure": [
+   {
+    "word": "urë",
+    "plural": "-ë(t)"
+   },
+   {
+    "word": "urë",
+    "plural": "-a(t)"
+   }
+  ],
+  "urinim": [
+   {
+    "word": "urinim",
+    "plural": "-e(t)"
+   }
+  ],
+  "ushtrues": [
+   {
+    "word": "ushtrues",
+    "plural": "-(it)"
+   }
+  ],
+  "uzine": [
+   {
+    "word": "uzinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "vaj": [
+   {
+    "word": "vaj",
+    "plural": "-e(t)"
+   }
+  ],
+  "va": [
+   {
+    "word": "va",
+    "plural": "-(të)"
+   }
+  ],
+  "vaksine": [
+   {
+    "word": "vaksinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "vaksinim": [
+   {
+    "word": "vaksinim",
+    "plural": "-e(t)"
+   }
+  ],
+  "variant": [
+   {
+    "word": "variant",
+    "plural": "-e(t)"
+   }
+  ],
+  "vaske": [
+   {
+    "word": "vaskë",
+    "plural": "-a(t)"
+   }
+  ],
+  "vazo": [
+   {
+    "word": "vazo",
+    "plural": "-(t)"
+   }
+  ],
+  "vegel": [
+   {
+    "word": "vegël",
+    "plural": "-la(t)"
+   }
+  ],
+  "vella": [
+   {
+    "word": "vëlla",
+    "plural": "vëllezër(it)"
+   }
+  ],
+  "vendbanim": [
+   {
+    "word": "vendbanim",
+    "plural": "-e(t)"
+   }
+  ],
+  "veprimtari": [
+   {
+    "word": "veprimtari",
+    "plural": "-(të)"
+   }
+  ],
+  "veshtiresi": [
+   {
+    "word": "vështirësi",
+    "plural": "-(të)"
+   }
+  ],
+  "veti": [
+   {
+    "word": "veti",
+    "plural": "-(të)"
+   }
+  ],
+  "video": [
+   {
+    "word": "video",
+    "plural": "-(t)"
+   }
+  ],
+  "violine": [
+   {
+    "word": "violinë",
+    "plural": "-a(t)"
+   }
+  ],
+  "virgjereshe": [
+   {
+    "word": "virgjëreshë",
+    "plural": "-a(t)"
+   }
+  ],
+  "virtyt": [
+   {
+    "word": "virtyt",
+    "plural": "-e(t)"
+   }
+  ],
+  "virus": [
+   {
+    "word": "virus",
+    "plural": "-e(t)"
+   }
+  ],
+  "vitamine": [
+   {
+    "word": "vitaminë",
+    "plural": "-a(t)"
+   }
+  ],
+  "vlere": [
+   {
+    "word": "vlerë",
+    "plural": "-a(t)"
+   }
+  ],
+  "vonese": [
+   {
+    "word": "vonesë",
+    "plural": "-a(t)"
+   }
+  ],
+  "votues": [
+   {
+    "word": "votues",
+    "plural": "-(it)"
+   }
+  ],
+  "vozites": [
+   {
+    "word": "vozitës",
+    "plural": "-(it)"
+   }
+  ],
+  "vullkan": [
+   {
+    "word": "vullkan",
+    "plural": "-e(t)"
+   }
+  ],
+  "vullnet": [
+   {
+    "word": "vullnet",
+    "plural": "-e(t)"
+   }
+  ],
+  "xhami": [
+   {
+    "word": "xhami",
+    "plural": "-(të)"
+   }
+  ],
+  "xhaxha": [
+   {
+    "word": "xhaxha",
+    "plural": "-llarë(t)"
+   }
+  ],
+  "yll": [
+   {
+    "word": "yll",
+    "plural": "yje(t)"
+   }
+  ],
+  "zakon": [
+   {
+    "word": "zakon",
+    "plural": "-e(t)"
+   }
+  ],
+  "zedhenes": [
+   {
+    "word": "zëdhënës",
+    "plural": "-(it)"
+   }
+  ],
+  "zog": [
+   {
+    "word": "zog",
+    "plural": "-gj(të)"
+   }
+  ]
+ }
+}

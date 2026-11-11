@@ -1,0 +1,6 @@
+{
+ "note": "Nouns no letter rule can stem: the bare form loses -et (shtet → sht), the stem shtoj 'add' and shtesë have, while every other case keeps it (shteti, shtetet → shtet). Rewriting the stem's -htet to -ht would join shtet 'state' to shtoj. So the bare form is listed whole.",
+ "exceptions": {
+  "shtet": "shtet"
+ }
+}

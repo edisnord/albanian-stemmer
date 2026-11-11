@@ -1,0 +1,458 @@
+{
+ "exceptions": {
+  "brigje": "breg",
+  "brigjet": "breg",
+  "brigjeve": "breg",
+  "djem": "djal",
+  "djemte": "djal",
+  "djemve": "djal",
+  "duar": "dor",
+  "duart": "dor",
+  "duarve": "dor",
+  "dyer": "der",
+  "dyert": "der",
+  "dyerve": "der",
+  "gra": "gru",
+  "grash": "gru",
+  "grave": "gru",
+  "kuaj": "kal",
+  "kuajt": "kal",
+  "kuajve": "kal",
+  "meshkuj": "mashku",
+  "meshkujt": "mashku",
+  "meshkujve": "mashku",
+  "net": "nat",
+  "netet": "nat",
+  "njerez": "njr",
+  "njerezish": "njr",
+  "njerezit": "njr",
+  "njerezve": "njr",
+  "shtigje": "shteg",
+  "shtigjet": "shteg",
+  "shtigjeve": "shteg",
+  "shtreter": "shtr",
+  "shtreterit": "shtr",
+  "shtreterve": "shtr",
+  "skllever": "skllav",
+  "sklleverit": "skllav",
+  "sklleverve": "skllav",
+  "thase": "the",
+  "thaset": "the",
+  "thonj": "thu",
+  "thonjve": "thu",
+  "troje": "truall",
+  "trojet": "truall",
+  "trojeve": "truall",
+  "vellezer": "vell",
+  "vellezerit": "vell",
+  "vellezerve": "vell",
+  "yje": "yll",
+  "yjesh": "yll",
+  "yjet": "yll",
+  "yjeve": "yll"
+ },
+ "tokens": {
+  "brigje": 20,
+  "brigjet": 462,
+  "brigjeve": 184,
+  "djem": 598,
+  "djemte": 988,
+  "djemve": 416,
+  "duar": 1113,
+  "duart": 2074,
+  "duarve": 451,
+  "dyer": 419,
+  "dyert": 789,
+  "dyerve": 308,
+  "gra": 1840,
+  "grash": 47,
+  "grave": 2905,
+  "kuaj": 279,
+  "kuajt": 78,
+  "kuajve": 57,
+  "meshkuj": 807,
+  "meshkujt": 887,
+  "meshkujve": 357,
+  "net": 2736,
+  "netet": 141,
+  "njerez": 8976,
+  "njerezish": 706,
+  "njerezit": 10983,
+  "njerezve": 5681,
+  "shtigje": 120,
+  "shtigjet": 91,
+  "shtigjeve": 82,
+  "shtreter": 218,
+  "shtreterit": 58,
+  "shtreterve": 60,
+  "skllever": 76,
+  "sklleverit": 17,
+  "sklleverve": 29,
+  "thase": 97,
+  "thaset": 34,
+  "thonj": 50,
+  "thonjve": 195,
+  "troje": 157,
+  "trojet": 603,
+  "trojeve": 274,
+  "vellezer": 347,
+  "vellezerit": 874,
+  "vellezerve": 404,
+  "yje": 456,
+  "yjesh": 20,
+  "yjet": 596,
+  "yjeve": 306
+ },
+ "groups": {
+  "breg": [
+   "brigje",
+   "brigjet",
+   "brigjeve"
+  ],
+  "dere": [
+   "dyer",
+   "dyert",
+   "dyerve"
+  ],
+  "djale": [
+   "djem",
+   "djemte",
+   "djemve"
+  ],
+  "dore": [
+   "duar",
+   "duart",
+   "duarve"
+  ],
+  "grua": [
+   "gra",
+   "grash",
+   "grave"
+  ],
+  "kale": [
+   "kuaj",
+   "kuajt",
+   "kuajve"
+  ],
+  "mashkull": [
+   "meshkuj",
+   "meshkujt",
+   "meshkujve"
+  ],
+  "nate": [
+   "net",
+   "netet"
+  ],
+  "njeri": [
+   "njerez",
+   "njerezish",
+   "njerezit",
+   "njerezve"
+  ],
+  "shteg": [
+   "shtigje",
+   "shtigjet",
+   "shtigjeve"
+  ],
+  "shtrat": [
+   "shtreter",
+   "shtreterit",
+   "shtreterve"
+  ],
+  "skllav": [
+   "skllever",
+   "sklleverit",
+   "sklleverve"
+  ],
+  "thes": [
+   "thase",
+   "thaset"
+  ],
+  "thua": [
+   "thonj",
+   "thonjve"
+  ],
+  "truall": [
+   "troje",
+   "trojet",
+   "trojeve"
+  ],
+  "vella": [
+   "vellezer",
+   "vellezerit",
+   "vellezerve"
+  ],
+  "yll": [
+   "yje",
+   "yjesh",
+   "yjet",
+   "yjeve"
+  ]
+ },
+ "nouns": {
+  "breg": {
+   "plural": "brigje(t)",
+   "stem": "breg",
+   "moved": {
+    "brigje": "breg",
+    "brigjet": "breg",
+    "brigjeve": "breg"
+   },
+   "dropped": {
+    "brigjeish": "not in the corpus",
+    "brigjesh": "not in the corpus"
+   },
+   "tokens": 666
+  },
+  "dash": {
+   "plural": "desh(të)",
+   "stem": "dash",
+   "moved": {},
+   "dropped": {
+    "desh": "also ['dua']",
+    "deshesh": "not in the corpus",
+    "deshish": "not in the corpus",
+    "deshte": "also ['deshtem', 'dua']",
+    "deshve": "not in the corpus"
+   },
+   "tokens": 0
+  },
+  "derë": {
+   "plural": "dyer(t)",
+   "stem": "der",
+   "moved": {
+    "dyer": "der",
+    "dyert": "der",
+    "dyerve": "der"
+   },
+   "dropped": {
+    "dyeresh": "not in the corpus",
+    "dyerish": "not in the corpus"
+   },
+   "tokens": 1516
+  },
+  "djalë": {
+   "plural": "djem(të)",
+   "stem": "djal",
+   "moved": {
+    "djem": "djal",
+    "djemte": "djal",
+    "djemve": "djal"
+   },
+   "dropped": {
+    "djemesh": "not in the corpus",
+    "djemish": "not in the corpus"
+   },
+   "tokens": 2002
+  },
+  "dorë": {
+   "plural": "duar(t)",
+   "stem": "dor",
+   "moved": {
+    "duar": "dor",
+    "duart": "dor",
+    "duarve": "dor"
+   },
+   "dropped": {
+    "duaresh": "not in the corpus",
+    "duarish": "not in the corpus"
+   },
+   "tokens": 3638
+  },
+  "grua": {
+   "plural": "gra(të)",
+   "stem": "gru",
+   "moved": {
+    "gra": "gru",
+    "grash": "gru",
+    "grave": "gru"
+   },
+   "dropped": {
+    "graish": "not in the corpus",
+    "grate": "also ['grat']"
+   },
+   "tokens": 4792
+  },
+  "kalë": {
+   "plural": "kuaj(t)",
+   "stem": "kal",
+   "moved": {
+    "kuaj": "kal",
+    "kuajt": "kal",
+    "kuajve": "kal"
+   },
+   "dropped": {
+    "kuajesh": "not in the corpus",
+    "kuajish": "not in the corpus"
+   },
+   "tokens": 414
+  },
+  "mashkull": {
+   "plural": "meshkuj(t)",
+   "stem": "mashku",
+   "moved": {
+    "meshkuj": "mashku",
+    "meshkujt": "mashku",
+    "meshkujve": "mashku"
+   },
+   "dropped": {
+    "meshkujesh": "not in the corpus",
+    "meshkujish": "not in the corpus"
+   },
+   "tokens": 2051
+  },
+  "natë": {
+   "plural": "net(ët)",
+   "stem": "nat",
+   "moved": {
+    "net": "nat",
+    "netet": "nat"
+   },
+   "dropped": {
+    "netesh": "not in the corpus",
+    "netish": "not in the corpus",
+    "netve": "not in the corpus"
+   },
+   "tokens": 2877
+  },
+  "njeri": {
+   "plural": "njerëz(it)",
+   "stem": "njr",
+   "moved": {
+    "njerez": "njr",
+    "njerezish": "njr",
+    "njerezit": "njr",
+    "njerezve": "njr"
+   },
+   "dropped": {
+    "njerezesh": "not in the corpus"
+   },
+   "tokens": 26346
+  },
+  "shteg": {
+   "plural": "shtigje(t)",
+   "stem": "shteg",
+   "moved": {
+    "shtigje": "shteg",
+    "shtigjet": "shteg",
+    "shtigjeve": "shteg"
+   },
+   "dropped": {
+    "shtigjeish": "not in the corpus",
+    "shtigjesh": "not in the corpus"
+   },
+   "tokens": 293
+  },
+  "shtrat": {
+   "plural": "shtretër(it)",
+   "stem": "shtr",
+   "moved": {
+    "shtreter": "shtr",
+    "shtreterit": "shtr",
+    "shtreterve": "shtr"
+   },
+   "dropped": {
+    "shtreteresh": "not in the corpus",
+    "shtreterish": "not in the corpus"
+   },
+   "tokens": 336
+  },
+  "skllav": {
+   "plural": "skllevër(it)",
+   "stem": "skllav",
+   "moved": {
+    "skllever": "skllav",
+    "sklleverit": "skllav",
+    "sklleverve": "skllav"
+   },
+   "dropped": {
+    "sklleveresh": "not in the corpus",
+    "sklleverish": "not in the corpus"
+   },
+   "tokens": 122
+  },
+  "thes": {
+   "plural": "thasë(t)",
+   "stem": "the",
+   "moved": {
+    "thase": "the",
+    "thaset": "the"
+   },
+   "dropped": {
+    "thaseish": "not in the corpus",
+    "thasesh": "not in the corpus",
+    "thaseve": "not in the corpus"
+   },
+   "tokens": 131
+  },
+  "thua": {
+   "plural": "thonj(të)",
+   "stem": "thu",
+   "moved": {
+    "thonj": "thu",
+    "thonjve": "thu"
+   },
+   "dropped": {
+    "thonjesh": "not in the corpus",
+    "thonjish": "not in the corpus",
+    "thonjte": "also ['thonjte']"
+   },
+   "tokens": 245
+  },
+  "truall": {
+   "plural": "troje(t)",
+   "stem": "truall",
+   "moved": {
+    "troje": "truall",
+    "trojet": "truall",
+    "trojeve": "truall"
+   },
+   "dropped": {
+    "trojeish": "not in the corpus",
+    "trojesh": "not in the corpus"
+   },
+   "tokens": 1034
+  },
+  "ujk": {
+   "plural": "ujq(it)",
+   "stem": "ujq",
+   "moved": {},
+   "dropped": {
+    "ujq": "not in the corpus",
+    "ujqesh": "not in the corpus",
+    "ujqish": "not in the corpus",
+    "ujqve": "not in the corpus"
+   },
+   "tokens": 0
+  },
+  "vëlla": {
+   "plural": "vëllezër(it)",
+   "stem": "vell",
+   "moved": {
+    "vellezer": "vell",
+    "vellezerit": "vell",
+    "vellezerve": "vell"
+   },
+   "dropped": {
+    "vellezeresh": "not in the corpus",
+    "vellezerish": "not in the corpus"
+   },
+   "tokens": 1625
+  },
+  "yll": {
+   "plural": "yje(t)",
+   "stem": "yll",
+   "moved": {
+    "yje": "yll",
+    "yjesh": "yll",
+    "yjet": "yll",
+    "yjeve": "yll"
+   },
+   "dropped": {
+    "yjeish": "not in the corpus"
+   },
+   "tokens": 1378
+  }
+ },
+ "source": "fjalorthi.com entries whose plural is written in full; lexicon web-sq-2026-11.tsv.gz"
+}

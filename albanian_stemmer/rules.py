@@ -46,7 +46,70 @@ REGIONS = ("R1", "R2")
 # ``min_stem`` letters (mal-in), the ending may not.
 # (In the C case anything but a vowel, as Snowball's non-v.)
 PRECEDE = {"V": (VOWELS, True), "C": (VOWELS, False), "KGH": (frozenset("kgh"), True)}
-CONDITIONS = (*REGIONS, *PRECEDE)
+# Conditions on the letters before an ending (Snowball: ``test 'e'``,
+# ``not 'io'``), each keeping a frequent ending off stems that end like it:
+# E   after ë (folded e): -ra/-rat/-rave of plurals like gjëra, ujëra, not the
+#     r of mënyra, kultura, natyra;
+# NI  not after i, NIO not after io: the verb endings -on…/-n… not on an -ion
+#     noun (aksion-i, aksion-e, not aksi-oni, aksio-ne);
+# NE  not after e: -jta/-jti/-jte not on an adjective's jt (drejta, shpejti),
+#     -nte not on a noun's -ent (dokumente, studente);
+# NOTI not after o or ti: -ve not on the v of Kosovë, provë, nor on the
+#     adjectives in -iv (sportive, pozitive);
+# NS  not after s: -hem (lahem) not on the adjectives in -shëm (rëndësishëm);
+# U   after u: -jt of the -ull nouns' plural (artikujt);
+# NIZ not after iz: -em not on the -izëm nouns (organizëm);
+# NEM not after iz, bl or st: -em not on organizëm, problem, sistem (where it is
+#     the word's: mediopassive hapem, falem and aorist folëm keep it);
+# VNJE after a vowel but not after je: the genitive -së (shtëpisë), not the së
+#     of pjesë, ndjesë, punonjëse;
+# OANIO after o or a but not after io: the imperfect -nim (punonim, mbanim), not
+#     the -im nouns' n (bashkëpunim, shënim, kombinim, funksionim);
+# SHM not after a, e, o, u or y: the rewrite shm → sh of the -shëm adjectives
+#     (rëndësishme → rëndësish), not of dëshmi (which would meet desha).
+# Each is (strings one of which must precede, strings none of which may, whether
+# the letter before must be a vowel).
+AFTER = {"E": (("e",), (), False), "NI": ((), ("i",), False), "NIO": ((), ("io",), False),
+         "NE": ((), ("e",), False), "NOTI": ((), ("o", "ti"), False),
+         "NS": ((), ("s",), False), "U": (("u",), (), False), "NIZ": ((), ("iz",), False),
+         "NEM": ((), ("iz", "bl", "st"), False), "VNJE": ((), ("je",), True),
+         "OANIO": (("o", "a"), ("io",), False),
+         "SHM": ((), ("a", "e", "o", "u", "y"), False)}
+# Their routine names in the Snowball program, and the comment each gets there.
+AFTER_SNOWBALL = {
+    "E": ("AfterE", "-ra: gjëra, not mënyra"),
+    "NI": ("NotAfterI", "-oj, -oni: punoni, not aksioni"),
+    "NIO": ("NotAfterIO", "-n, -ne, -ni: punojnë, not aksione"),
+    "NE": ("NotAfterE", "-nte, -jta: punonte, mbajti, not dokumente, drejta"),
+    "NOTI": ("NotAfterOTI", "-ve, not after o or ti: shtëpive, not Kosovë, sportive"),
+    "NS": ("NotAfterS", "-hem: lahem, not rëndësishëm"),
+    "U": ("AfterU", "-jt: artikujt"),
+    "NIZ": ("NotAfterIZ", "-em: hapem, not organizëm"),
+    "NEM": ("NotAfterIZBLST", "-em, not after iz, bl or st: hapem, not organizëm, problem, "
+                              "sistem"),
+    "VNJE": ("AfterVNotJE", "-së, after a vowel but not je: shtëpisë, not pjesë"),
+    "OANIO": ("AfterOANotIO", "-nim, after o or a but not io: punonim, not bashkëpunim, "
+                              "funksionim"),
+    "SHM": ("NotAfterAEOUY", "shm → sh: rëndësishme, not dëshmi"),
+}
+CONDITIONS = (*REGIONS, *PRECEDE, *AFTER)
+
+
+def _wrap(head: str, items: list[str], tail: str, width: int = 80) -> list[str]:
+    """``head item item … tail``, wrapped at *width*, continuation lines indented."""
+    lines, line = [], head
+    for it in [*items, tail]:
+        if len(line) + 1 + len(it) > width:
+            lines.append(line)
+            line = "   "
+        line += " " + it
+    return [*lines, line]
+
+
+def _letters(strings: tuple[str, ...]) -> str:
+    """Snowball for "the letters before the cursor are one of *strings*"."""
+    quoted = " ".join(f"'{x}'" for x in strings)
+    return quoted if len(strings) == 1 else f"among ( {quoted} )"
 
 
 def _past_vc(w: str, start: int) -> int:
@@ -74,11 +137,14 @@ def regions(w: str) -> tuple[int, int]:
 class AlbanianStemmer:
     steps: tuple[tuple[str, ...], ...]
     min_stem: int
-    rewrites: tuple[tuple[str, str], ...] = ()
+    # (x, y) or (x, y, cond): the stem's end x becomes y; cond, one of AFTER's
+    # keys, must hold for the letters before x.
+    rewrites: tuple[tuple[str, ...], ...] = ()
     stopwords: frozenset[str] = frozenset()
     # Per step: ending → its condition, on top of ``min_stem``: "R1" or "R2",
     # the Snowball region the ending must lie in, or "V", "C", "KGH", the class
-    # of the letter before it (see PRECEDE). Absent: no condition.
+    # of the letter before it (see PRECEDE), or one of AFTER's keys ("E", "NI", …), the letters
+    # before it (see AFTER). Absent: no condition.
     conditions: tuple[tuple[tuple[str, str], ...], ...] = ()
     # Whole words (folded) → their stem, looked up before any rule: the
     # irregular verbs, whose forms share no stem a suffix rule could reach
@@ -92,12 +158,14 @@ class AlbanianStemmer:
         object.__setattr__(self, "exceptions", tuple(sorted(dict(self.exceptions).items())))
         object.__setattr__(self, "_exceptions", dict(self.exceptions))
         for s in (*(e for step in self.steps for e in step),
-                  *(x for x, _ in self.rewrites), *self.stopwords):
+                  *(r[0] for r in self.rewrites), *self.stopwords):
             if not _ALPHA.match(s):  # Snowball and C embed them in string literals
                 raise ValueError(f"rule strings must be folded a-z, got {s!r}")
-        for _, y in self.rewrites:  # a rewrite may delete (y == "")
-            if y and not _ALPHA.match(y):
-                raise ValueError(f"rule strings must be folded a-z, got {y!r}")
+        for r in self.rewrites:  # a rewrite may delete (y == "")
+            if r[1] and not _ALPHA.match(r[1]):
+                raise ValueError(f"rule strings must be folded a-z, got {r[1]!r}")
+            if len(r) not in (2, 3) or (len(r) == 3 and r[2] not in AFTER):
+                raise ValueError(f"bad rewrite {r!r}")
         conds = [dict(c) for c in self.conditions] + [{}] * (len(self.steps) - len(self.conditions))
         if len(conds) > len(self.steps):
             raise ValueError("more condition tables than steps")
@@ -125,6 +193,11 @@ class AlbanianStemmer:
         if cond in PRECEDE:  # the letter before the ending
             letters, inside = PRECEDE[cond]
             return (w[start - 1] in letters) == inside
+        if cond in AFTER:  # the letters before the ending
+            must, mustnot, vowel = AFTER[cond]
+            stem = w[:start]
+            return ((not must or stem.endswith(must)) and not stem.endswith(mustnot or ("\0",))
+                    and (not vowel or stem[-1] in VOWELS))
         return start >= lim[cond]
 
     def condition(self, step: int, ending: str) -> str:
@@ -149,8 +222,9 @@ class AlbanianStemmer:
                         not conds or self._holds(w, start, conds.get(w[-n:], ""), lim)):
                     w = w[:-n]
                     break
-        for x, y in self._rewrites:  # type: ignore[attr-defined]
-            if w.endswith(x) and len(w) - len(x) + len(y) >= self.min_stem:
+        for x, y, *c in self._rewrites:  # type: ignore[attr-defined]
+            if w.endswith(x) and len(w) - len(x) + len(y) >= self.min_stem and (
+                    not c or self._holds(w, len(w) - len(x), c[0], {})):
                 return w[: len(w) - len(x)] + y
         return w
 
@@ -182,7 +256,7 @@ class AlbanianStemmer:
     @classmethod
     def from_json(cls, d: dict) -> AlbanianStemmer:
         return cls(steps=tuple(tuple(step) for step in d["steps"]), min_stem=d["min_stem"],
-                   rewrites=tuple((x, y) for x, y in d.get("rewrites", [])),
+                   rewrites=tuple(tuple(r) for r in d.get("rewrites", [])),
                    stopwords=frozenset(d.get("stopwords", [])),
                    conditions=tuple(tuple(c.items()) for c in d.get("conditions", [])),
                    exceptions=tuple(d.get("exceptions", {}).items()))
@@ -205,17 +279,25 @@ class AlbanianStemmer:
         m = self.min_stem
         used = {r for c in self.conditions for _, r in c}
         regioned = bool(used & set(REGIONS))
-        vowels = regioned or bool(used & {"V", "C"})
-        cname = {**{r: f"In{r}" for r in REGIONS}, **{p: f"After{p}" for p in PRECEDE}}
+        vowels = regioned or bool(used & {"V", "C"}) or any(
+            AFTER[a][2] for a in used & set(AFTER))
+        cname = {**{r: f"In{r}" for r in REGIONS}, **{p: f"After{p}" for p in PRECEDE},
+                 **{a: name for a, (name, _) in AFTER_SNOWBALL.items()}}
         # A rewrite x → y needs the cursor (where x starts) at >= m - len(y).
-        need = sorted({m - len(y) for _, y in self.rewrites if 0 < m - len(y) < m})
+        need = sorted({m - len(r[1]) for r in self.rewrites if 0 < m - len(r[1]) < m})
+        # A rewrite's letter condition carries that length check itself.
+        rw_after = {r[2]: m - len(r[1]) for r in self.rewrites if len(r) == 3}
+        if set(rw_after) & used:
+            raise ValueError("a letter condition is used by both an ending and a rewrite")
+        used = used | set(rw_after)
         cond = {k: ("R1" if k == m else f"S{k}") for k in [m, *need]}
         steps = [f"step{i + 1}" for i in range(len(self.steps))]
         regs = [cname[r] for r in CONDITIONS if r in used]
         exc = ["exception"] if self.exceptions else []
         out = [*(f"// {line}".rstrip() for line in header.strip().splitlines()), "",
-               f"routines ( {' '.join(['prelude', *exc, 'mark_regions', *cond.values(), *regs, *steps])}"
-               f"{' stem_end' if self.rewrites else ''} )", "",
+               *_wrap("routines (", [*["prelude", *exc, "mark_regions"], *cond.values(), *regs,
+                                     *steps, *(["stem_end"] if self.rewrites else [])], ")"),
+               "",
                "externals ( stem )", "",
                f"integers ( {' '.join(['p1', *(f's{k}' for k in need)])}"
                f"{''.join(f' p{r.lower()}' for r in REGIONS if r in used)} )", "",
@@ -244,7 +326,12 @@ class AlbanianStemmer:
                  if regioned else []),
                *(["// An ending marked AfterV, AfterC or AfterKGH must follow a vowel, a",
                   "// non-vowel, or k, g or h, itself outside the first letters."]
-                 if used - set(REGIONS) else []),
+                 if used & set(PRECEDE) else []),
+               *(["// The other After... and NotAfter... routines test the letters before",
+                  "// an ending: it must follow one of them (After), or none (NotAfter).",
+                  "// Each keeps a frequent ending off the stems whose own letters end like",
+                  "// it; its comment names the ending, a form it takes and one it spares."]
+                 if used & set(AFTER) else []),
                "define mark_regions as (",
                "    $p1 = limit",
                f"    do ( hop {m} setmark p1 )",
@@ -257,18 +344,26 @@ class AlbanianStemmer:
                ")", "",
                "backwardmode (", "",
                "    define R1 as $p1 <= cursor",
-               *(f"    define S{k} as $s{k} <= cursor  // {k} letters precede" for k in need),
+               *(f"    define S{k} as $s{k} <= cursor  // {k} letter{'s' * (k > 1)} precede"
+                 f"{'s' * (k == 1)}" for k in need),
                *(f"    define In{r} as ( R1 $p{r.lower()} <= cursor )"
                  for r in REGIONS if r in used),
                *(f"    define After{p} as ( R1 test {g} )" for p, g in
-                 (("V", "v"), ("C", "non-v"), ("KGH", "kgh")) if p in used)]
+                 (("V", "v"), ("C", "non-v"), ("KGH", "kgh")) if p in used),
+               *(line for a, (must, mustnot, vowel) in AFTER.items() if a in used for line in (
+                 f"    // {AFTER_SNOWBALL[a][1]}",
+                 f"    define {cname[a]} as ( "
+                 + (cond.get(rw_after[a], "") if a in rw_after else "R1")
+                 + (" test v" if vowel else "") + (f" test {_letters(must)}" if must else "")
+                 + (f" not {_letters(mustnot)}" if mustnot else "") + " )"))]
         notes = notes or {}
         order = {c: i for i, c in enumerate(dict.fromkeys(notes.values()))}
         for i, (name, ends) in enumerate(zip(steps, self.steps)):
             groups: dict[str, list[str]] = {}
             for e in sorted(ends, key=lambda s: (len(s), s)):
                 groups.setdefault(notes.get(f"{name}:{e}", notes.get(e, "")), []).append(e)
-            free = any(self.condition(i, e) in PRECEDE for e in ends)
+            free = any(self.condition(i, e) in PRECEDE or self.condition(i, e) in AFTER
+                       for e in ends)
             out += ["", f"    // The longest ending of {name} in R1, if any, is removed.",
                     f"    define {name} as (",
                     "        [substring] among (" if free else
@@ -290,8 +385,8 @@ class AlbanianStemmer:
         if self.rewrites:
             out += ["", "    // The stem's end, by the longest alternation that leaves it long enough.",
                     "    define stem_end as (", "        [substring] among ("]
-            for x, y in self._rewrites[::-1]:  # type: ignore[attr-defined]
-                c = cond.get(m - len(y), "")
+            for x, y, *rc in self._rewrites[::-1]:  # type: ignore[attr-defined]
+                c = cname[rc[0]] if rc else cond.get(m - len(y), "")
                 act = f"<- '{y}'" if y else "delete"
                 out.append(f"            '{x}' {c} ({act})".replace("  (", " ("))
             out += ["        )", "    )"]
@@ -312,8 +407,8 @@ class AlbanianStemmer:
         for form, st in self.exceptions:
             by_stem.setdefault(st, []).append(form)
         out = ["// Irregular words: their forms share no stem a suffix rule reaches",
-               "// (vij, erdhi, ardhur; them, thotë, thënë), and the forms of frequent",
-               "// nouns the rules split off (problemi, duar), each mapped to one stem.",
+               "// (vij, erdhi, ardhur; them, thotë, thënë; dorë, duar), each mapped",
+               "// to one stem.",
                "define exception as (", "    [substring] atlimit among ("]
         for st, forms in sorted(by_stem.items()):
             line = "       "

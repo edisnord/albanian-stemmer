@@ -125,6 +125,35 @@ def test_preceding_letter_conditions():
     assert "AfterKGH" in sb and "test kgh" in sb and "InR1" not in sb and "pr1" not in sb
 
 
+def test_letters_before_conditions():
+    st = AlbanianStemmer(
+        steps=(("ra", "oni", "ne", "nte", "jti", "ve", "i", "e"),),
+        min_stem=3,
+        conditions=((("ra", "E"), ("oni", "NI"), ("ne", "NIO"), ("nte", "NE"), ("jti", "NE"),
+                     ("ve", "NOTI")),),
+    )
+    assert st.stem("gjera") == "gje"           # -ra after ë (folded e)
+    assert st.stem("menyra") == "menyra"       # not after y (the r is the stem's)
+    assert st.stem("punoni") == "pun"          # -oni after n
+    assert st.stem("aksioni") == "aksion"      # not after i: -i instead
+    assert st.stem("punojne") == "punoj"       # -ne after j
+    assert st.stem("aksione") == "aksion"      # not after io: -e instead
+    assert st.stem("punonte") == "puno"        # -nte after o
+    assert st.stem("dokumente") == "dokument"  # not after e
+    assert st.stem("mbajti") == "mba"          # -jti after a
+    assert st.stem("shpejti") == "shpejt"      # not after e
+    assert st.stem("shtepive") == "shtepi"     # -ve after i
+    assert st.stem("kosove") == "kosov"        # not after o
+    assert st.stem("sportive") == "sportiv"    # nor after ti
+    assert AlbanianStemmer.from_json(st.to_json()).to_json() == st.to_json()
+    sb = st.to_snowball()
+    for line in ("define AfterE as ( R1 test 'e' )", "define NotAfterI as ( R1 not 'i' )",
+                 "define NotAfterIO as ( R1 not 'io' )", "define NotAfterE as ( R1 not 'e' )",
+                 "define NotAfterOTI as ( R1 not among ( 'o' 'ti' ) )"):
+        assert line in sb
+    assert "setlimit" not in sb.split("define step1")[1].split("define")[0]
+
+
 def test_snowball_declares_regions_only_when_used():
     assert "InR2" in REGIONAL.to_snowball() and "gopast v gopast non-v" in REGIONAL.to_snowball()
     assert "InR" not in TOY.to_snowball() and "groupings" not in TOY.to_snowball()

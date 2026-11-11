@@ -23,7 +23,7 @@ def test_committed_snowball_matches_committed_rules():
 def _probe_words() -> list[str]:
     """Every ending and rewrite on stems of 1–5 letters, so each among entry
     and each length condition is hit on both sides."""
-    ends = {e for step in RULES.steps for e in step} | {x for x, _ in RULES.rewrites}
+    ends = {e for step in RULES.steps for e in step} | {r[0] for r in RULES.rewrites}
     stems = ["", "p", "pu", "pun", "punu", "punoj", "mollë", "sëmundj", "çel", "ujë"]
     words = {s + e for s, e in itertools.product(stems, sorted(ends))}
     words |= {s + a + b for s in stems[3:6] for a, b in itertools.product(sorted(ends), repeat=2)}
@@ -51,13 +51,24 @@ def test_compiled_snowball_matches_the_rules():
     "mbaj mban mbajti mbajtur mbahet",
     "marr merr marrë merret merren",
     "bëj bën bërë bëhet bëjnë",
-    # frequent nouns the rules split, through the noun conflict table
+    "vij vjen erdhi ardhur erdhën",
+    # nouns whose own letters look like an ending, kept by letter conditions
     "problem problemi problemin problemit problemet",
+    "sistem sistemi sistemin sistemet",
     "pjesë pjesa pjesën pjesës pjesët pjesëve",
-    "dorë dora dorën duar duart",
-    "grua gruaja gra grave",
     "shtëpi shtëpia shtëpinë shtëpisë shtëpitë",
-    "qytet qyteti qytetin qytetit qytete",
+    # and by stem rewrites: -itet/-ytet, -ull/-uj, -izëm/-izm
+    "qytet qyteti qytetin qytetit qytete qytetet",
+    "aktivitet aktiviteti aktivitetin aktivitetet",
+    "artikull artikulli artikuj artikujt",
+    "organizëm organizmi organizmat",
+    # irregular plurals, through the noun table
+    "dorë dora dorën duar duart duarve",
+    "grua gruaja gra grave",
+    "derë dera dyer dyert",
+    "djalë djali djem djemtë",
+    # shtet: no rule tells it from shtoj, so its bare form is listed
+    "shtet shteti shtetin shtetit shtetet shteteve",
     # nouns of action in -im meet their verb (step3)
     "përdor përdorim përdorimi përdorimin përdoret",
     "kultivoj kultivim kultivimi kultivohet",
@@ -65,6 +76,14 @@ def test_compiled_snowball_matches_the_rules():
 ])
 def test_paradigms_share_a_stem(family):
     assert len({snowball.stem(w) for w in family.split()}) == 1
+
+
+@pytest.mark.parametrize("a, b", [
+    ("shtet", "shtoj"), ("organizëm", "organizoj"), ("sportive", "sport"),
+    ("pjesë", "pjek"), ("kosovë", "kosto"),
+])
+def test_unrelated_words_stay_apart(a, b):
+    assert snowball.stem(a) != snowball.stem(b)
 
 
 def test_folding_and_case():
