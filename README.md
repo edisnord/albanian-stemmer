@@ -240,6 +240,60 @@ MRR@10 is 0.360 and R@100 0.712 (1.1.0: 0.359 and 0.703; first 5 letters
 0.349, no stemming 0.281, a uniparser lemmatizer 0.341). On the same queries and passages in English, Porter2
 scores 0.499 against 0.477 without stemming.
 
+### Against embedding models
+
+The same BM25 (k1 0.9, b 0.4, stemmer 1.2.0) against multilingual embedding
+models, on four query sets:
+
+- **Gemma queries and sealed:** the generated queries above, here searched
+  over the whole corpus of 890,940 chunks (crawl and FineWeb-2), so the scores
+  differ from the 200k-distractor table.
+- **WebFAQ:** the Albanian part of WebFAQ v2 (30,628 questions searched over
+  32,398 answers; [michaeldinzinger/webfaq-v2](https://huggingface.co/datasets/michaeldinzinger/webfaq-v2)).
+- **mMARCO:** the 3,000 dev queries over 503,424 passages used above, in
+  Albanian and in the English original.
+
+Every model sees at most 512 tokens, with the query and passage prompts from
+its model card. Embeddings were computed with vLLM and checked against
+sentence-transformers. "Hybrid" fuses arctic and BM25 rankings with reciprocal
+rank fusion (k 60). "Reranked" passes each first stage's top 100 to
+[bge-reranker-v2-m3](https://huggingface.co/BAAI/bge-reranker-v2-m3), on a
+sample of 3,000 queries per set (all 1,457 sealed). MRR@10:
+
+| retriever | Gemma | sealed | WebFAQ | mMARCO | mMARCO, English |
+|---|---|---|---|---|---|
+| **BM25, albanian stemmer** | 0.666 | 0.654 | 0.667 | 0.360 | 0.499 (Porter2) |
+| BM25, no stemming | 0.556 | 0.543 | 0.605 | 0.281 | 0.477 |
+| [snowflake-arctic-embed-l-v2.0](https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0) | 0.596 | 0.681 | 0.821 | 0.563 | 0.749 |
+| [bge-m3](https://huggingface.co/BAAI/bge-m3) (dense) | 0.577 | 0.664 | 0.812 | 0.528 | 0.696 |
+| [multilingual-e5-large](https://huggingface.co/intfloat/multilingual-e5-large) | 0.393 | 0.567 | 0.741 | 0.546 | 0.744 |
+| [harrier-oss-v1-0.6b](https://huggingface.co/microsoft/harrier-oss-v1-0.6b) | 0.391 | 0.540 | 0.649 | 0.463 | |
+| [harrier-oss-v1-270m](https://huggingface.co/microsoft/harrier-oss-v1-270m) | 0.389 | 0.515 | 0.691 | 0.434 | |
+| [Qwen3-Embedding-0.6B](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B) | 0.326 | 0.443 | 0.549 | 0.341 | |
+| [multilingual-e5-small](https://huggingface.co/intfloat/multilingual-e5-small) | 0.257 | 0.353 | 0.615 | 0.377 | |
+| hybrid, arctic + BM25 | 0.682 | 0.723 | 0.769 | 0.490 | 0.664 |
+| BM25 → reranked | 0.780 | 0.810 | 0.865 | 0.557 | |
+| arctic → reranked | 0.753 | 0.805 | 0.876 | 0.627 | |
+
+On web text, BM25 with the stemmer beats every embedding model on the Gemma
+queries and is within 0.03 MRR@10 of the best on the sealed set. On FineWeb-2
+chunks alone, arctic and BM25 are about level; on the crawl chunks, BM25
+leads by about 0.09. The generated queries reuse their passage's words, which
+favours BM25. People's questions (WebFAQ) and translated queries (mMARCO)
+reuse fewer of them, and there the large embedders lead by 0.15–0.20.
+
+A reranker on BM25's top 100 does about as well as one on arctic's on web
+text and FAQs, without an embedding index. On mMARCO it is held back by
+BM25's recall: the relevant passage is in the top 100 for 72% of queries,
+against 89% for arctic.
+
+From English to Albanian mMARCO, the embedders keep 73–76% of their MRR@10,
+BM25 with the stemmer 72% and BM25 without stemming 59%. Of the queries English
+BM25 answers and Albanian BM25 misses, most differ because the query and
+the passage were translated with different words. Splits the stemmer could
+fix (*klasë*, *klasës*) account for about a quarter, and the suffix-rule fixes
+tried for them changed MRR@10 by under 0.001 ([1.2.1](#release-121-the--ka-ending)).
+
 ### The letter before an ending
 
 As in the Finnish, Turkish and Russian Snowball stemmers, an ending can
